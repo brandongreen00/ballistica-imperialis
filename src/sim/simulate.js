@@ -106,6 +106,14 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     else if (r.name === "Punishing" && atkC > 0 && atkF > 0) { atkF--; atkN++; }
   }
 
+  // defender-side downgrade (e.g. Gellerpox Mutant)
+  for (const e of defEff) {
+    if (e.type === "crit_to_normal_attack") {
+      const k = Math.min(e.params.count, atkC);
+      atkC -= k; atkN += k;
+    }
+  }
+
   // pre_save_damage
   let dmg = 0, damCritDice = 0;
   const devV = val("Devastating");

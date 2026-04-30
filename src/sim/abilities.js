@@ -54,6 +54,9 @@
        worsen_attacker_hit   — { amount }
                                worsen the attacker's Hit characteristic by
                                <amount> (Hunter Clade Vanguard aura)
+       crit_to_normal_attack — { count }
+                               convert <count> attacker crit hits to normal
+                               hits before saves (Gellerpox Mutant)
        fnp                   — { threshold }
                                per-wound D6: a roll of >= threshold ignores
                                that wound (post-save, post-Iron-Halo)
@@ -246,6 +249,41 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Punishing" }] },
     note: "Blooded — token holders wholly in opponent's territory",
   },
+  pelting_firepower_ceaseless: {
+    id: "pelting_firepower_ceaseless",
+    label: "Pelting Firepower (Ceaseless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Ceaseless" }] },
+    note: "Fellgor — vs targets shot by another friendly this turning point",
+  },
+  pelting_firepower_relentless: {
+    id: "pelting_firepower_relentless",
+    label: "Pelting Firepower (Relentless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Relentless" }] },
+    note: "Fellgor — vs targets shot by 2+ other friendlies this turning point",
+  },
+  fickle_fates_balanced: {
+    id: "fickle_fates_balanced",
+    label: "Fickle Fates (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Legionary — only when shooting a ready enemy operative",
+  },
+  predators_above: {
+    id: "predators_above",
+    label: "Predators Above (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Murderwing — only when ≥2\" higher than killzone floor or after BOOST",
+  },
+  cull_the_weak: {
+    id: "cull_the_weak",
+    label: "Cull the Weak (Punishing)",
+    type: "add_rules",
+    params: { rules: [{ name: "Punishing" }] },
+    note: "Murderwing — vs lower / wounded / lower-APL targets",
+  },
 };
 
 export const DEFENDER_EFFECTS = {
@@ -400,6 +438,41 @@ export const DEFENDER_EFFECTS = {
     type: "defence_reroll",
     params: { fails: true, count: 1 },
     note: "Blooded — token holders or wholly in opponent's territory",
+  },
+  plagueridden_determination: {
+    id: "plagueridden_determination",
+    label: "Plagueridden Determination (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Gellerpox — only when defender has Engage order",
+  },
+  augmented_endurance_half: {
+    id: "augmented_endurance_half",
+    label: "Augmented Endurance (half tank, reroll 1)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Goremonger — only when GORE TANK is half",
+  },
+  augmented_endurance_full: {
+    id: "augmented_endurance_full",
+    label: "Augmented Endurance (full tank, reroll all)",
+    type: "defence_reroll",
+    params: { fails: true },
+    note: "Goremonger — only when GORE TANK is full",
+  },
+  nightmare_on_high: {
+    id: "nightmare_on_high",
+    label: "Nightmare on High (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Murderwing — only when ≥2\" higher than killzone floor or after BOOST",
+  },
+  mutant_crit_to_normal: {
+    id: "mutant_crit_to_normal",
+    label: "Mutant (crit → normal)",
+    type: "crit_to_normal_attack",
+    params: { count: 1 },
+    note: "Gellerpox Mutant — convert one attacker crit hit to normal",
   },
   traitor_thug_tough: {
     id: "traitor_thug_tough",
