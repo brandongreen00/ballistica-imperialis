@@ -48,7 +48,10 @@ function runShoot(target, weapon, env, defEff, atkEff) {
 
   // modify_attack_stats
   let atkDice = weapon.atk;
-  const hit = weapon.hit;
+  let hit = weapon.hit;
+  for (const e of defEff) {
+    if (e.type === "worsen_attacker_hit") hit = Math.min(6, hit + e.params.amount);
+  }
   let crit = 6;
   let preRet = 0;
   for (const r of rules) {

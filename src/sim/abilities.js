@@ -51,6 +51,9 @@
                                subtract <amount> from the value of all
                                Piercing / Piercing Crits weapon rules
                                (Deathwatch Storm Shield)
+       worsen_attacker_hit   — { amount }
+                               worsen the attacker's Hit characteristic by
+                               <amount> (Hunter Clade Vanguard aura)
        fnp                   — { threshold }
                                per-wound D6: a roll of >= threshold ignores
                                that wound (post-save, post-Iron-Halo)
@@ -109,6 +112,41 @@ export const ATTACKER_EFFECTS = {
     type: "add_rules",
     params: { rules: [{ name: "Saturate" }] },
     note: "Deathwatch — also clears obscured (toggle Obscured off manually)",
+  },
+  lethal_proximity: {
+    id: "lethal_proximity",
+    label: "Lethal Proximity (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Starstrider — only when shooting an operative within 6\"",
+  },
+  merciless: {
+    id: "merciless",
+    label: "Merciless (Balanced vs wounded)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Elucia Vhane — only vs already-wounded targets",
+  },
+  terminal_decree: {
+    id: "terminal_decree",
+    label: "Terminal Decree (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Exaction Squad — when shooting within 6\" or any Gunner shoots",
+  },
+  attack_order_ceaseless: {
+    id: "attack_order_ceaseless",
+    label: "Attack Order (Ceaseless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Ceaseless" }] },
+    note: "Imperial Navy Breacher — only within 3\" of the Attack Order marker",
+  },
+  quarry_ceaseless: {
+    id: "quarry_ceaseless",
+    label: "Quarry (Ceaseless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Ceaseless" }] },
+    note: "Inquisitorial Agent — only vs the designated Quarry operative",
   },
 };
 
@@ -187,6 +225,41 @@ export const DEFENDER_EFFECTS = {
     type: "defence_reroll",
     params: { fails: true, count: 1 },
     note: "Deathwatch — only when defender is in own territory",
+  },
+  disruption_field: {
+    id: "disruption_field",
+    label: "Disruption Field (ignore Piercing)",
+    type: "reduce_piercing",
+    params: { amount: 99 },
+    note: "Elucia Vhane — fully negates Piercing X / Piercing Crits X",
+  },
+  rapid_reflexes: {
+    id: "rapid_reflexes",
+    label: "Rapid Reflexes (ignore Piercing)",
+    type: "reduce_piercing",
+    params: { amount: 99 },
+    note: "Death Cult Executioner — fully negates Piercing X / Piercing Crits X",
+  },
+  hardy: {
+    id: "hardy",
+    label: "Hardy",
+    type: "ignore_damage_dice",
+    params: { dice_type: "normal", count: 1 },
+    note: "Voidmaster Hardy — once per battle; modelled as available this shoot",
+  },
+  vanguard_aura: {
+    id: "vanguard_aura",
+    label: "Vanguard Aura (-1 attacker Hit)",
+    type: "worsen_attacker_hit",
+    params: { amount: 1 },
+    note: "Hunter Clade Vanguard — only when attacker is within 2\" of a Vanguard",
+  },
+  brace_for_counterattack: {
+    id: "brace_for_counterattack",
+    label: "Brace for Counterattack (-1 dmg per die ≥3)",
+    type: "damage_reduction_per_die",
+    params: { dice_type: "all", threshold: 3, reduce_by: 1 },
+    note: "Navy Breacher firefight ploy — only in territory or non-moving",
   },
 };
 
