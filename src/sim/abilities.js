@@ -379,6 +379,34 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Balanced" }] },
     note: "Hernkyn Yaegir — only when shooter is in cover",
   },
+  relentless_onslaught: {
+    id: "relentless_onslaught",
+    label: "Relentless Onslaught (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Hierotek Circle — only when shooting within 8\"",
+  },
+  dakka_dakka_punishing: {
+    id: "dakka_dakka_punishing",
+    label: "Dakka Dakka Dakka! (Punishing)",
+    type: "add_rules",
+    params: { rules: [{ name: "Punishing" }] },
+    note: "Kommandos — adds Punishing to ranged weapons",
+  },
+  inescapable_nightmare: {
+    id: "inescapable_nightmare",
+    label: "Inescapable Nightmare (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Mandrakes — only when shooter is WITHIN SHADOW",
+  },
+  bonded_accurate: {
+    id: "bonded_accurate",
+    label: "Bonded (Accurate 1)",
+    type: "add_rules",
+    params: { rules: [{ name: "Accurate", value: 1 }] },
+    note: "Pathfinders — only when within 3\" of another non-DRONE Pathfinder",
+  },
 };
 
 export const DEFENDER_EFFECTS = {
@@ -610,6 +638,20 @@ export const DEFENDER_EFFECTS = {
     type: "crit_to_normal_attack",
     params: { count: 99 },
     note: "Hernkyn Yaegir — converts all attacker crit hits to normal hits",
+  },
+  just_a_scratch: {
+    id: "just_a_scratch",
+    label: "Just a Scratch (ignore 1 normal die)",
+    type: "ignore_damage_dice",
+    params: { dice_type: "normal", count: 1 },
+    note: "Kommandos — ignore one normal die damage (excludes Squig/Grot)",
+  },
+  whipcord_emergence: {
+    id: "whipcord_emergence",
+    label: "Whipcord Emergence (reroll fails)",
+    type: "defence_reroll",
+    params: { fails: true },
+    note: "Raveners — only when defender Burrowed or on Tunnel",
   },
   mutant_crit_to_normal: {
     id: "mutant_crit_to_normal",
