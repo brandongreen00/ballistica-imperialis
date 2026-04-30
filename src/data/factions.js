@@ -748,8 +748,8 @@ export const FACTIONS = [
 
   {
     id: "elucidian-starstrider",
-    name: "ELUCIDIAN STARSTRIDER",
-    short: "STARSTRIDER",
+    name: "ELUCIDIAN STARSTRIDERS",
+    short: "STARSTRIDERS",
     attacker_effects: ["lethal_proximity"],
     defender_effects: [],
     operatives: [
@@ -1168,8 +1168,8 @@ export const FACTIONS = [
 
   {
     id: "imperial-navy-breacher",
-    name: "IMPERIAL NAVY BREACHER",
-    short: "BREACHER",
+    name: "IMPERIAL NAVY BREACHERS",
+    short: "BREACHERS",
     attacker_effects: ["attack_order_ceaseless"],
     defender_effects: ["brace_for_counterattack"],
     operatives: [
@@ -1307,7 +1307,7 @@ export const FACTIONS = [
 
   {
     id: "inquisitorial-agent",
-    name: "INQUISITORIAL AGENT",
+    name: "INQUISITORIAL AGENTS",
     short: "INQUISITION",
     attacker_effects: ["quarry_ceaseless"],
     defender_effects: [],
@@ -2657,7 +2657,7 @@ export const FACTIONS = [
 
   {
     id: "fellgor-ravager",
-    name: "FELLGOR RAVAGER",
+    name: "FELLGOR RAVAGERS",
     short: "FELLGOR",
     attacker_effects: ["pelting_firepower_ceaseless", "pelting_firepower_relentless"],
     defender_effects: [],
@@ -2890,8 +2890,8 @@ export const FACTIONS = [
 
   {
     id: "goremonger",
-    name: "GOREMONGER",
-    short: "GOREMONGER",
+    name: "GOREMONGERS",
+    short: "GOREMONGERS",
     attacker_effects: [],
     defender_effects: ["augmented_endurance_half", "augmented_endurance_full"],
     operatives: [
@@ -2979,8 +2979,8 @@ export const FACTIONS = [
 
   {
     id: "legionary",
-    name: "LEGIONARY",
-    short: "LEGIONARY",
+    name: "LEGIONARIES",
+    short: "LEGIONARIES",
     attacker_effects: ["fickle_fates_balanced"],
     defender_effects: [],
     operatives: [
@@ -3633,7 +3633,7 @@ export const FACTIONS = [
 
   {
     id: "brood-brother",
-    name: "BROOD BROTHER",
+    name: "BROOD BROTHERS",
     short: "BROOD",
     attacker_effects: ["crossfire_balanced"],
     defender_effects: [],
@@ -4275,7 +4275,7 @@ export const FACTIONS = [
 
   {
     id: "hernkyn-yaegir",
-    name: "HERNKYN YAEGIR",
+    name: "HERNKYN YAEGIRS",
     short: "HERNKYN",
     attacker_effects: ["hidden_engagement"],
     defender_effects: ["sturdy"],
