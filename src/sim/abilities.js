@@ -204,6 +204,48 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Balanced" }] },
     note: "Sanctifiers — approx. of \"reroll any attack dice\" near Orator",
   },
+  ambush_balanced: {
+    id: "ambush_balanced",
+    label: "Ambush (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Scout Squad — only when ambushing (Conceal-to-Engage or hidden start)",
+  },
+  maintain_momentum_severe: {
+    id: "maintain_momentum_severe",
+    label: "Maintain Momentum (Severe)",
+    type: "add_rules",
+    params: { rules: [{ name: "Severe" }] },
+    note: "Tempestus Aquilons — only when shooting a ready enemy operative",
+  },
+  fierce_temperament: {
+    id: "fierce_temperament",
+    label: "Fierce Temperament (Severe)",
+    type: "add_rules",
+    params: { rules: [{ name: "Severe" }] },
+    note: "Wolf Scout Hunter — only within the STORM",
+  },
+  tempests_fury: {
+    id: "tempests_fury",
+    label: "Tempest's Fury (Punishing, ignore Hot)",
+    type: "add_rules",
+    params: { rules: [{ name: "Punishing" }] },
+    note: "Wolf Scout Gunner — within STORM; removes Hot self-damage (not modelled)",
+  },
+  glory_kill_ceaseless: {
+    id: "glory_kill_ceaseless",
+    label: "Glory Kill (Ceaseless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Ceaseless" }] },
+    note: "Blooded — vs the chosen Glory Kill target",
+  },
+  reckless_aspirant: {
+    id: "reckless_aspirant",
+    label: "Reckless Aspirant (Punishing)",
+    type: "add_rules",
+    params: { rules: [{ name: "Punishing" }] },
+    note: "Blooded — token holders wholly in opponent's territory",
+  },
 };
 
 export const DEFENDER_EFFECTS = {
@@ -337,6 +379,34 @@ export const DEFENDER_EFFECTS = {
     type: "ignore_damage_dice",
     params: { dice_type: "normal", count: 1 },
     note: "Sanctifiers firefight ploy — ignore damage from one normal die",
+  },
+  guerrilla_engagement: {
+    id: "guerrilla_engagement",
+    label: "Guerrilla Engagement (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Scout Squad — only in cover and >6\" from visible enemies",
+  },
+  cloaked_by_storm: {
+    id: "cloaked_by_storm",
+    label: "Cloaked by the Storm (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Wolf Scouts — only within the STORM",
+  },
+  malevolent_grit: {
+    id: "malevolent_grit",
+    label: "Malevolent Grit (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Blooded — token holders or wholly in opponent's territory",
+  },
+  traitor_thug_tough: {
+    id: "traitor_thug_tough",
+    label: "Tough (-1 dmg per normal die ≥3)",
+    type: "damage_reduction_per_die",
+    params: { dice_type: "normal", threshold: 3, reduce_by: 1 },
+    note: "Traitor Thug — same mechanic as DKoK Veteran",
   },
 };
 
