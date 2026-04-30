@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { FACTIONS } from "./data/factions.js";
+import { categoryFor } from "./data/factionCategories.js";
 import { simulate } from "./sim/simulate.js";
 import { ATTACKER_EFFECTS, DEFENDER_EFFECTS } from "./sim/abilities.js";
-import { FONT_CSS } from "./ui/styles.js";
+import { FONT_CSS, THEMES } from "./ui/styles.js";
 import { Field, Select, Toggle, HeadlineStat, LegendDot } from "./ui/primitives.jsx";
 
 const factionById = (id) => FACTIONS.find((f) => f.id === id) ?? FACTIONS[0];
@@ -19,6 +20,28 @@ function availableAttackerIds(faction, op) {
 function isAttackerEffectGated(effect, weapon) {
   return !!(effect.excludes_pistol && weapon?.is_pistol);
 }
+
+const CATEGORY_TAGLINE = {
+  imperium: "+ + COGITATOR MARK VI + + FIRING SOLUTIONS + +",
+  chaos:    "+ + DAEMONIC AUSPEX + + UNHOLY CALCULUS + +",
+  xenos:    ":: SPECTRAL CALIBRATOR :: WRAITHCAST FIRING SOLUTIONS ::",
+};
+const CATEGORY_FOOTER = {
+  imperium: "+ + + PRAISE BE THE OMNISSIAH + + + MONTE CARLO BY THE MACHINE GOD + + +",
+  chaos:    "+ + + BLOOD FOR THE BLOOD GOD + + + SKULLS FOR THE SKULL THRONE + + +",
+  xenos:    ":: WHISPERS OF THE INFINITY CIRCUIT :: PROBABILITY SUNG INTO BEING ::",
+};
+
+const SECTION_H2_STYLE = { fontFamily: "var(--section-font)", color: "var(--accent-primary)" };
+const RULE_CHIP_STYLE = { background: "var(--chip-on-bg)", borderColor: "var(--border-accent)" };
+const TITLE_STYLE = {
+  fontFamily: "var(--title-font)",
+  color: "var(--title-color)",
+  textShadow: "var(--title-shadow)",
+  letterSpacing: "var(--title-letter-spacing)",
+};
+const SUBTITLE_STYLE = { fontFamily: "var(--subtitle-font)", color: "var(--tagline-color)" };
+const CONDITION_CHIP_STYLE = { borderColor: "var(--border-accent)" };
 
 export default function App() {
   const [shooterFactionId, setShooterFactionId] = useState("kasrkin");
@@ -37,6 +60,9 @@ export default function App() {
   const shooter = opById(shooterFaction, shooterOpId);
   const targetFaction = factionById(targetFactionId);
   const target = opById(targetFaction, targetOpId);
+
+  const category = categoryFor(shooterFactionId);
+  const theme = THEMES[category];
 
   const [currentHealth, setCurrentHealth] = useState(target.wounds);
 
@@ -105,16 +131,20 @@ export default function App() {
     : [{ value: "0", label: "— no ranged weapon —" }];
 
   return (
-    <div className="min-h-screen bg-grain text-[#e4ddd0]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+    <div
+      className={`theme-root theme-${category} min-h-screen bg-grain`}
+      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+    >
       <style>{FONT_CSS}</style>
 
       <header className="max-w-6xl mx-auto px-4 pt-8 pb-6 text-center">
-        <div className="text-[10px] tracking-[0.4em] text-[#7a6f5f] mb-2">+ + COGITATOR MARK VI + + FIRING SOLUTIONS + +</div>
-        <h1 className="text-4xl md:text-6xl"
-            style={{ fontFamily: "'UnifrakturMaguntia', serif", color: "#c9a74d", textShadow: "2px 2px 0 #000, 0 0 24px rgba(184,32,58,0.25)" }}>
+        <div className="text-[10px] tracking-[0.4em] mb-2" style={{ color: "var(--text-muted)" }}>
+          {CATEGORY_TAGLINE[category]}
+        </div>
+        <h1 className="text-4xl md:text-6xl" style={TITLE_STYLE}>
           Ballistica Imperialis
         </h1>
-        <div className="mt-2 text-xs tracking-[0.3em]" style={{ fontFamily: "'Cinzel', serif", color: "#b8203a" }}>
+        <div className="mt-2 text-xs tracking-[0.3em]" style={SUBTITLE_STYLE}>
           {shooterFaction.name} · vs · {targetFaction.name}
         </div>
       </header>
@@ -122,7 +152,7 @@ export default function App() {
       <section className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="panel p-4 corner-brackets">
           <div className="flex items-baseline justify-between mb-3">
-            <h2 style={{ fontFamily: "'Oswald', sans-serif" }} className="text-lg tracking-[0.25em] text-[#c9a74d]">SHOOTER</h2>
+            <h2 style={SECTION_H2_STYLE} className="text-lg tracking-[0.25em]">SHOOTER</h2>
             <span className="chip">ATTACKER</span>
           </div>
           <Field label="Faction"><Select value={shooterFactionId} onChange={changeShooterFaction} options={factionOptions} /></Field>
@@ -142,7 +172,7 @@ export default function App() {
               {weapon.rules.length > 0 && (
                 <div className="mb-3 flex flex-wrap gap-1">
                   {weapon.rules.map((r, i) => (
-                    <span key={i} className="chip" style={{ background: "#1a130d", borderColor: "#4a3a2a" }}>{r}</span>
+                    <span key={i} className="chip" style={RULE_CHIP_STYLE}>{r}</span>
                   ))}
                 </div>
               )}
@@ -158,7 +188,7 @@ export default function App() {
             />
           </div>
           {env.shooterInjured && (
-            <div className="text-[10px] text-[#7a6f5f] mt-1">Wounded operatives shoot with Hit +1 — harder to land hits, far less damage</div>
+            <div className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>Wounded operatives shoot with Hit +1 — harder to land hits, far less damage</div>
           )}
 
           <AttackerEffectsPanel
@@ -172,7 +202,7 @@ export default function App() {
 
         <div className="panel p-4 corner-brackets">
           <div className="flex items-baseline justify-between mb-3">
-            <h2 style={{ fontFamily: "'Oswald', sans-serif" }} className="text-lg tracking-[0.25em] text-[#c9a74d]">TARGET</h2>
+            <h2 style={SECTION_H2_STYLE} className="text-lg tracking-[0.25em]">TARGET</h2>
             <span className="chip">DEFENDER</span>
           </div>
           <Field label="Faction"><Select value={targetFactionId} onChange={changeTargetFaction} options={factionOptions} /></Field>
@@ -190,7 +220,7 @@ export default function App() {
           {(target.defender_abilities || []).length > 0 && (
             <div className="mb-3 flex flex-wrap gap-1">
               {(target.defender_abilities || []).map((id, i) => (
-                <span key={i} className="chip" style={{ background: "#1a130d", borderColor: "#4a3a2a" }}>
+                <span key={i} className="chip" style={RULE_CHIP_STYLE}>
                   {DEFENDER_EFFECTS[id]?.label || id}
                 </span>
               ))}
@@ -209,7 +239,7 @@ export default function App() {
       <section className="max-w-6xl mx-auto px-4 mt-4">
         <div className="panel p-4">
           <div className="flex items-baseline justify-between mb-3">
-            <h2 style={{ fontFamily: "'Oswald', sans-serif" }} className="text-lg tracking-[0.25em] text-[#c9a74d]">ENGAGEMENT CONDITIONS</h2>
+            <h2 style={SECTION_H2_STYLE} className="text-lg tracking-[0.25em]">ENGAGEMENT CONDITIONS</h2>
             <span className="chip">ENVIRONMENT</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
@@ -259,17 +289,18 @@ export default function App() {
         </div>
       </section>
 
-      {stats && <ResultsPanel stats={stats} target={target} weapon={weapon} env={env} defEffOn={defEffOn} atkEffOn={atkEffOn} />}
+      {stats && <ResultsPanel stats={stats} target={target} weapon={weapon} env={env} defEffOn={defEffOn} atkEffOn={atkEffOn} theme={theme} />}
       {!stats && (
         <section className="max-w-6xl mx-auto px-4 mt-6 mb-10 text-center">
           <div className="panel p-8">
-            <div className="label-cap text-[#7a6f5f]">AWAITING FIRING SOLUTION · PRESS "FIRE WEAPON" TO COMPUTE</div>
+            <div className="label-cap" style={{ color: "var(--text-muted)" }}>AWAITING FIRING SOLUTION · PRESS "FIRE WEAPON" TO COMPUTE</div>
           </div>
         </section>
       )}
 
-      <footer className="max-w-6xl mx-auto px-4 pb-8 text-center text-[10px] text-[#5a4f3f] tracking-[0.2em]">
-        + + + PRAISE BE THE OMNISSIAH + + + MONTE CARLO BY THE MACHINE GOD + + +
+      <footer className="max-w-6xl mx-auto px-4 pb-8 text-center text-[10px] tracking-[0.2em]"
+              style={{ color: "var(--text-footer)" }}>
+        {CATEGORY_FOOTER[category]}
       </footer>
     </div>
   );
@@ -281,7 +312,7 @@ function HealthSlider({ target, value, onChange }) {
   const injuredThreshold = Math.ceil(max / 2) - 1;
   const isInjured = clamped <= injuredThreshold;
   const pct = (clamped / max) * 100;
-  const trackColor = isInjured ? "#b8203a" : clamped < max ? "#e68a6a" : "#c9a74d";
+  const trackColor = isInjured ? "var(--accent-action)" : clamped < max ? "var(--warn)" : "var(--accent-primary)";
   return (
     <div className="mb-3">
       <div className="flex items-baseline justify-between mb-1">
@@ -300,7 +331,7 @@ function HealthSlider({ target, value, onChange }) {
         className="health-slider w-full"
         style={{ accentColor: trackColor, "--hp-pct": `${pct}%`, "--hp-color": trackColor }}
       />
-      <div className="flex justify-between text-[10px] text-[#7a6f5f] mt-1">
+      <div className="flex justify-between text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>
         <span>1</span>
         <span>injured ≤ {injuredThreshold}</span>
         <span>{max}</span>
@@ -327,7 +358,7 @@ function AttackerEffectsPanel({ availIds, atkEffOn, setAtkEffOn, weapon, toggleE
       </div>
       {availIds.some((id) => {
         const e = ATTACKER_EFFECTS[id]; return e?.excludes_pistol && weapon?.is_pistol;
-      }) && <div className="text-[10px] text-[#7a6f5f] mt-1">Some attacker effects exclude pistols</div>}
+      }) && <div className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>Some attacker effects exclude pistols</div>}
     </>
   );
 }
@@ -348,7 +379,7 @@ function DefenderEffectsPanel({ availIds, defEffOn, setDefEffOn, toggleEffect })
         })}
       </div>
       {availIds.some((id) => DEFENDER_EFFECTS[id]?.note) && (
-        <div className="text-[10px] text-[#7a6f5f] mt-1">
+        <div className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>
           {availIds.map((id) => DEFENDER_EFFECTS[id]?.note).filter(Boolean).join(" · ")}
         </div>
       )}
@@ -356,30 +387,35 @@ function DefenderEffectsPanel({ availIds, defEffOn, setDefEffOn, toggleEffect })
   );
 }
 
-function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn }) {
+function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme }) {
+  const tickStyle = { fill: theme["text-muted"], fontFamily: "JetBrains Mono", fontSize: 10 };
+  const axisStroke = { stroke: theme["border"] };
+
   return (
     <section className="max-w-6xl mx-auto px-4 mt-6 mb-10">
       <div className="panel p-4 corner-brackets">
         <div className="flex items-baseline justify-between mb-4 flex-wrap gap-2">
-          <h2 style={{ fontFamily: "'Oswald', sans-serif" }} className="text-lg tracking-[0.25em] text-[#c9a74d]">FIRING DATA</h2>
+          <h2 style={SECTION_H2_STYLE} className="text-lg tracking-[0.25em]">FIRING DATA</h2>
           <span className="chip chip-dim">{stats.trials.toLocaleString()} TRIALS</span>
         </div>
-        <div className="text-xs text-[#7a6f5f] mb-4 tracking-wider">
-          {stats.shooterName} · {stats.weaponName}<span className="mx-2 text-[#b8203a]">→</span>{stats.targetName}
+        <div className="text-xs mb-4 tracking-wider" style={{ color: "var(--text-muted)" }}>
+          {stats.shooterName} · {stats.weaponName}
+          <span className="mx-2" style={{ color: "var(--accent-action)" }}>→</span>
+          {stats.targetName}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-          <HeadlineStat label="MEAN DAMAGE" value={stats.meanDmg.toFixed(2)} accent="#c9a74d"
+          <HeadlineStat label="MEAN DAMAGE" value={stats.meanDmg.toFixed(2)} accent="var(--accent-primary)"
             hint={stats.currentHealth < target.wounds ? `of ${stats.currentHealth} (max ${target.wounds})` : `of ${target.wounds} wounds`} />
           <HeadlineStat label="P(INCAPACITATE)" value={`${(stats.pIncap * 100).toFixed(1)}%`}
-            accent={stats.pIncap > 0.3 ? "#b8203a" : "#e4ddd0"} hint={`≥ ${stats.currentHealth} dmg`} />
+            accent={stats.pIncap > 0.3 ? "var(--accent-action)" : "var(--text)"} hint={`≥ ${stats.currentHealth} dmg`} />
           <HeadlineStat label="P(INJURE)"
             value={stats.pInjure == null ? "—" : `${(stats.pInjure * 100).toFixed(1)}%`}
-            accent={stats.pInjure == null ? "#7a6f5f" : stats.pInjure > 0.5 ? "#e68a6a" : "#e4ddd0"}
+            accent={stats.pInjure == null ? "var(--text-muted)" : stats.pInjure > 0.5 ? "var(--warn)" : "var(--text)"}
             hint={stats.pInjure == null ? "already injured" : `to ≤ ${stats.injuredThreshold} hp`} />
           <HeadlineStat label="P(DEAL DAMAGE)" value={`${(stats.pAny * 100).toFixed(1)}%`} hint="any target damage" />
           {stats.meanSelfDmg > 0
-            ? <HeadlineStat label="SELF-DAMAGE" value={stats.meanSelfDmg.toFixed(2)} accent="#e68a6a" hint={`Hot: ${(stats.pSelf * 100).toFixed(1)}%`} />
+            ? <HeadlineStat label="SELF-DAMAGE" value={stats.meanSelfDmg.toFixed(2)} accent="var(--warn)" hint={`Hot: ${(stats.pSelf * 100).toFixed(1)}%`} />
             : <HeadlineStat label="ATTACK DICE" value={weapon.atk} hint={`HIT ${weapon.hit}+${env.shooterInjured ? " (+1 injured)" : ""}`} />}
         </div>
 
@@ -387,9 +423,9 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn }) {
           <div className="label-cap mb-2">Probability of Damaging with at Least N Attack Dice</div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
             {stats.pNDice.filter((x) => x.n <= Math.max(weapon.atk + 1, 4)).map((x) => (
-              <div key={x.n} className="p-3" style={{ background: "#0f0b09", border: "1px solid #2a211d" }}>
+              <div key={x.n} className="p-3" style={{ background: "var(--input-bg)", border: "1px solid var(--border)" }}>
                 <div className="label-cap">≥ {x.n} {x.n === 1 ? "DIE" : "DICE"}</div>
-                <div className="bignum text-xl" style={{ color: "#e4ddd0" }}>{(x.p * 100).toFixed(1)}%</div>
+                <div className="bignum text-xl" style={{ color: "var(--text)" }}>{(x.p * 100).toFixed(1)}%</div>
               </div>
             ))}
           </div>
@@ -397,17 +433,17 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn }) {
 
         <div>
           <div className="label-cap mb-2">Damage Distribution</div>
-          <div style={{ height: 260, background: "#0a0706", border: "1px solid #2a211d", padding: "12px 8px 8px 0" }}>
+          <div style={{ height: 260, background: "var(--bg-base-1)", border: "1px solid var(--border)", padding: "12px 8px 8px 0" }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={stats.dist} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
-                <XAxis dataKey="dmg" tick={{ fill: "#7a6f5f", fontFamily: "JetBrains Mono", fontSize: 10 }}
-                  axisLine={{ stroke: "#2a211d" }} tickLine={{ stroke: "#2a211d" }}
-                  label={{ value: "damage inflicted", fill: "#8a7e6a", fontFamily: "Oswald", fontSize: 11, letterSpacing: "0.2em", position: "insideBottom", offset: -5 }} />
-                <YAxis tick={{ fill: "#7a6f5f", fontFamily: "JetBrains Mono", fontSize: 10 }}
-                  axisLine={{ stroke: "#2a211d" }} tickLine={{ stroke: "#2a211d" }}
+                <XAxis dataKey="dmg" tick={tickStyle}
+                  axisLine={axisStroke} tickLine={axisStroke}
+                  label={{ value: "damage inflicted", fill: theme["text-label"], fontFamily: "Oswald", fontSize: 11, letterSpacing: "0.2em", position: "insideBottom", offset: -5 }} />
+                <YAxis tick={tickStyle}
+                  axisLine={axisStroke} tickLine={axisStroke}
                   tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
-                <Tooltip cursor={{ fill: "rgba(184,32,58,0.08)" }}
-                  contentStyle={{ background: "#0a0706", border: "1px solid #c9a74d", fontFamily: "JetBrains Mono", fontSize: 12, color: "#e4ddd0" }}
+                <Tooltip cursor={{ fill: theme["accent-action-soft"] }}
+                  contentStyle={{ background: theme["bg-base-1"], border: `1px solid ${theme["accent-primary"]}`, fontFamily: "JetBrains Mono", fontSize: 12, color: theme["text"] }}
                   formatter={(v) => [`${(v * 100).toFixed(2)}%`, "probability"]} labelFormatter={(v) => `${v} damage`} />
                 <Bar dataKey="p" isAnimationActive={false}>
                   {stats.dist.map((entry, i) => {
@@ -415,28 +451,31 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn }) {
                     const incap = entry.dmg >= stats.currentHealth;
                     const injure = !incap && !stats.alreadyInjured && newHealth <= stats.injuredThreshold;
                     const zero = entry.dmg === 0;
-                    const color = incap ? "#b8203a" : injure ? "#e68a6a" : zero ? "#3a302a" : "#c9a74d";
+                    const fill = incap ? theme["accent-action"]
+                      : injure ? theme["warn"]
+                      : zero ? theme["no-damage"]
+                      : theme["accent-primary"];
                     const opacity = incap ? 0.9 : injure ? 0.85 : zero ? 0.6 : 0.78;
-                    return <Cell key={i} fill={color} fillOpacity={opacity} />;
+                    return <Cell key={i} fill={fill} fillOpacity={opacity} />;
                   })}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className="flex flex-wrap gap-4 mt-2 text-[10px] text-[#7a6f5f]">
-            <LegendDot color="#3a302a" label="NO DAMAGE" />
-            <LegendDot color="#c9a74d" label="PARTIAL" />
-            {!stats.alreadyInjured && <LegendDot color="#e68a6a" label={`INJURE (≤${stats.injuredThreshold} hp left)`} />}
-            <LegendDot color="#b8203a" label={`INCAPACITATE (≥${stats.currentHealth})`} />
+          <div className="flex flex-wrap gap-4 mt-2 text-[10px]" style={{ color: "var(--text-muted)" }}>
+            <LegendDot color={theme["no-damage"]} label="NO DAMAGE" />
+            <LegendDot color={theme["accent-primary"]} label="PARTIAL" />
+            {!stats.alreadyInjured && <LegendDot color={theme["warn"]} label={`INJURE (≤${stats.injuredThreshold} hp left)`} />}
+            <LegendDot color={theme["accent-action"]} label={`INCAPACITATE (≥${stats.currentHealth})`} />
           </div>
         </div>
 
-        <div className="mt-6 pt-4" style={{ borderTop: "1px solid #2a211d" }}>
+        <div className="mt-6 pt-4" style={{ borderTop: "1px solid var(--border)" }}>
           <div className="label-cap mb-2">Conditions Applied</div>
           <div className="flex flex-wrap gap-2 text-xs">
             {env.shooterInjured && <span className="chip chip-warn">shooter injured (+1 Hit)</span>}
             {stats.currentHealth < target.wounds && (
-              <span className="chip" style={{ color: stats.alreadyInjured ? "#b8203a" : "#e68a6a", borderColor: "#6a3a2a" }}>
+              <span className="chip" style={{ color: stats.alreadyInjured ? "var(--accent-action)" : "var(--warn)", borderColor: "var(--warn-border)" }}>
                 target hp {stats.currentHealth}/{target.wounds}{stats.alreadyInjured ? " · already injured" : ""}
               </span>
             )}
@@ -445,8 +484,8 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn }) {
             {env.vantageHeight > 0 && <span className="chip">vantage {env.vantageHeight}"{env.targetEngaged ? "" : " (concealed — no Accurate)"}</span>}
             {!env.targetEngaged && env.vantageHeight === 0 && <span className="chip">target concealed</span>}
             {env.targetEngaged && env.vantageHeight === 0 && !env.cover && !env.obscured && !env.shooterInjured && stats.currentHealth >= target.wounds && <span className="chip chip-dim">open ground</span>}
-            {defEffOn.map((id, i) => <span key={`d${i}`} className="chip" style={{ borderColor: "#4a3a2a" }}>D · {DEFENDER_EFFECTS[id]?.label || id}</span>)}
-            {atkEffOn.map((id, i) => <span key={`a${i}`} className="chip" style={{ borderColor: "#4a3a2a" }}>A · {ATTACKER_EFFECTS[id]?.label || id}</span>)}
+            {defEffOn.map((id, i) => <span key={`d${i}`} className="chip" style={CONDITION_CHIP_STYLE}>D · {DEFENDER_EFFECTS[id]?.label || id}</span>)}
+            {atkEffOn.map((id, i) => <span key={`a${i}`} className="chip" style={CONDITION_CHIP_STYLE}>A · {ATTACKER_EFFECTS[id]?.label || id}</span>)}
           </div>
         </div>
       </div>
