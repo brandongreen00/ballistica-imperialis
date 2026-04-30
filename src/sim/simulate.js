@@ -52,6 +52,7 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   for (const e of defEff) {
     if (e.type === "worsen_attacker_hit") hit = Math.min(6, hit + e.params.amount);
   }
+  if (env.shooterInjured) hit = Math.min(6, hit + 1);
   let crit = 6;
   let preRet = 0;
   for (const r of rules) {
@@ -283,9 +284,14 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   return { damage: dmg, selfDamage: selfDmg, damDice: damNormDice + damCritDice };
 }
 
-export function simulate(target, weapon, env, defEff, atkEff, trials) {
+export function simulate(target, weapon, env, defEff, atkEff, trials, currentHealth) {
   const w = { ...weapon, parsedRules: parseRules(weapon.rules) };
-  let sumD = 0, sumSD = 0, nAny = 0, nIncap = 0, nSelf = 0;
+  const health = Math.max(1, Math.min(currentHealth ?? target.wounds, target.wounds));
+  // Kill Team: injured while remaining wounds < ceil(W/2)
+  const injuredThreshold = Math.ceil(target.wounds / 2) - 1;
+  const alreadyInjured = health <= injuredThreshold;
+
+  let sumD = 0, sumSD = 0, nAny = 0, nIncap = 0, nSelf = 0, nInjure = 0;
   const diceCounts = [0, 0, 0, 0, 0, 0];
   const dist = new Map();
   for (let i = 0; i < trials; i++) {
@@ -293,8 +299,10 @@ export function simulate(target, weapon, env, defEff, atkEff, trials) {
     sumD += r.damage;
     sumSD += r.selfDamage;
     if (r.damage > 0) nAny++;
-    if (r.damage >= target.wounds) nIncap++;
+    if (r.damage >= health) nIncap++;
     if (r.selfDamage > 0) nSelf++;
+    const newHealth = Math.max(0, health - r.damage);
+    if (!alreadyInjured && newHealth <= injuredThreshold) nInjure++;
     for (let k = 1; k <= 5; k++) if (r.damDice >= k) diceCounts[k]++;
     dist.set(r.damage, (dist.get(r.damage) || 0) + 1);
   }
@@ -305,9 +313,13 @@ export function simulate(target, weapon, env, defEff, atkEff, trials) {
     meanSelfDmg: sumSD / trials,
     pAny: nAny / trials,
     pIncap: nIncap / trials,
+    pInjure: alreadyInjured ? null : nInjure / trials,
     pSelf: nSelf / trials,
     pNDice: [1, 2, 3, 4, 5].map((k) => ({ n: k, p: diceCounts[k] / trials })),
     dist: distArr,
     maxATK: Math.max(weapon.atk, 5),
+    currentHealth: health,
+    injuredThreshold,
+    alreadyInjured,
   };
 }
