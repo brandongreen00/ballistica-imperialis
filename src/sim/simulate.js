@@ -37,7 +37,12 @@ function allocateSavesOptimally(atkN, atkC, defN, defC, nDmg, cDmg, brutal) {
 const d6 = () => ((Math.random() * 6) | 0) + 1;
 
 function runShoot(target, weapon, env, defEff, atkEff) {
-  const rules = weapon.parsedRules;
+  const rules = [...weapon.parsedRules];
+  for (const e of atkEff) {
+    if (e.type === "add_rules") {
+      for (const r of e.params.rules) rules.push({ name: r.name, value: r.value ?? null, raw: r.name });
+    }
+  }
   const has = (n) => rules.some((r) => r.name === n);
   const val = (n) => { const r = rules.find((r) => r.name === n); return r ? r.value : null; };
 
@@ -109,23 +114,61 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   const ignoreSat = defEff.some(
     (e) => e.type === "ignore_weapon_rule" && e.params.rule === "Saturate"
   );
+  let piercingReduction = 0;
+  for (const e of defEff) {
+    if (e.type === "reduce_piercing") piercingReduction += e.params.amount;
+  }
   let coverSaves = 0;
   for (const r of rules) {
-    if (r.name === "Piercing") defD = Math.max(0, defD - r.value);
-    else if (r.name === "Piercing Crits" && atkC > 0) defD = Math.max(0, defD - r.value);
+    if (r.name === "Piercing") {
+      const v = Math.max(0, r.value - piercingReduction);
+      defD = Math.max(0, defD - v);
+    }
+    else if (r.name === "Piercing Crits" && atkC > 0) {
+      const v = Math.max(0, r.value - piercingReduction);
+      defD = Math.max(0, defD - v);
+    }
     else if (r.name === "Saturate" && !ignoreSat) coverOff = true;
   }
   if (env.cover && !coverOff && defD > 0) { defD -= 1; coverSaves += 1; }
 
+  // save target with defender modifiers
+  let saveT = target.save;
+  for (const e of defEff) {
+    if (e.type === "improve_save_in_cover" && env.cover) {
+      saveT = Math.max(2, saveT - e.params.amount);
+    }
+  }
+
   // roll defence dice
+  const defRolls = new Array(defD);
+  for (let i = 0; i < defD; i++) defRolls[i] = d6();
+
+  // defender reroll (Zealot, Long Vigil)
+  for (const e of defEff) {
+    if (e.type === "defence_reroll" && e.params.fails) {
+      let budget = e.params.count ?? Infinity;
+      for (let i = 0; i < defRolls.length && budget > 0; i++) {
+        if (defRolls[i] !== 6 && defRolls[i] < saveT) {
+          defRolls[i] = d6();
+          budget -= 1;
+        }
+      }
+    }
+  }
+
   let defC = 0, defN = coverSaves;
-  const saveT = target.save;
-  for (let i = 0; i < defD; i++) {
-    const v = d6();
+  for (const v of defRolls) {
     if (v === 6) defC++; else if (v >= saveT) defN++;
   }
 
   // modify_defence_results
+  for (const e of defEff) {
+    if (e.type === "discard_fail_for_save") {
+      const fails = defD - defC - defN;
+      if (fails >= e.params.min_fails) defN += e.params.count;
+    }
+  }
   for (const e of defEff) {
     if (e.type === "upgrade_save_to_crit") {
       const k = Math.min(e.params.count, defN);
@@ -141,6 +184,21 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   dmg += remN * weapon.normal_dmg + remC * weapon.crit_dmg;
   let damNormDice = remN;
   if (!has("Devastating")) damCritDice = remC;
+
+  // per-die damage reduction (e.g. Death Korps Veteran, Aggressive Force)
+  for (const e of defEff) {
+    if (e.type === "damage_reduction_per_die") {
+      const apply = (which) => {
+        const dmgPer = which === "crit" ? weapon.crit_dmg : weapon.normal_dmg;
+        const dice = which === "crit" ? damCritDice : damNormDice;
+        if (dmgPer >= e.params.threshold && dice > 0) {
+          dmg = Math.max(0, dmg - dice * e.params.reduce_by);
+        }
+      };
+      if (e.params.dice_type === "all") { apply("normal"); apply("crit"); }
+      else apply(e.params.dice_type);
+    }
+  }
 
   // post_damage: ignore_damage_dice
   for (const e of defEff) {

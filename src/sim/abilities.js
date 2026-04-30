@@ -13,6 +13,12 @@
      ATTACKER
        accurate            — { count }   reserve <count> dice as auto-passes,
                                          like the Accurate weapon rule
+       add_rules           — { rules: [{ name, value? }, ...] }
+                                         inject extra weapon rules for this
+                                         shooting exchange (e.g. Severe from
+                                         the Insidiants' Inspiring state, or
+                                         Saturate + Accurate 1 from the
+                                         Death Korps Siege Warfare ploy)
 
      DEFENDER
        ignore_damage_dice    — { dice_type: 'normal' | 'crit', count }
@@ -24,6 +30,27 @@
        upgrade_save_to_crit  — { count }
                                convert <count> normal saves into crit saves
                                (Transhuman Physiology)
+       discard_fail_for_save — { min_fails, count }
+                               if at least <min_fails> defence dice failed,
+                               gain <count> additional normal saves
+                               (Astartes INDOMITUS strategy ploy)
+       improve_save_in_cover — { amount }
+                               improve save target by <amount> when in cover
+                               (Death Korps Take Cover ploy)
+       damage_reduction_per_die — { dice_type: 'normal' | 'crit' | 'all',
+                                     threshold, reduce_by }
+                               for each retained die of the chosen type, if
+                               that die's damage stat is >= threshold,
+                               subtract <reduce_by> per die (Death Korps
+                               Veteran, Deathwatch Aggressive Force)
+       defence_reroll        — { fails: true, count? }
+                               reroll defence dice that failed; with count
+                               only reroll up to <count> failed dice
+                               (Death Korps Zealot, Deathwatch Long Vigil)
+       reduce_piercing       — { amount }
+                               subtract <amount> from the value of all
+                               Piercing / Piercing Crits weapon rules
+                               (Deathwatch Storm Shield)
        fnp                   — { threshold }
                                per-wound D6: a roll of >= threshold ignores
                                that wound (post-save, post-Iron-Halo)
@@ -41,6 +68,48 @@ export const ATTACKER_EFFECTS = {
     params: { count: 1 },
     excludes_pistol: true,
   },
+  inspiration_severe: {
+    id: "inspiration_severe",
+    label: "Inspiration (Severe)",
+    type: "add_rules",
+    params: { rules: [{ name: "Severe" }] },
+    note: "Insidiants gain Severe while INSPIRING — toggle to assume that state",
+  },
+  siege_warfare: {
+    id: "siege_warfare",
+    label: "Siege Warfare (1CP)",
+    type: "add_rules",
+    params: { rules: [{ name: "Saturate" }, { name: "Accurate", value: 1 }] },
+    note: "Death Korps strategy ploy — Saturate + Accurate 1 on ranged weapons",
+  },
+  take_aim_ceaseless: {
+    id: "take_aim_ceaseless",
+    label: "Take Aim! (Order)",
+    type: "add_rules",
+    params: { rules: [{ name: "Ceaseless" }] },
+    note: "Death Korps Guardsman Order — adds Ceaseless to ranged weapons",
+  },
+  mission_tactics_balanced: {
+    id: "mission_tactics_balanced",
+    label: "Mission Tactics (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Deathwatch — only vs operatives matching the selected order",
+  },
+  suffer_not_the_alien: {
+    id: "suffer_not_the_alien",
+    label: "Suffer Not The Alien (Relentless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Relentless" }] },
+    note: "Deathwatch — only vs non-Chaos / non-Imperium targets",
+  },
+  advanced_auspex_scan: {
+    id: "advanced_auspex_scan",
+    label: "Advanced Auspex Scan (Saturate)",
+    type: "add_rules",
+    params: { rules: [{ name: "Saturate" }] },
+    note: "Deathwatch — also clears obscured (toggle Obscured off manually)",
+  },
 };
 
 export const DEFENDER_EFFECTS = {
@@ -49,6 +118,7 @@ export const DEFENDER_EFFECTS = {
     label: "Iron Halo",
     type: "ignore_damage_dice",
     params: { dice_type: "normal", count: 1 },
+    note: "Iron Halo is once-per-battle; modelled as available for this single shoot",
   },
   camo_cloak: {
     id: "camo_cloak",
@@ -61,6 +131,62 @@ export const DEFENDER_EFFECTS = {
     label: "Transhuman Physiology (1CP)",
     type: "upgrade_save_to_crit",
     params: { count: 1 },
+  },
+  indomitus: {
+    id: "indomitus",
+    label: "Indomitus (1CP)",
+    type: "discard_fail_for_save",
+    params: { min_fails: 2, count: 1 },
+    note: "Indomitus needs ≥2 failed defence dice to trigger",
+  },
+  take_cover: {
+    id: "take_cover",
+    label: "Take Cover (1CP)",
+    type: "improve_save_in_cover",
+    params: { amount: 1 },
+    note: "Death Korps Take Cover — Save +1 only when in cover",
+  },
+  veteran_dmg_reduction: {
+    id: "veteran_dmg_reduction",
+    label: "Veteran (-1 dmg per normal die ≥3)",
+    type: "damage_reduction_per_die",
+    params: { dice_type: "normal", threshold: 3, reduce_by: 1 },
+    note: "Death Korps Veteran — normal damage 3+ takes 1 less per retained die",
+  },
+  zealot_defence_reroll: {
+    id: "zealot_defence_reroll",
+    label: "Zealot (reroll fails)",
+    type: "defence_reroll",
+    params: { fails: true },
+    note: "Death Korps Zealot — reroll any failed defence dice",
+  },
+  storm_shield: {
+    id: "storm_shield",
+    label: "Storm Shield (-1 Piercing)",
+    type: "reduce_piercing",
+    params: { amount: 1 },
+    note: "Deathwatch Aegis Veteran — reduces Piercing X / Piercing Crits X by 1",
+  },
+  aggressive_force: {
+    id: "aggressive_force",
+    label: "Aggressive Force (-1 dmg per die ≥3)",
+    type: "damage_reduction_per_die",
+    params: { dice_type: "all", threshold: 3, reduce_by: 1 },
+    note: "Deathwatch Demolisher — applies to both normal and crit retained dice",
+  },
+  shield_that_slays: {
+    id: "shield_that_slays",
+    label: "Shield That Slays (-1 dmg per normal die ≥4)",
+    type: "damage_reduction_per_die",
+    params: { dice_type: "normal", threshold: 4, reduce_by: 1 },
+    note: "Deathwatch — only when defender is in opponent territory",
+  },
+  long_vigil: {
+    id: "long_vigil",
+    label: "Long Vigil (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Deathwatch — only when defender is in own territory",
   },
 };
 
