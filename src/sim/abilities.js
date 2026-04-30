@@ -65,6 +65,9 @@
        worsen_attacker_hit   — { amount }
                                worsen the attacker's Hit characteristic by
                                <amount> (Hunter Clade Vanguard aura)
+       force_crit_six        — {}
+                               only natural 6s count as crits, regardless of
+                               Lethal weapon rule (Wrecka Krusha Armoured Up)
        crit_to_normal_attack — { count }
                                convert <count> attacker crit hits to normal
                                hits before saves (Gellerpox Mutant)
@@ -407,6 +410,55 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Accurate", value: 1 }] },
     note: "Pathfinders — only when within 3\" of another non-DRONE Pathfinder",
   },
+  airborne_predators: {
+    id: "airborne_predators",
+    label: "Airborne Predators (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Vespid — adds Balanced to ranged weapons for the activation",
+  },
+  destruction_saturate: {
+    id: "destruction_saturate",
+    label: "Destruction (Saturate)",
+    type: "add_rules",
+    params: { rules: [{ name: "Saturate" }] },
+    note: "Wrecka Krew — adds Saturate to ranged weapons",
+  },
+  day_is_at_hand: {
+    id: "day_is_at_hand",
+    label: "The Day is at Hand (Rending)",
+    type: "add_rules",
+    params: { rules: [{ name: "Rending" }] },
+    note: "Wyrmblade — only when order changed from Conceal to Engage",
+  },
+  wyrmblade_crossfire: {
+    id: "wyrmblade_crossfire",
+    label: "Crossfire (Accurate 1)",
+    type: "add_rules",
+    params: { rules: [{ name: "Accurate", value: 1 }] },
+    note: "Wyrmblade — vs targets shot by another friendly this turn",
+  },
+  patient_hunters: {
+    id: "patient_hunters",
+    label: "Patient Hunters (Balanced + Saturate)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }, { name: "Saturate" }] },
+    note: "XV26 — vs expended enemy operatives",
+  },
+  prepare_ambush_seek: {
+    id: "prepare_ambush_seek",
+    label: "Prepare Ambush (Seek)",
+    type: "add_rules",
+    params: { rules: [{ name: "Seek" }] },
+    note: "XV26 — vs targets within 2\" of the Ambush marker",
+  },
+  markerlight_severe: {
+    id: "markerlight_severe",
+    label: "Markerlight (Severe)",
+    type: "add_rules",
+    params: { rules: [{ name: "Severe" }] },
+    note: "XV26 — only when shooting a marked target",
+  },
 };
 
 export const DEFENDER_EFFECTS = {
@@ -652,6 +704,41 @@ export const DEFENDER_EFFECTS = {
     type: "defence_reroll",
     params: { fails: true },
     note: "Raveners — only when defender Burrowed or on Tunnel",
+  },
+  hardened_exoskeleton: {
+    id: "hardened_exoskeleton",
+    label: "Hardened Exoskeleton (-1 dmg per normal die ≥4)",
+    type: "damage_reduction_per_die",
+    params: { dice_type: "normal", threshold: 4, reduce_by: 1 },
+    note: "Vespid — same mechanic as Deathwatch Shield That Slays",
+  },
+  prismatic_blur: {
+    id: "prismatic_blur",
+    label: "Prismatic Blur (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Void-dancer — only if defender moved this turning point",
+  },
+  tuff_gitz: {
+    id: "tuff_gitz",
+    label: "Tuff Gitz (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Wrecka Krew — only when defender has Engage order",
+  },
+  armoured_up: {
+    id: "armoured_up",
+    label: "Armoured Up (only natural 6 = crit)",
+    type: "force_crit_six",
+    params: {},
+    note: "Wrecka Krusha — disables attacker's Lethal weapon rule",
+  },
+  aerial_agility: {
+    id: "aerial_agility",
+    label: "Aerial Agility (ignore 1 normal die approx.)",
+    type: "ignore_damage_dice",
+    params: { dice_type: "normal", count: 1 },
+    note: "Vespid — actually D6 5+ per die capped at 1; modelled as auto-ignore (overestimate)",
   },
   mutant_crit_to_normal: {
     id: "mutant_crit_to_normal",

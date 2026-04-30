@@ -60,6 +60,9 @@ function runShoot(target, weapon, env, defEff, atkEff) {
       const k = Math.min(r.value, atkDice); atkDice -= k; preRet += k;
     }
   }
+  for (const e of defEff) {
+    if (e.type === "force_crit_six") crit = 6;
+  }
   for (const e of atkEff) {
     if (e.type === "accurate") {
       const k = Math.min(e.params.count, atkDice); atkDice -= k; preRet += k;
