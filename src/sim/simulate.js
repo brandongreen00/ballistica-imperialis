@@ -192,7 +192,20 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   const [remN, remC] = allocateSavesOptimally(
     atkN, atkC, defN, defC, weapon.normal_dmg, weapon.crit_dmg, brutal
   );
-  dmg += remN * weapon.normal_dmg + remC * weapon.crit_dmg;
+  // per-die damage caps (e.g. Warpcoven All is Dust)
+  let normDmgPer = weapon.normal_dmg;
+  let critDmgPer = weapon.crit_dmg;
+  for (const e of defEff) {
+    if (e.type === "cap_die_damage") {
+      if (e.params.dice_type === "normal" || e.params.dice_type === "all") {
+        normDmgPer = Math.min(normDmgPer, e.params.max);
+      }
+      if (e.params.dice_type === "crit" || e.params.dice_type === "all") {
+        critDmgPer = Math.min(critDmgPer, e.params.max);
+      }
+    }
+  }
+  dmg += remN * normDmgPer + remC * critDmgPer;
   let damNormDice = remN;
   if (!has("Devastating")) damCritDice = remC;
 
@@ -204,6 +217,25 @@ function runShoot(target, weapon, env, defEff, atkEff) {
         const dice = which === "crit" ? damCritDice : damNormDice;
         if (dmgPer >= e.params.threshold && dice > 0) {
           dmg = Math.max(0, dmg - dice * e.params.reduce_by);
+        }
+      };
+      if (e.params.dice_type === "all") { apply("normal"); apply("crit"); }
+      else apply(e.params.dice_type);
+    }
+  }
+
+  // per-die damage reduction with D6 (e.g. Plague Marines Disgustingly Resilient)
+  for (const e of defEff) {
+    if (e.type === "damage_reduction_per_die_d6") {
+      const apply = (which) => {
+        const dmgPer = which === "crit" ? weapon.crit_dmg : weapon.normal_dmg;
+        const dice = which === "crit" ? damCritDice : damNormDice;
+        if (dmgPer >= e.params.dmg_threshold) {
+          for (let i = 0; i < dice; i++) {
+            if (d6() >= e.params.d6_threshold) {
+              dmg = Math.max(0, dmg - e.params.reduce_by);
+            }
+          }
         }
       };
       if (e.params.dice_type === "all") { apply("normal"); apply("crit"); }

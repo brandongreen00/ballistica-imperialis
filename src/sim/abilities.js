@@ -43,6 +43,14 @@
                                that die's damage stat is >= threshold,
                                subtract <reduce_by> per die (Death Korps
                                Veteran, Deathwatch Aggressive Force)
+       damage_reduction_per_die_d6 — { dice_type, dmg_threshold,
+                                        d6_threshold, reduce_by }
+                               for each retained die of the chosen type, if
+                               that die's damage stat is >= dmg_threshold,
+                               roll a D6: on >= d6_threshold subtract
+                               <reduce_by> from that die's damage (Plague
+                               Marines Disgustingly Resilient, Castigator,
+                               Axejack, Questkeeper, Mutant Regeneration)
        defence_reroll        — { fails: true, count? }
                                reroll defence dice that failed; with count
                                only reroll up to <count> failed dice
@@ -51,6 +59,9 @@
                                subtract <amount> from the value of all
                                Piercing / Piercing Crits weapon rules
                                (Deathwatch Storm Shield)
+       cap_die_damage        — { dice_type, max }
+                               cap each retained die's damage at <max>
+                               (Warpcoven All is Dust)
        worsen_attacker_hit   — { amount }
                                worsen the attacker's Hit characteristic by
                                <amount> (Hunter Clade Vanguard aura)
@@ -284,6 +295,34 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Punishing" }] },
     note: "Murderwing — vs lower / wounded / lower-APL targets",
   },
+  cruel_tormenter: {
+    id: "cruel_tormenter",
+    label: "Cruel Tormenter (Lethal 5+)",
+    type: "add_rules",
+    params: { rules: [{ name: "Lethal", value: 5 }] },
+    note: "Nemesis Claw Warrior — vs wounded or W≤7 targets",
+  },
+  black_hunt: {
+    id: "black_hunt",
+    label: "The Black Hunt (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Nemesis Claw — vs wounded targets",
+  },
+  khaines_vengeance: {
+    id: "khaines_vengeance",
+    label: "Khaine's Vengeance (Ceaseless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Ceaseless" }] },
+    note: "Blades of Khaine — vs expended enemy operatives",
+  },
+  crossfire_balanced: {
+    id: "crossfire_balanced",
+    label: "Crossfire (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Brood Brother — vs targets with Crossfire token",
+  },
 };
 
 export const DEFENDER_EFFECTS = {
@@ -466,6 +505,20 @@ export const DEFENDER_EFFECTS = {
     type: "defence_reroll",
     params: { fails: true, count: 1 },
     note: "Murderwing — only when ≥2\" higher than killzone floor or after BOOST",
+  },
+  disgustingly_resilient: {
+    id: "disgustingly_resilient",
+    label: "Disgustingly Resilient (D6 4+ if dmg ≥3)",
+    type: "damage_reduction_per_die_d6",
+    params: { dice_type: "all", dmg_threshold: 3, d6_threshold: 4, reduce_by: 1 },
+    note: "Plague Marines — per retained die with dmg ≥3, D6 4+ reduces by 1",
+  },
+  all_is_dust: {
+    id: "all_is_dust",
+    label: "All is Dust (cap normal dmg at 1)",
+    type: "cap_die_damage",
+    params: { dice_type: "normal", max: 1 },
+    note: "Warpcoven — only applies to Rubric Marines",
   },
   mutant_crit_to_normal: {
     id: "mutant_crit_to_normal",
