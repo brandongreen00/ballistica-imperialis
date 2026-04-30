@@ -350,8 +350,8 @@ export const FACTIONS = [
 
   {
     id: "celestian-insidiants",
-    name: "CELESTIAN INSIDIANT",
-    short: "INSIDIANT",
+    name: "CELESTIAN INSIDIANTS",
+    short: "INSIDIANTS",
     attacker_effects: ["inspiration_severe"],
     defender_effects: [],
     operatives: [
@@ -1522,8 +1522,8 @@ export const FACTIONS = [
 
   {
     id: "novitiates",
-    name: "NOVITIATE",
-    short: "NOVITIATE",
+    name: "NOVITIATES",
+    short: "NOVITIATES",
     attacker_effects: ["ardent_vengeance", "guided_by_faith"],
     defender_effects: [],
     operatives: [
@@ -1824,8 +1824,8 @@ export const FACTIONS = [
 
   {
     id: "ratlings",
-    name: "RATLING",
-    short: "RATLING",
+    name: "RATLINGS",
+    short: "RATLINGS",
     attacker_effects: ["crack_shots"],
     defender_effects: [],
     operatives: [
@@ -1986,8 +1986,8 @@ export const FACTIONS = [
 
   {
     id: "sanctifiers",
-    name: "SANCTIFIER",
-    short: "SANCTIFIER",
+    name: "SANCTIFIERS",
+    short: "SANCTIFIERS",
     attacker_effects: ["ardent_eradication"],
     defender_effects: ["rosarius"],
     operatives: [
@@ -2201,8 +2201,8 @@ export const FACTIONS = [
 
   {
     id: "tempestus-aquilons",
-    name: "TEMPESTUS AQUILON",
-    short: "AQUILON",
+    name: "TEMPESTUS AQUILONS",
+    short: "AQUILONS",
     attacker_effects: ["maintain_momentum_severe"],
     defender_effects: [],
     operatives: [
@@ -2312,8 +2312,8 @@ export const FACTIONS = [
 
   {
     id: "wolf-scouts",
-    name: "WOLF SCOUT",
-    short: "WOLF SCOUT",
+    name: "WOLF SCOUTS",
+    short: "WOLF SCOUTS",
     attacker_effects: [],
     defender_effects: ["transhuman", "cloaked_by_storm"],
     operatives: [
@@ -3343,8 +3343,8 @@ export const FACTIONS = [
 
   {
     id: "plague-marines",
-    name: "PLAGUE MARINE",
-    short: "PLAGUE MARINE",
+    name: "PLAGUE MARINES",
+    short: "PLAGUE MARINES",
     attacker_effects: [],
     defender_effects: ["disgustingly_resilient"],
     operatives: [
@@ -4494,8 +4494,8 @@ export const FACTIONS = [
 
   {
     id: "kommandos",
-    name: "KOMMANDO",
-    short: "KOMMANDO",
+    name: "KOMMANDOS",
+    short: "KOMMANDOS",
     attacker_effects: ["dakka_dakka_punishing"],
     defender_effects: ["just_a_scratch"],
     operatives: [
@@ -4628,8 +4628,8 @@ export const FACTIONS = [
 
   {
     id: "mandrakes",
-    name: "MANDRAKE",
-    short: "MANDRAKE",
+    name: "MANDRAKES",
+    short: "MANDRAKES",
     attacker_effects: ["inescapable_nightmare"],
     defender_effects: [],
     operatives: [
@@ -4706,8 +4706,8 @@ export const FACTIONS = [
 
   {
     id: "pathfinders",
-    name: "PATHFINDER",
-    short: "PATHFINDER",
+    name: "PATHFINDERS",
+    short: "PATHFINDERS",
     attacker_effects: ["bonded_accurate"],
     defender_effects: ["take_cover"],
     operatives: [
@@ -4889,8 +4889,8 @@ export const FACTIONS = [
 
   {
     id: "raveners",
-    name: "RAVENER",
-    short: "RAVENER",
+    name: "RAVENERS",
+    short: "RAVENERS",
     attacker_effects: [],
     defender_effects: ["whipcord_emergence"],
     operatives: [
@@ -4958,7 +4958,7 @@ export const FACTIONS = [
 
   {
     id: "vespid-stingwings",
-    name: "VESPID STINGWING",
+    name: "VESPID STINGWINGS",
     short: "VESPID",
     attacker_effects: ["airborne_predators"],
     defender_effects: ["hardened_exoskeleton", "aerial_agility"],
@@ -5315,7 +5315,7 @@ export const FACTIONS = [
 
   {
     id: "xv26-stealth-battlesuits",
-    name: "XV26 STEALTH BATTLESUIT",
+    name: "XV26 STEALTH BATTLESUITS",
     short: "XV26",
     attacker_effects: ["patient_hunters", "prepare_ambush_seek", "markerlight_severe"],
     defender_effects: [],
