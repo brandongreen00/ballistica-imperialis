@@ -148,6 +148,62 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Ceaseless" }] },
     note: "Inquisitorial Agent — only vs the designated Quarry operative",
   },
+  elimination_pattern: {
+    id: "elimination_pattern",
+    label: "Elimination Pattern (Piercing Crits 1)",
+    type: "add_rules",
+    params: { rules: [{ name: "Piercing Crits", value: 1 }] },
+    note: "Kasrkin — only with hot-shot weapons vs targets without cover save",
+  },
+  clearance_sweep_ceaseless: {
+    id: "clearance_sweep_ceaseless",
+    label: "Clearance Sweep (Ceaseless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Ceaseless" }] },
+    note: "Kasrkin — only within 5\" horizontally of the Clearance marker",
+  },
+  neutralise_target_balanced: {
+    id: "neutralise_target_balanced",
+    label: "Neutralise Target (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Kasrkin — approx. of \"reroll any attack dice\"",
+  },
+  long_range_scope_saturate: {
+    id: "long_range_scope_saturate",
+    label: "Long-Range Scope (Saturate)",
+    type: "add_rules",
+    params: { rules: [{ name: "Saturate" }] },
+    note: "Kasrkin equipment — only with hot-shot weapons at >6\"",
+  },
+  ardent_vengeance: {
+    id: "ardent_vengeance",
+    label: "Ardent Vengeance (Punishing)",
+    type: "add_rules",
+    params: { rules: [{ name: "Punishing" }] },
+    note: "Novitiates — only vs expended enemy operatives",
+  },
+  guided_by_faith: {
+    id: "guided_by_faith",
+    label: "Guided by Faith (Seek)",
+    type: "add_rules",
+    params: { rules: [{ name: "Seek" }] },
+    note: "Novitiates — only when shooting within 6\"",
+  },
+  crack_shots: {
+    id: "crack_shots",
+    label: "Crack Shots (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Ratlings — only with rifles vs targets >6\" away",
+  },
+  ardent_eradication: {
+    id: "ardent_eradication",
+    label: "Ardent Eradication (Balanced)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Sanctifiers — approx. of \"reroll any attack dice\" near Orator",
+  },
 };
 
 export const DEFENDER_EFFECTS = {
@@ -260,6 +316,27 @@ export const DEFENDER_EFFECTS = {
     type: "damage_reduction_per_die",
     params: { dice_type: "all", threshold: 3, reduce_by: 1 },
     note: "Navy Breacher firefight ploy — only in territory or non-moving",
+  },
+  dt_blast_reroll: {
+    id: "dt_blast_reroll",
+    label: "Demo-Trooper (reroll 1 fail vs Blast/Torrent)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Kasrkin Demo-Trooper — only against Blast / Torrent weapons",
+  },
+  sermon_dmg_reduction: {
+    id: "sermon_dmg_reduction",
+    label: "Sermon (-1 dmg per die ≥4)",
+    type: "damage_reduction_per_die",
+    params: { dice_type: "all", threshold: 4, reduce_by: 1 },
+    note: "Sanctifier Confessor — only while benefitting from the Sermon",
+  },
+  rosarius: {
+    id: "rosarius",
+    label: "Rosarius (1CP)",
+    type: "ignore_damage_dice",
+    params: { dice_type: "normal", count: 1 },
+    note: "Sanctifiers firefight ploy — ignore damage from one normal die",
   },
 };
 
