@@ -141,10 +141,17 @@ export const FONT_CSS = `
 
 ${THEME_VARS_CSS}
 
-body { margin: 0; }
+html, body {
+  margin: 0;
+  background-color: var(--bg-base-1);
+  min-height: 100%;
+}
+html { height: 100%; }
+body { min-height: 100vh; min-height: 100dvh; }
 
 .theme-root {
   color: var(--text);
+  background-color: var(--bg-base-1);
 }
 
 .theme-root,
