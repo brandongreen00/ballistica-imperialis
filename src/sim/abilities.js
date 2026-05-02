@@ -65,6 +65,13 @@
        cap_die_damage        — { dice_type, max }
                                cap each retained die's damage at <max>
                                (Warpcoven All is Dust)
+       halve_one_die_damage  — { min }
+                               halve the damage of one damaging retained die
+                               (round up, floor at <min>). Modelled as halving
+                               the lowest-damage damaging die — i.e. assumes
+                               the attacker resolves their lowest-damage die
+                               first to minimise the ploy
+                               (Starstrider Undaunted Explorers ploy)
        worsen_attacker_hit   — { amount }
                                worsen the attacker's Hit characteristic by
                                <amount> (Hunter Clade Vanguard aura)
@@ -570,6 +577,13 @@ export const DEFENDER_EFFECTS = {
     type: "reduce_piercing",
     params: { amount: 99 },
     note: "Elucia Vhane — fully negates Piercing X / Piercing Crits X",
+  },
+  undaunted_explorers: {
+    id: "undaunted_explorers",
+    label: "Undaunted Explorers (1CP)",
+    type: "halve_one_die_damage",
+    params: { min: 2 },
+    note: "Starstrider strategic ploy — first damaging attack die per turning point has its damage halved (round up, min 2); modelled as halving the lowest-damage damaging die",
   },
   rapid_reflexes: {
     id: "rapid_reflexes",

@@ -306,6 +306,25 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     }
   }
 
+  // halve one damaging die's damage (Starstrider Undaunted Explorers).
+  // Defender uses the ploy on the first damaging die; the attacker resolves
+  // dice in their preferred order, so they pick the lowest-damage die first
+  // to minimise the ploy. We halve that lowest-damage die (round up, min set
+  // by params.min — 2 for Undaunted).
+  for (const e of defEff) {
+    if (e.type === "halve_one_die_damage") {
+      const candidates = [];
+      if (damNormDice > 0) candidates.push(weapon.normal_dmg);
+      if (damCritDice > 0) candidates.push(weapon.crit_dmg);
+      if (candidates.length > 0) {
+        const lowest = Math.min(...candidates);
+        const halved = Math.max(e.params.min, Math.ceil(lowest / 2));
+        const reduction = Math.max(0, lowest - halved);
+        dmg = Math.max(0, dmg - reduction);
+      }
+    }
+  }
+
   // post_damage: fnp (per-wound D6, threshold+ ignores that wound)
   for (const e of defEff) {
     if (e.type === "fnp") {

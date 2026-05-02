@@ -751,7 +751,7 @@ export const FACTIONS = [
     name: "ELUCIDIAN STARSTRIDER",
     short: "STARSTRIDER",
     attacker_effects: ["lethal_proximity"],
-    defender_effects: [],
+    defender_effects: ["undaunted_explorers"],
     operatives: [
       {
         id: "starstrider-elucia-vhane",
