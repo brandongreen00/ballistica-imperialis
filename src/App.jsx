@@ -17,8 +17,14 @@ function availableDefenderIds(faction, op) {
 function availableAttackerIds(faction, op) {
   return uniq([...(faction.attacker_effects || []), ...(op.attacker_effects || [])]);
 }
+function weaponHasTorrent(weapon) {
+  return !!weapon?.rules?.some((r) => /^Torrent\b/.test(r));
+}
 function isAttackerEffectGated(effect, weapon) {
-  return !!(effect.excludes_pistol && weapon?.is_pistol);
+  if (effect.excludes_pistol && weapon?.is_pistol) return true;
+  if (effect.excludes_torrent && weaponHasTorrent(weapon)) return true;
+  if (effect.excludes_grenade_or_bomb && weapon?.is_grenade_or_bomb) return true;
+  return false;
 }
 
 const CATEGORY_TAGLINE = {
@@ -389,9 +395,8 @@ function AttackerEffectsPanel({ availIds, atkEffOn, setAtkEffOn, weapon, toggleE
           );
         })}
       </div>
-      {availIds.some((id) => {
-        const e = ATTACKER_EFFECTS[id]; return e?.excludes_pistol && weapon?.is_pistol;
-      }) && <div className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>Some attacker effects exclude pistols</div>}
+      {availIds.some((id) => isAttackerEffectGated(ATTACKER_EFFECTS[id], weapon))
+        && <div className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>Some attacker effects don't apply to this weapon</div>}
     </>
   );
 }
