@@ -52,6 +52,8 @@ export default function App() {
   const [env, setEnv] = useState({ cover: false, obscured: false, vantageHeight: 0, targetEngaged: true, shooterInjured: false, closeQuarters: false });
   const [defEffOn, setDefEffOn] = useState([]);
   const [atkEffOn, setAtkEffOn] = useState([]);
+  const [wrekaBanked, setWrekaBanked] = useState(0);
+  const [wrekaSpend, setWrekaSpend] = useState(0);
   const [trials, setTrials] = useState(50000);
   const [stats, setStats] = useState(null);
   const [computing, setComputing] = useState(false);
@@ -66,6 +68,9 @@ export default function App() {
 
   const [currentHealth, setCurrentHealth] = useState(target.wounds);
 
+  const isWreckaKrew = shooterFaction.id === "wrecka-krew";
+  const isBombSquig = shooter.id === "wk-bomb-squig";
+
   const [lastShooterKey, setLastShooterKey] = useState(`${shooterFaction.id}/${shooter.id}`);
   const curShooterKey = `${shooterFaction.id}/${shooter.id}`;
   if (lastShooterKey !== curShooterKey) {
@@ -73,6 +78,8 @@ export default function App() {
     setWeaponIdx(0);
     const allowed = new Set(availableAttackerIds(shooterFaction, shooter));
     setAtkEffOn((s) => s.filter((id) => allowed.has(id)));
+    setWrekaBanked(0);
+    setWrekaSpend(0);
   }
 
   const [lastTargetKey, setLastTargetKey] = useState(`${targetFaction.id}/${target.id}`);
@@ -114,7 +121,10 @@ export default function App() {
       const atkEff = atkEffOn
         .map((id) => ATTACKER_EFFECTS[id])
         .filter((e) => e && !isAttackerEffectGated(e, weapon));
-      const s = simulate(target, weapon, env, defEff, atkEff, trials, currentHealth);
+      const simEnv = isWreckaKrew
+        ? { ...env, wreka: { enabled: true, banked: wrekaBanked, spend: isBombSquig ? 0 : wrekaSpend, isBombSquig } }
+        : env;
+      const s = simulate(target, weapon, simEnv, defEff, atkEff, trials, currentHealth);
       setStats({ ...s, shooterName: shooter.full_name, targetName: target.full_name, weaponName: weapon.name });
       setComputing(false);
     }, 10);
@@ -198,6 +208,16 @@ export default function App() {
             weapon={weapon}
             toggleEffect={toggleEffect}
           />
+
+          {isWreckaKrew && (
+            <WrekaPanel
+              banked={wrekaBanked}
+              setBanked={setWrekaBanked}
+              spend={wrekaSpend}
+              setSpend={setWrekaSpend}
+              isBombSquig={isBombSquig}
+            />
+          )}
         </div>
 
         <div className="panel p-4 corner-brackets">
@@ -400,6 +420,62 @@ function DefenderEffectsPanel({ availIds, defEffOn, setDefEffOn, toggleEffect })
   );
 }
 
+function WrekaPanel({ banked, setBanked, spend, setSpend, isBombSquig }) {
+  const safeBanked = Math.max(0, Math.min(6, banked));
+  const maxSpend = isBombSquig ? 0 : 2;
+  const safeSpend = Math.max(0, Math.min(maxSpend, spend));
+  return (
+    <div className="mt-4 pt-3" style={{ borderTop: "1px solid var(--border)" }}>
+      <div className="flex items-baseline justify-between mb-2">
+        <div className="label-cap">Wrecka Points</div>
+        <span className="chip chip-dim">DA RAMPAGE</span>
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <div className="flex items-baseline justify-between mb-1">
+            <div className="text-[10px] tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>BANKED (start)</div>
+            <div className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: "var(--accent-primary)" }}>{safeBanked} / 6</div>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={6}
+            step={1}
+            value={safeBanked}
+            onChange={(e) => setBanked(parseInt(e.target.value, 10))}
+            className="w-full"
+            style={{ accentColor: "var(--accent-primary)" }}
+          />
+        </div>
+        <div>
+          <div className="flex items-baseline justify-between mb-1">
+            <div className="text-[10px] tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>SPEND THIS ACTION</div>
+            <div className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: isBombSquig ? "var(--text-muted)" : "var(--accent-action)" }}>
+              {safeSpend} / {maxSpend}
+            </div>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={maxSpend}
+            step={1}
+            value={safeSpend}
+            disabled={isBombSquig}
+            onChange={(e) => setSpend(parseInt(e.target.value, 10))}
+            className="w-full"
+            style={{ accentColor: "var(--accent-action)", opacity: isBombSquig ? 0.4 : 1 }}
+          />
+        </div>
+      </div>
+      <div className="text-[10px] mt-2" style={{ color: "var(--text-muted)" }}>
+        {isBombSquig
+          ? "Bomb Squig generates points on natural 6s but cannot spend them"
+          : "Each natural 6 retained earns 1 point (cap 6). Spent points convert fails to normal hits."}
+      </div>
+    </div>
+  );
+}
+
 function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme }) {
   const tickStyle = { fill: theme["text-muted"], fontFamily: "JetBrains Mono", fontSize: 10 };
   const axisStroke = { stroke: theme["border"] };
@@ -431,6 +507,31 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme })
             ? <HeadlineStat label="SELF-DAMAGE" value={stats.meanSelfDmg.toFixed(2)} accent="var(--warn)" hint={`Hot: ${(stats.pSelf * 100).toFixed(1)}%`} />
             : <HeadlineStat label="ATTACK DICE" value={weapon.atk} hint={`HIT ${weapon.hit}+${env.shooterInjured ? " (+1 injured)" : ""}`} />}
         </div>
+
+        {stats.wreka && (
+          <div className="mb-6 p-3" style={{ background: "var(--input-bg)", border: "1px solid var(--border)" }}>
+            <div className="flex items-baseline justify-between mb-2">
+              <div className="label-cap">Wrecka Points (this action)</div>
+              <span className="chip chip-dim">
+                START {stats.wreka.banked} · SPEND ≤ {stats.wreka.isBombSquig ? 0 : stats.wreka.requestedSpend}
+              </span>
+            </div>
+            <div className="grid grid-cols-3 gap-3">
+              <div>
+                <div className="text-[10px] tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>MEAN GENERATED</div>
+                <div className="bignum text-2xl" style={{ color: "var(--accent-primary)" }}>{stats.wreka.meanGen.toFixed(2)}</div>
+              </div>
+              <div>
+                <div className="text-[10px] tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>MEAN SPENT</div>
+                <div className="bignum text-2xl" style={{ color: "var(--accent-action)" }}>{stats.wreka.meanSpent.toFixed(2)}</div>
+              </div>
+              <div>
+                <div className="text-[10px] tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>EXPECTED END BANK</div>
+                <div className="bignum text-2xl" style={{ color: "var(--text)" }}>{stats.wreka.meanEndBank.toFixed(2)}</div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="mb-6">
           <div className="label-cap mb-2">Probability of Damaging with at Least N Attack Dice</div>

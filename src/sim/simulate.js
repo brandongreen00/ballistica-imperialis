@@ -131,6 +131,23 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     }
   }
 
+  // Wrecka points: count natural 6s rolled (not Lethal-promoted crits),
+  // then spend up to the player's chosen amount to convert fails into
+  // normal hits. If banked is already 6, you can only spend (no gen).
+  let wrekaGen = 0, wrekaSpent = 0, wrekaEndBank = 0;
+  const wrk = env.wreka;
+  if (wrk && wrk.enabled) {
+    let naturalSixes = 0;
+    for (const v of rolls) if (v === 6) naturalSixes++;
+    const banked = Math.min(6, Math.max(0, wrk.banked || 0));
+    wrekaGen = banked === 6 ? 0 : naturalSixes;
+    const wantSpend = wrk.isBombSquig ? 0 : Math.max(0, Math.min(2, wrk.spend || 0));
+    wrekaSpent = Math.min(wantSpend, atkF, banked + wrekaGen);
+    atkF -= wrekaSpent;
+    atkN += wrekaSpent;
+    wrekaEndBank = Math.min(6, banked + wrekaGen - wrekaSpent);
+  }
+
   // pre_save_damage
   let dmg = 0, damCritDice = 0;
   const devV = val("Devastating");
@@ -294,7 +311,14 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     }
   }
 
-  return { damage: dmg, selfDamage: selfDmg, damDice: damNormDice + damCritDice };
+  return {
+    damage: dmg,
+    selfDamage: selfDmg,
+    damDice: damNormDice + damCritDice,
+    wrekaGen,
+    wrekaSpent,
+    wrekaEndBank,
+  };
 }
 
 export function simulate(target, weapon, env, defEff, atkEff, trials, currentHealth) {
@@ -305,6 +329,7 @@ export function simulate(target, weapon, env, defEff, atkEff, trials, currentHea
   const alreadyInjured = health <= injuredThreshold;
 
   let sumD = 0, sumSD = 0, nAny = 0, nIncap = 0, nSelf = 0, nInjure = 0;
+  let sumWGen = 0, sumWSpent = 0, sumWEnd = 0;
   const diceCounts = [0, 0, 0, 0, 0, 0];
   const dist = new Map();
   for (let i = 0; i < trials; i++) {
@@ -318,8 +343,12 @@ export function simulate(target, weapon, env, defEff, atkEff, trials, currentHea
     if (!alreadyInjured && newHealth <= injuredThreshold) nInjure++;
     for (let k = 1; k <= 5; k++) if (r.damDice >= k) diceCounts[k]++;
     dist.set(r.damage, (dist.get(r.damage) || 0) + 1);
+    sumWGen += r.wrekaGen;
+    sumWSpent += r.wrekaSpent;
+    sumWEnd += r.wrekaEndBank;
   }
   const distArr = [...dist.entries()].sort((a, b) => a[0] - b[0]).map(([d, c]) => ({ dmg: d, p: c / trials }));
+  const wrekaEnabled = !!(env.wreka && env.wreka.enabled);
   return {
     trials,
     meanDmg: sumD / trials,
@@ -334,5 +363,13 @@ export function simulate(target, weapon, env, defEff, atkEff, trials, currentHea
     currentHealth: health,
     injuredThreshold,
     alreadyInjured,
+    wreka: wrekaEnabled ? {
+      meanGen: sumWGen / trials,
+      meanSpent: sumWSpent / trials,
+      meanEndBank: sumWEnd / trials,
+      banked: env.wreka.banked,
+      requestedSpend: env.wreka.spend,
+      isBombSquig: env.wreka.isBombSquig,
+    } : null,
   };
 }
