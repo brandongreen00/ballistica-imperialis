@@ -36,7 +36,18 @@ function allocateSavesOptimally(atkN, atkC, defN, defC, nDmg, cDmg, brutal) {
 
 const d6 = () => ((Math.random() * 6) | 0) + 1;
 
+function expandComposite(effs) {
+  const out = [];
+  for (const e of effs) {
+    if (e.type === "composite") out.push(...e.params.effects);
+    else out.push(e);
+  }
+  return out;
+}
+
 function runShoot(target, weapon, env, defEff, atkEff) {
+  atkEff = expandComposite(atkEff);
+  defEff = expandComposite(defEff);
   const rules = [...weapon.parsedRules];
   for (const e of atkEff) {
     if (e.type === "add_rules") {
