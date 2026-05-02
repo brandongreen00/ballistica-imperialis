@@ -19,6 +19,9 @@
                                          the Insidiants' Inspiring state, or
                                          Saturate + Accurate 1 from the
                                          Death Korps Siege Warfare ploy)
+       modify_atk_dice     — { amount }  add <amount> to the weapon's Atk
+                                         characteristic (Inquisitorial Tome
+                                         Denunciation +1 within 2")
 
      DEFENDER
        ignore_damage_dice    — { dice_type: 'normal' | 'crit', count }
@@ -65,6 +68,9 @@
        worsen_attacker_hit   — { amount }
                                worsen the attacker's Hit characteristic by
                                <amount> (Hunter Clade Vanguard aura)
+       modify_atk_dice       — { amount }
+                               add <amount> to the attacker's weapon Atk
+                               (negative for Inquisitorial Sanctification −1)
        force_crit_six        — {}
                                only natural 6s count as crits, regardless of
                                Lethal weapon rule (Wrecka Krusha Armoured Up)
@@ -164,6 +170,13 @@ export const ATTACKER_EFFECTS = {
     type: "add_rules",
     params: { rules: [{ name: "Ceaseless" }] },
     note: "Inquisitorial Agent — only vs the designated Quarry operative",
+  },
+  denunciation: {
+    id: "denunciation",
+    label: "Denunciation (+1 ATK)",
+    type: "modify_atk_dice",
+    params: { amount: 1 },
+    note: "Inquisitorial Tome — target within 2\" of an ally with Denunciation",
   },
   elimination_pattern: {
     id: "elimination_pattern",
@@ -564,6 +577,13 @@ export const DEFENDER_EFFECTS = {
     type: "worsen_attacker_hit",
     params: { amount: 1 },
     note: "Hunter Clade Vanguard — only when attacker is within 2\" of a Vanguard",
+  },
+  sanctification: {
+    id: "sanctification",
+    label: "Sanctification (-1 ATK)",
+    type: "modify_atk_dice",
+    params: { amount: -1 },
+    note: "Inquisitorial Tome — defender within 2\" of an ally with Sanctification",
   },
   brace_for_counterattack: {
     id: "brace_for_counterattack",

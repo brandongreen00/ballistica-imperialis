@@ -1309,8 +1309,8 @@ export const FACTIONS = [
     id: "inquisitorial-agent",
     name: "INQUISITORIAL AGENT",
     short: "INQUISITION",
-    attacker_effects: ["quarry_ceaseless"],
-    defender_effects: [],
+    attacker_effects: ["quarry_ceaseless", "denunciation"],
+    defender_effects: ["sanctification"],
     operatives: [
       {
         id: "ia-interrogator",
