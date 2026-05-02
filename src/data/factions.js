@@ -607,7 +607,17 @@ export const FACTIONS = [
     id: "deathwatch",
     name: "DEATHWATCH",
     short: "DEATHWATCH",
-    attacker_effects: ["mission_tactics_balanced", "suffer_not_the_alien", "advanced_auspex_scan"],
+    attacker_effects: [
+      "mission_tactics_balanced",
+      "suffer_not_the_alien",
+      "advanced_auspex_scan",
+      "sia_blast",
+      "sia_devastating",
+      "sia_lethal",
+      "sia_piercing_crits",
+      "sia_saturate",
+      "sia_severe",
+    ],
     defender_effects: ["transhuman", "shield_that_slays", "long_vigil"],
     operatives: [
       {
@@ -668,7 +678,7 @@ export const FACTIONS = [
           { name: "Auxiliary grenade launcher (frag)", atk: 4, hit: 3, normal_dmg: 2, crit_dmg: 4, rules: ["Blast 2\""], is_pistol: false },
           { name: "Auxiliary grenade launcher (krak)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Piercing 1"], is_pistol: false },
           { name: "Hellstorm bolt rifle", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Torrent 1\""], is_pistol: false },
-          { name: "Melta bomb", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Range 3\"", "Devastating 3", "Heavy", "Limited", "Piercing 2"], is_pistol: false },
+          { name: "Melta bomb", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Range 3\"", "Devastating 3", "Heavy", "Limited", "Piercing 2"], is_pistol: false, is_grenade_or_bomb: true },
         ],
       },
       {
@@ -2243,7 +2253,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Hot-shot laspistol", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\""], is_pistol: true },
-          { name: "Melta bomb", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Range 3\"", "Devastating 3", "Heavy", "Limited", "Piercing 2"], is_pistol: false },
+          { name: "Melta bomb", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Range 3\"", "Devastating 3", "Heavy", "Limited", "Piercing 2"], is_pistol: false, is_grenade_or_bomb: true },
         ],
       },
       {
