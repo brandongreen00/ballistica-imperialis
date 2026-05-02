@@ -557,7 +557,9 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme })
                   axisLine={axisStroke} tickLine={axisStroke}
                   tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
                 <Tooltip cursor={{ fill: theme["accent-action-soft"] }}
-                  contentStyle={{ background: theme["bg-base-1"], border: `1px solid ${theme["accent-primary"]}`, fontFamily: "JetBrains Mono", fontSize: 12, color: theme["text"] }}
+                  contentStyle={{ background: theme["bg-base-2"], border: `1px solid ${theme["accent-primary"]}`, fontFamily: "JetBrains Mono", fontSize: 12 }}
+                  labelStyle={{ color: theme["accent-primary"], marginBottom: 4 }}
+                  itemStyle={{ color: theme["text"] }}
                   formatter={(v) => [`${(v * 100).toFixed(2)}%`, "probability"]} labelFormatter={(v) => `${v} damage`} />
                 <Bar dataKey="p" isAnimationActive={false}>
                   {stats.dist.map((entry, i) => {
