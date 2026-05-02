@@ -340,6 +340,16 @@ export default function App() {
       <footer className="max-w-6xl mx-auto px-4 pb-8 text-center text-[10px] tracking-[0.2em]"
               style={{ color: "var(--text-footer)" }}>
         {CATEGORY_FOOTER[category]}
+        <div className="mt-2 text-[9px] tracking-[0.15em]">
+          <a
+            href="https://buymeacoffee.com/wemougtdcg"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--text-footer)", textDecoration: "underline", textUnderlineOffset: "2px" }}
+          >
+            buy me a coffee
+          </a>
+        </div>
       </footer>
     </div>
   );
