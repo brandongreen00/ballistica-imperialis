@@ -43,11 +43,24 @@ function runShoot(target, weapon, env, defEff, atkEff) {
       for (const r of e.params.rules) rules.push({ name: r.name, value: r.value ?? null, raw: r.name });
     }
   }
+  // Killzone: Gallowdark close quarters — Blast / Torrent / x" Devastating
+  // gain Lethal 5+. Our weapon data only carries the damage-value form of
+  // Devastating, so only Blast / Torrent qualify here.
+  if (env.closeQuarters && rules.some((r) => r.name === "Blast" || r.name === "Torrent")) {
+    rules.push({ name: "Lethal", value: 5, raw: "Lethal 5+" });
+  }
   const has = (n) => rules.some((r) => r.name === n);
   const val = (n) => { const r = rules.find((r) => r.name === n); return r ? r.value : null; };
 
   // modify_attack_stats
   let atkDice = weapon.atk;
+  for (const e of atkEff) {
+    if (e.type === "modify_atk_dice") atkDice += e.params.amount;
+  }
+  for (const e of defEff) {
+    if (e.type === "modify_atk_dice") atkDice += e.params.amount;
+  }
+  atkDice = Math.max(0, atkDice);
   let hit = weapon.hit;
   for (const e of defEff) {
     if (e.type === "worsen_attacker_hit") hit = Math.min(6, hit + e.params.amount);

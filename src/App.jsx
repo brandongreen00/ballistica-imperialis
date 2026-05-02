@@ -49,7 +49,7 @@ export default function App() {
   const [targetFactionId, setTargetFactionId] = useState("angels-of-death");
   const [targetOpId, setTargetOpId] = useState("aod-captain");
   const [weaponIdx, setWeaponIdx] = useState(0);
-  const [env, setEnv] = useState({ cover: false, obscured: false, vantageHeight: 0, targetEngaged: true, shooterInjured: false });
+  const [env, setEnv] = useState({ cover: false, obscured: false, vantageHeight: 0, targetEngaged: true, shooterInjured: false, closeQuarters: false });
   const [defEffOn, setDefEffOn] = useState([]);
   const [atkEffOn, setAtkEffOn] = useState([]);
   const [trials, setTrials] = useState(50000);
@@ -269,6 +269,19 @@ export default function App() {
                 ]} />
             </div>
           </div>
+          <div className="mt-3 pt-3" style={{ borderTop: "1px solid var(--border)" }}>
+            <div className="label-cap mb-1">Killzone Rules</div>
+            <Toggle
+              label={env.closeQuarters ? "Close Quarters (Blast/Torrent → Lethal 5+)" : "Standard killzone"}
+              checked={env.closeQuarters}
+              onChange={(v) => setEnv({ ...env, closeQuarters: v })}
+            />
+            {env.closeQuarters && hasWeapon && !weapon.rules.some((r) => /^Blast|^Torrent/.test(r)) && (
+              <div className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>
+                Selected weapon has no Blast / Torrent — Close Quarters has no effect on it
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
@@ -481,6 +494,7 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme })
             )}
             {env.cover && <span className="chip">cover</span>}
             {env.obscured && <span className="chip chip-warn">obscured</span>}
+            {env.closeQuarters && <span className="chip">close quarters (Blast/Torrent → L5+)</span>}
             {env.vantageHeight > 0 && <span className="chip">vantage {env.vantageHeight}"{env.targetEngaged ? "" : " (concealed — no Accurate)"}</span>}
             {!env.targetEngaged && env.vantageHeight === 0 && <span className="chip">target concealed</span>}
             {env.targetEngaged && env.vantageHeight === 0 && !env.cover && !env.obscured && !env.shooterInjured && stats.currentHealth >= target.wounds && <span className="chip chip-dim">open ground</span>}
