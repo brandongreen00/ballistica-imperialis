@@ -5092,7 +5092,7 @@ export const FACTIONS = [
         full_name: "RAVENER VENOMSPITTER",
         save: 5, wounds: 20, apl: 3, move: "7\"",
         defender_abilities: [],
-        attacker_effects: [],
+        attacker_effects: ["distend_dorsal_sac"],
         weapons: [
           { name: "Pincer tail", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Silent"], is_pistol: false },
           { name: "Venom bolt (blast)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 8\"", "Blast 2\""], is_pistol: false },

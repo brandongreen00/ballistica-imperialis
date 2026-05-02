@@ -25,6 +25,11 @@
        normal_to_crit_attack — { count } promote <count> retained normal hits
                                          to critical hits, post-categorise
                                          (Hearthkyn Salvagers Grudge tokens)
+       composite           — { effects: [{ type, params }, ...] }
+                                         bundle multiple typed sub-effects
+                                         under a single toggle (Ravener
+                                         Venomspitter Distend Dorsal Sac
+                                         adds Lethal 5+ and +1 Atk together)
 
      DEFENDER
        ignore_damage_dice    — { dice_type: 'normal' | 'crit', count }
@@ -537,6 +542,18 @@ export const ATTACKER_EFFECTS = {
     type: "add_rules",
     params: { rules: [{ name: "Balanced" }] },
     note: "Vespid — adds Balanced to ranged weapons for the activation",
+  },
+  distend_dorsal_sac: {
+    id: "distend_dorsal_sac",
+    label: "Distend Dorsal Sac (1AP)",
+    type: "composite",
+    params: {
+      effects: [
+        { type: "add_rules", params: { rules: [{ name: "Lethal", value: 5 }] } },
+        { type: "modify_atk_dice", params: { amount: 1 } },
+      ],
+    },
+    note: "Venomspitter — Lethal 5+ and +1 Atk on venom bolt; also removes Range 8\" (range not modelled)",
   },
   destruction_saturate: {
     id: "destruction_saturate",
