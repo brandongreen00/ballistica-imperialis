@@ -422,7 +422,7 @@ function DefenderEffectsPanel({ availIds, defEffOn, setDefEffOn, toggleEffect })
 
 function WrekaPanel({ banked, setBanked, spend, setSpend, isBombSquig }) {
   const safeBanked = Math.max(0, Math.min(6, banked));
-  const maxSpend = isBombSquig ? 0 : 2;
+  const maxSpend = isBombSquig ? 0 : 3;
   const safeSpend = Math.max(0, Math.min(maxSpend, spend));
   return (
     <div className="mt-4 pt-3" style={{ borderTop: "1px solid var(--border)" }}>

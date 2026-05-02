@@ -141,7 +141,7 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     for (const v of rolls) if (v === 6) naturalSixes++;
     const banked = Math.min(6, Math.max(0, wrk.banked || 0));
     wrekaGen = banked === 6 ? 0 : naturalSixes;
-    const wantSpend = wrk.isBombSquig ? 0 : Math.max(0, Math.min(2, wrk.spend || 0));
+    const wantSpend = wrk.isBombSquig ? 0 : Math.max(0, Math.min(3, wrk.spend || 0));
     wrekaSpent = Math.min(wantSpend, atkF, banked + wrekaGen);
     atkF -= wrekaSpent;
     atkN += wrekaSpent;
