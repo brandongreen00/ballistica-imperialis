@@ -123,6 +123,14 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     else if (r.name === "Punishing" && atkC > 0 && atkF > 0) { atkF--; atkN++; }
   }
 
+  // attacker-side upgrade (e.g. Hearthkyn Salvagers Grudge)
+  for (const e of atkEff) {
+    if (e.type === "normal_to_crit_attack") {
+      const k = Math.min(e.params.count, atkN);
+      atkN -= k; atkC += k;
+    }
+  }
+
   // defender-side downgrade (e.g. Gellerpox Mutant)
   for (const e of defEff) {
     if (e.type === "crit_to_normal_attack") {

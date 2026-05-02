@@ -35,6 +35,7 @@ export const FACTION_CATEGORY = {
   "corsair-voidscarred": "xenos",
   "farstalker-kinband": "xenos",
   "hand-of-the-archon": "xenos",
+  "hearthkyn-salvagers": "xenos",
   "hernkyn-yaegir": "xenos",
   "hierotek-circle": "xenos",
   "kommandos": "xenos",

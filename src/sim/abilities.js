@@ -22,6 +22,9 @@
        modify_atk_dice     — { amount }  add <amount> to the weapon's Atk
                                          characteristic (Inquisitorial Tome
                                          Denunciation +1 within 2")
+       normal_to_crit_attack — { count } promote <count> retained normal hits
+                                         to critical hits, post-categorise
+                                         (Hearthkyn Salvagers Grudge tokens)
 
      DEFENDER
        ignore_damage_dice    — { dice_type: 'normal' | 'crit', count }
@@ -465,6 +468,13 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Balanced" }] },
     note: "Hernkyn Yaegir — only when shooter is in cover",
   },
+  grudge_token: {
+    id: "grudge_token",
+    label: "Grudge (1 token: normal → crit)",
+    type: "normal_to_crit_attack",
+    params: { count: 1 },
+    note: "Hearthkyn Salvagers — per Grudge token on the target, retain 1 normal hit as a critical hit; modelled as 1 token",
+  },
   magnify_ceaseless: {
     id: "magnify_ceaseless",
     label: "Magnify (Ceaseless)",
@@ -828,7 +838,14 @@ export const DEFENDER_EFFECTS = {
     label: "Sturdy (all crits → normal)",
     type: "crit_to_normal_attack",
     params: { count: 99 },
-    note: "Hernkyn Yaegir — converts all attacker crit hits to normal hits",
+    note: "Leagues of Votann (Hernkyn Yaegir / Hearthkyn Salvagers) — converts all attacker crit hits to normal hits",
+  },
+  wrought_defence: {
+    id: "wrought_defence",
+    label: "Wrought Defence (reroll 1 fail)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    note: "Hearthkyn Salvagers — only when 2+ defence dice failed; modelled as always available (slight overestimate at 1 fail)",
   },
   just_a_scratch: {
     id: "just_a_scratch",
