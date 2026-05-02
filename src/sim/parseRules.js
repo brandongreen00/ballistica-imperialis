@@ -22,6 +22,7 @@ const RULE_PATTERNS = [
   [/^Brutal$/,                       "Brutal"],
   [/^Shock$/,                        "Shock"],
   [/^Stun$/,                         "Stun"],
+  [/^Soulstrike$/,                   "Soulstrike"],
   [/^Heavy(\s*\([^)]*\))?$/,         "Heavy"],
   [/^Silent$/,                       "Silent"],
   [/^Seek( Light)?$/,                "Seek"],
