@@ -25,8 +25,8 @@ export const FACTIONS = [
     id: "kasrkin",
     name: "KASRKIN",
     short: "KASRKIN",
-    attacker_effects: ["foregrip", "elimination_pattern", "clearance_sweep_ceaseless", "neutralise_target_balanced", "long_range_scope_saturate"],
-    defender_effects: [],
+    attacker_effects: ["foregrip", "light_em_up", "elimination_pattern", "clearance_sweep_balanced", "neutralise_target_relentless", "long_range_scope_saturate", "relics_of_cadia"],
+    defender_effects: ["engage_from_cover", "ice_in_your_veins"],
     operatives: [
       {
         id: "kasrkin-sergeant",
