@@ -5474,20 +5474,33 @@ const GRENADIER_KRAK_GRENADE = {
 };
 
 // Operatives whose card grants the grenadier specialist's Hit 3+ bonus on
-// universal Frag and Krak grenades.
+// both universal Frag and Krak grenades. Includes operatives whose name is
+// "Grenadier" plus others whose card carries the same rule under a different
+// name (Brood Brother Sapper, XV26 Liberator).
 const GRENADIER_OPERATIVE_IDS = new Set([
   "aod-assault-grenadier",
   "inb-grenadier",
   "aq-grenadier",
   "bl-brimstone-grenadier",
   "pf-assault-grenadier",
+  "bb-sapper",
+  "xv-liberator",
+]);
+
+// Operatives whose card grants the Hit 3+ bonus to Krak grenades only.
+// Plague Marine Bombardier's rule covers blight grenades and krak grenades;
+// Plague Marines do not field universal Frag grenades, so the Frag stays at
+// the base Hit 4+ for them.
+const KRAK_ONLY_GRENADIER_IDS = new Set([
+  "pm-bombardier",
 ]);
 
 for (const faction of FACTIONS) {
   for (const op of faction.operatives) {
-    const isGrenadier = GRENADIER_OPERATIVE_IDS.has(op.id);
-    const frag = isGrenadier ? GRENADIER_FRAG_GRENADE : UNIVERSAL_FRAG_GRENADE;
-    const krak = isGrenadier ? GRENADIER_KRAK_GRENADE : UNIVERSAL_KRAK_GRENADE;
+    const isFragGrenadier = GRENADIER_OPERATIVE_IDS.has(op.id);
+    const isKrakGrenadier = isFragGrenadier || KRAK_ONLY_GRENADIER_IDS.has(op.id);
+    const frag = isFragGrenadier ? GRENADIER_FRAG_GRENADE : UNIVERSAL_FRAG_GRENADE;
+    const krak = isKrakGrenadier ? GRENADIER_KRAK_GRENADE : UNIVERSAL_KRAK_GRENADE;
     const hasFrag = op.weapons.some((w) => /^Frag grenade(\b| \()/.test(w.name));
     const hasKrak = op.weapons.some((w) => /^Krak grenade(\b| \()/.test(w.name));
     if (!hasFrag) op.weapons.push({ ...frag });
