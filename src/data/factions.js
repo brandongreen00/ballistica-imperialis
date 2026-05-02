@@ -4384,7 +4384,7 @@ export const FACTIONS = [
     id: "hierotek-circle",
     name: "HIEROTEK CIRCLE",
     short: "HIEROTEK",
-    attacker_effects: ["relentless_onslaught"],
+    attacker_effects: ["augment_lethal5", "augment_rending", "augment_saturate", "augment_severe"],
     defender_effects: [],
     operatives: [
       {
@@ -4393,7 +4393,7 @@ export const FACTIONS = [
         full_name: "CHRONOMANCER",
         save: 3, wounds: 14, apl: 3, move: "6\"",
         defender_abilities: [],
-        attacker_effects: [],
+        attacker_effects: ["magnify_ceaseless"],
         weapons: [
           { name: "Aeonstave", atk: 5, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["Blast 2\"", "Lethal 5+", "Stun"], is_pistol: false },
           { name: "Entropic lance", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Devastating 3", "Piercing 1"], is_pistol: false },
@@ -4405,7 +4405,7 @@ export const FACTIONS = [
         full_name: "PSYCHOMANCER",
         save: 3, wounds: 14, apl: 3, move: "6\"",
         defender_abilities: [],
-        attacker_effects: [],
+        attacker_effects: ["magnify_ceaseless"],
         weapons: [
           { name: "Abyssal lance", atk: 5, hit: 3, normal_dmg: 2, crit_dmg: 2, rules: ["Blast 2\"", "Devastating 1", "Piercing 2"], is_pistol: false },
         ],
@@ -4416,7 +4416,7 @@ export const FACTIONS = [
         full_name: "TECHNOMANCER",
         save: 3, wounds: 14, apl: 3, move: "6\"",
         defender_abilities: [],
-        attacker_effects: [],
+        attacker_effects: ["magnify_ceaseless"],
         weapons: [
           { name: "Staff of light", atk: 6, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Rending"], is_pistol: false },
         ],
@@ -4449,7 +4449,7 @@ export const FACTIONS = [
         full_name: "APPRENTEK",
         save: 3, wounds: 11, apl: 3, move: "6\"",
         defender_abilities: [],
-        attacker_effects: [],
+        attacker_effects: ["magnify_ceaseless"],
         weapons: [
           { name: "Arcane conduit", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Piercing 1"], is_pistol: false },
         ],
