@@ -4901,7 +4901,9 @@ export const FACTIONS = [
         save: 5, wounds: 21, apl: 3, move: "7\"",
         defender_abilities: [],
         attacker_effects: [],
-        weapons: [],
+        weapons: [
+          { name: "Tail blade", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Rending", "Silent"], is_pistol: false },
+        ],
       },
       {
         id: "rv-felltalon",
@@ -4911,6 +4913,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
+          { name: "Pincer tail", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Silent"], is_pistol: false },
           { name: "Toxic glands", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 6\"", "Silent"], is_pistol: false },
         ],
       },
@@ -4921,7 +4924,9 @@ export const FACTIONS = [
         save: 5, wounds: 20, apl: 3, move: "7\"",
         defender_abilities: [],
         attacker_effects: [],
-        weapons: [],
+        weapons: [
+          { name: "Pincer tail", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Silent"], is_pistol: false },
+        ],
       },
       {
         id: "rv-venomspitter",
@@ -4931,6 +4936,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
+          { name: "Pincer tail", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Silent"], is_pistol: false },
           { name: "Venom bolt (blast)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 8\"", "Blast 2\""], is_pistol: false },
           { name: "Venom bolt (focused)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Piercing 1"], is_pistol: false },
         ],
@@ -4942,7 +4948,9 @@ export const FACTIONS = [
         save: 5, wounds: 20, apl: 3, move: "7\"",
         defender_abilities: [],
         attacker_effects: [],
-        weapons: [],
+        weapons: [
+          { name: "Pincer tail", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Silent"], is_pistol: false },
+        ],
       },
       {
         id: "rv-wrecker",
@@ -4951,7 +4959,9 @@ export const FACTIONS = [
         save: 4, wounds: 20, apl: 3, move: "7\"",
         defender_abilities: ["sermon_dmg_reduction"],
         attacker_effects: [],
-        weapons: [],
+        weapons: [
+          { name: "Bone mace", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Piercing 1", "Silent"], is_pistol: false },
+        ],
       },
     ],
   },
