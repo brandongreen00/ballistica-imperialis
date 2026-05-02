@@ -168,6 +168,15 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     }
   }
 
+  // Soulstrike: defence dice are resolved against the target's APL instead of
+  // its Save — 1 always crits, 2..APL are normal saves, anything else fails,
+  // and 6 always fails. (Mandrakes, per Wahapedia.)
+  const soulstrike = has("Soulstrike");
+  const apl = target.apl ?? 0;
+  const isFail = (v) => soulstrike
+    ? (v === 6 || v > apl)
+    : (v !== 6 && v < saveT);
+
   // roll defence dice
   const defRolls = new Array(defD);
   for (let i = 0; i < defD; i++) defRolls[i] = d6();
@@ -177,7 +186,7 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     if (e.type === "defence_reroll" && e.params.fails) {
       let budget = e.params.count ?? Infinity;
       for (let i = 0; i < defRolls.length && budget > 0; i++) {
-        if (defRolls[i] !== 6 && defRolls[i] < saveT) {
+        if (isFail(defRolls[i])) {
           defRolls[i] = d6();
           budget -= 1;
         }
@@ -187,7 +196,13 @@ function runShoot(target, weapon, env, defEff, atkEff) {
 
   let defC = 0, defN = coverSaves;
   for (const v of defRolls) {
-    if (v === 6) defC++; else if (v >= saveT) defN++;
+    if (soulstrike) {
+      if (v === 6) continue;
+      else if (v === 1) defC++;
+      else if (v <= apl) defN++;
+    } else {
+      if (v === 6) defC++; else if (v >= saveT) defN++;
+    }
   }
 
   // modify_defence_results
