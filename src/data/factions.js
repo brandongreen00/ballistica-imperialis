@@ -5430,3 +5430,67 @@ export const FACTIONS = [
     ],
   },
 ];
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNIVERSAL EQUIPMENT — FRAG & KRAK GRENADES
+
+   Every operative may take a frag or krak grenade from the Universal
+   Equipment list. Stats per the Kill Team 3rd ed Universal Equipment card:
+
+     Frag grenade — A4 BS4+ D2/4 — Range 6", Blast 2", Limited, Saturate
+     Krak grenade — A4 BS4+ D4/5 — Range 6", Heavy (Dash only), Limited,
+                                   Piercing 1
+
+   Some operatives are dedicated grenadier specialists (e.g. Imperial Navy
+   Breachers Grenadier, Assault Intercessor Grenadier). Their operative card
+   gives them a better Hit characteristic when throwing universal grenades —
+   modelled here as Hit 3+ instead of 4+, and surfaced in the weapon name so
+   the bonus is obvious in the UI.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const UNIVERSAL_FRAG_GRENADE = {
+  name: "Frag grenade",
+  atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 4,
+  rules: ["Range 6\"", "Blast 2\"", "Limited", "Saturate"],
+  is_pistol: false,
+};
+const UNIVERSAL_KRAK_GRENADE = {
+  name: "Krak grenade",
+  atk: 4, hit: 4, normal_dmg: 4, crit_dmg: 5,
+  rules: ["Range 6\"", "Heavy (Dash only)", "Limited", "Piercing 1"],
+  is_pistol: false,
+};
+const GRENADIER_FRAG_GRENADE = {
+  name: "Frag grenade (Grenadier)",
+  atk: 4, hit: 3, normal_dmg: 2, crit_dmg: 4,
+  rules: ["Range 6\"", "Blast 2\"", "Limited", "Saturate"],
+  is_pistol: false,
+};
+const GRENADIER_KRAK_GRENADE = {
+  name: "Krak grenade (Grenadier)",
+  atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5,
+  rules: ["Range 6\"", "Heavy (Dash only)", "Limited", "Piercing 1"],
+  is_pistol: false,
+};
+
+// Operatives whose card grants the grenadier specialist's Hit 3+ bonus on
+// universal Frag and Krak grenades.
+const GRENADIER_OPERATIVE_IDS = new Set([
+  "aod-assault-grenadier",
+  "inb-grenadier",
+  "aq-grenadier",
+  "bl-brimstone-grenadier",
+  "pf-assault-grenadier",
+]);
+
+for (const faction of FACTIONS) {
+  for (const op of faction.operatives) {
+    const isGrenadier = GRENADIER_OPERATIVE_IDS.has(op.id);
+    const frag = isGrenadier ? GRENADIER_FRAG_GRENADE : UNIVERSAL_FRAG_GRENADE;
+    const krak = isGrenadier ? GRENADIER_KRAK_GRENADE : UNIVERSAL_KRAK_GRENADE;
+    const hasFrag = op.weapons.some((w) => /^Frag grenade(\b| \()/.test(w.name));
+    const hasKrak = op.weapons.some((w) => /^Krak grenade(\b| \()/.test(w.name));
+    if (!hasFrag) op.weapons.push({ ...frag });
+    if (!hasKrak) op.weapons.push({ ...krak });
+  }
+}
