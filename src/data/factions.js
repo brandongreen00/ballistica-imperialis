@@ -5440,3 +5440,80 @@ export const FACTIONS = [
     ],
   },
 ];
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UNIVERSAL EQUIPMENT — FRAG & KRAK GRENADES
+
+   Every operative may take a frag or krak grenade from the Universal
+   Equipment list. Stats per the Kill Team 3rd ed Universal Equipment card:
+
+     Frag grenade — A4 BS4+ D2/4 — Range 6", Blast 2", Limited, Saturate
+     Krak grenade — A4 BS4+ D4/5 — Range 6", Heavy (Dash only), Limited,
+                                   Piercing 1
+
+   Some operatives are dedicated grenadier specialists (e.g. Imperial Navy
+   Breachers Grenadier, Assault Intercessor Grenadier). Their operative card
+   gives them a better Hit characteristic when throwing universal grenades —
+   modelled here as Hit 3+ instead of 4+, and surfaced in the weapon name so
+   the bonus is obvious in the UI.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+const UNIVERSAL_FRAG_GRENADE = {
+  name: "Frag grenade",
+  atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 4,
+  rules: ["Range 6\"", "Blast 2\"", "Limited", "Saturate"],
+  is_pistol: false,
+};
+const UNIVERSAL_KRAK_GRENADE = {
+  name: "Krak grenade",
+  atk: 4, hit: 4, normal_dmg: 4, crit_dmg: 5,
+  rules: ["Range 6\"", "Heavy (Dash only)", "Limited", "Piercing 1"],
+  is_pistol: false,
+};
+const GRENADIER_FRAG_GRENADE = {
+  name: "Frag grenade (Grenadier)",
+  atk: 4, hit: 3, normal_dmg: 2, crit_dmg: 4,
+  rules: ["Range 6\"", "Blast 2\"", "Limited", "Saturate"],
+  is_pistol: false,
+};
+const GRENADIER_KRAK_GRENADE = {
+  name: "Krak grenade (Grenadier)",
+  atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5,
+  rules: ["Range 6\"", "Heavy (Dash only)", "Limited", "Piercing 1"],
+  is_pistol: false,
+};
+
+// Operatives whose card grants the grenadier specialist's Hit 3+ bonus on
+// both universal Frag and Krak grenades. Includes operatives whose name is
+// "Grenadier" plus others whose card carries the same rule under a different
+// name (Brood Brother Sapper, XV26 Liberator).
+const GRENADIER_OPERATIVE_IDS = new Set([
+  "aod-assault-grenadier",
+  "inb-grenadier",
+  "aq-grenadier",
+  "bl-brimstone-grenadier",
+  "pf-assault-grenadier",
+  "bb-sapper",
+  "xv-liberator",
+]);
+
+// Operatives whose card grants the Hit 3+ bonus to Krak grenades only.
+// Plague Marine Bombardier's rule covers blight grenades and krak grenades;
+// Plague Marines do not field universal Frag grenades, so the Frag stays at
+// the base Hit 4+ for them.
+const KRAK_ONLY_GRENADIER_IDS = new Set([
+  "pm-bombardier",
+]);
+
+for (const faction of FACTIONS) {
+  for (const op of faction.operatives) {
+    const isFragGrenadier = GRENADIER_OPERATIVE_IDS.has(op.id);
+    const isKrakGrenadier = isFragGrenadier || KRAK_ONLY_GRENADIER_IDS.has(op.id);
+    const frag = isFragGrenadier ? GRENADIER_FRAG_GRENADE : UNIVERSAL_FRAG_GRENADE;
+    const krak = isKrakGrenadier ? GRENADIER_KRAK_GRENADE : UNIVERSAL_KRAK_GRENADE;
+    const hasFrag = op.weapons.some((w) => /^Frag grenade(\b| \()/.test(w.name));
+    const hasKrak = op.weapons.some((w) => /^Krak grenade(\b| \()/.test(w.name));
+    if (!hasFrag) op.weapons.push({ ...frag });
+    if (!hasKrak) op.weapons.push({ ...krak });
+  }
+}
