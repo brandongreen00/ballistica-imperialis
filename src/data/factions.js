@@ -5128,8 +5128,8 @@ export const FACTIONS = [
     id: "vespid-stingwings",
     name: "VESPID STINGWINGS",
     short: "VESPID",
-    attacker_effects: ["airborne_predators"],
-    defender_effects: ["hardened_exoskeleton", "aerial_agility"],
+    attacker_effects: ["airborne_predators", "neutron_charge", "aerial_guidance", "communion_reroll"],
+    defender_effects: ["aerial_agility"],
     operatives: [
       {
         id: "vp-strain-leader",
@@ -5204,7 +5204,7 @@ export const FACTIONS = [
         full_name: "VESPID WARRIOR",
         save: 5, wounds: 9, apl: 2, move: "6\"",
         defender_abilities: [],
-        attacker_effects: [],
+        attacker_effects: ["warrior_instincts"],
         weapons: [
           { name: "Neutron blaster", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 3, rules: ["Devastating 2"], is_pistol: false },
         ],

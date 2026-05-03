@@ -543,6 +543,34 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Balanced" }] },
     note: "Vespid — adds Balanced to ranged weapons for the activation",
   },
+  neutron_charge: {
+    id: "neutron_charge",
+    label: "Neutron Charge (Piercing 1)",
+    type: "add_rules",
+    params: { rules: [{ name: "Piercing", value: 1 }] },
+    note: "Vespid faction rule — neutron weapons gain Piercing 1 until end of turning point if the operative performed a moving action. Toggle off when firing the Swarmguard's flamer (non-neutron).",
+  },
+  aerial_guidance: {
+    id: "aerial_guidance",
+    label: "Aerial Guidance (Oversight Drone — Saturate)",
+    type: "add_rules",
+    params: { rules: [{ name: "Saturate" }] },
+    note: "Vespid Oversight Drone SUPPORT action — friendly Vespid visible to and within 6\" of the Drone gain Saturate on ranged weapons until the Drone's next activation",
+  },
+  communion_reroll: {
+    id: "communion_reroll",
+    label: "Communion (re-roll 1 attack die)",
+    type: "add_rules",
+    params: { rules: [{ name: "Balanced" }] },
+    note: "Vespid faction rule — spend 1 Communion point to re-roll one attack die; modelled as Balanced. The Strain Leader's Communion Helm grants this for free once per activation. Mutually exclusive with the Warrior's Warrior Instincts.",
+  },
+  warrior_instincts: {
+    id: "warrior_instincts",
+    label: "Warrior Instincts (Accurate 1)",
+    type: "add_rules",
+    params: { rules: [{ name: "Accurate", value: 1 }] },
+    note: "Vespid Warrior — neutron blaster gains Accurate 1 if you don't spend any Communion points during this shoot. Don't enable alongside Communion for the same sequence.",
+  },
   distend_dorsal_sac: {
     id: "distend_dorsal_sac",
     label: "Distend Dorsal Sac (1AP)",
@@ -885,13 +913,6 @@ export const DEFENDER_EFFECTS = {
     type: "defence_reroll",
     params: { fails: true },
     note: "Raveners — only when defender Burrowed or on Tunnel",
-  },
-  hardened_exoskeleton: {
-    id: "hardened_exoskeleton",
-    label: "Hardened Exoskeleton (-1 dmg per normal die ≥4)",
-    type: "damage_reduction_per_die",
-    params: { dice_type: "normal", threshold: 4, reduce_by: 1 },
-    note: "Vespid — same mechanic as Deathwatch Shield That Slays",
   },
   prismatic_blur: {
     id: "prismatic_blur",
