@@ -183,17 +183,18 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     if (e.type === "reduce_piercing") piercingReduction += e.params.amount;
   }
   let coverSaves = 0;
+  // Piercing X and Piercing Crits X are the same rule with a variant; per
+  // the KT24 appendix, when a weapon has multiple instances of an x-valued
+  // rule the attacker selects one x — they do not stack.
+  let pierceX = 0;
   for (const r of rules) {
-    if (r.name === "Piercing") {
+    if (r.name === "Piercing" || (r.name === "Piercing Crits" && atkC > 0)) {
       const v = Math.max(0, r.value - piercingReduction);
-      defD = Math.max(0, defD - v);
-    }
-    else if (r.name === "Piercing Crits" && atkC > 0) {
-      const v = Math.max(0, r.value - piercingReduction);
-      defD = Math.max(0, defD - v);
+      if (v > pierceX) pierceX = v;
     }
     else if (r.name === "Saturate" && !ignoreSat) coverOff = true;
   }
+  defD = Math.max(0, defD - pierceX);
   if (env.cover && !coverOff && defD > 0) { defD -= 1; coverSaves += 1; }
 
   // save target with defender modifiers
