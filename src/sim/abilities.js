@@ -562,6 +562,14 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Saturate" }] },
     note: "Wrecka Krew — adds Saturate to ranged weapons",
   },
+  plague_rounds: {
+    id: "plague_rounds",
+    label: "Plague Rounds (Severe)",
+    type: "add_rules",
+    params: { rules: [{ name: "Severe" }] },
+    requires_bolt_weapon: true,
+    note: "Plague Marines equipment — boltguns and bolt pistols gain Poison and Severe. Poison's 1-dmg-per-activation token effect happens between activations and isn't modelled in a single shoot.",
+  },
   day_is_at_hand: {
     id: "day_is_at_hand",
     label: "The Day is at Hand (Rending)",

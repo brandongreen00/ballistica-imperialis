@@ -3355,7 +3355,7 @@ export const FACTIONS = [
     id: "plague-marines",
     name: "PLAGUE MARINES",
     short: "PLAGUE MARINES",
-    attacker_effects: [],
+    attacker_effects: ["plague_rounds"],
     defender_effects: ["disgustingly_resilient"],
     operatives: [
       {
