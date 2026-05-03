@@ -349,6 +349,24 @@ export default function App() {
           >
             buy me a coffee
           </a>
+          <span style={{ margin: "0 8px" }}>·</span>
+          <a
+            href="https://pushy-gladiolus-6e2.notion.site/99d36b74a0bf4911a30a7b1c50e862bd?pvs=105"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--text-footer)", textDecoration: "underline", textUnderlineOffset: "2px" }}
+          >
+            feedback
+          </a>
+          <span style={{ margin: "0 8px" }}>·</span>
+          <a
+            href="https://www.notion.so/6bbf6b05d11c475baea03a00e48369d7?v=355a7f3d7b6c81ea971c000ce97f726d&source=copy_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--text-footer)", textDecoration: "underline", textUnderlineOffset: "2px" }}
+          >
+            roadmap
+          </a>
         </div>
       </footer>
     </div>
