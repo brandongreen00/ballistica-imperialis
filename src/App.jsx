@@ -20,10 +20,15 @@ function availableAttackerIds(faction, op) {
 function weaponHasTorrent(weapon) {
   return !!weapon?.rules?.some((r) => /^Torrent\b/.test(r));
 }
+function isBoltWeapon(weapon) {
+  const n = weapon?.name?.toLowerCase() ?? "";
+  return n.includes("boltgun") || n.includes("bolt pistol");
+}
 function isAttackerEffectGated(effect, weapon) {
   if (effect.excludes_pistol && weapon?.is_pistol) return true;
   if (effect.excludes_torrent && weaponHasTorrent(weapon)) return true;
   if (effect.excludes_grenade_or_bomb && weapon?.is_grenade_or_bomb) return true;
+  if (effect.requires_bolt_weapon && !isBoltWeapon(weapon)) return true;
   return false;
 }
 
