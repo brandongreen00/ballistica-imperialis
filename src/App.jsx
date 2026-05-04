@@ -254,6 +254,27 @@ export default function App() {
       </section>
 
       {mode === "fight" && (<>
+      <section className="max-w-6xl mx-auto px-4 mb-4">
+        <div
+          className="panel p-3"
+          role="status"
+          style={{
+            borderColor: "var(--warn-border)",
+            background: "var(--chip-on-bg)",
+          }}
+        >
+          <div
+            className="label-cap mb-1"
+            style={{ color: "var(--warn)", letterSpacing: "0.25em" }}
+          >
+            ⚠ ACTIVE DEVELOPMENT
+          </div>
+          <div className="text-[11px]" style={{ color: "var(--text-muted)" }}>
+            Fight mode is a work in progress and still needs refinement — results may be inaccurate or incomplete. Use at your own risk and don't rely on the numbers yet.
+          </div>
+        </div>
+      </section>
+
       <section className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         <CombatantPanel
           side="A"
