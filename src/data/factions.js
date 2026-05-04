@@ -665,7 +665,7 @@ export const FACTIONS = [
         weapons: [
           { name: "Lasgun", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], is_pistol: false },
           { name: "Bayonet", atk: 3, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], kind: "melee" },
-          { name: "Hand axe", atk: 3, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["an operative is within 3\" of that marker", "subtract"], kind: "melee" },
+          { name: "Hand axe", atk: 3, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: [], kind: "melee" },
         ],
       },
     ],
@@ -5757,7 +5757,7 @@ export const FACTIONS = [
         weapons: [
           { name: "Flamer (standard)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 8\"", "Saturate", "Torrent 2\""], is_pistol: false },
           { name: "Flamer (skytorch)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Saturate", "Skytorch*", "Torrent 0\""], is_pistol: false },
-          { name: "Claws", atk: 3, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["-                                                          -"], kind: "melee" },
+          { name: "Claws", atk: 3, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: [], kind: "melee" },
         ],
       },
       {
