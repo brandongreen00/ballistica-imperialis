@@ -55,6 +55,7 @@ const SUBTITLE_STYLE = { fontFamily: "var(--subtitle-font)", color: "var(--tagli
 const CONDITION_CHIP_STYLE = { borderColor: "var(--border-accent)" };
 
 export default function App() {
+  const [mode, setMode] = useState("shoot");
   const [shooterFactionId, setShooterFactionId] = useState("kasrkin");
   const [shooterOpId, setShooterOpId] = useState("kasrkin-gunner");
   const [targetFactionId, setTargetFactionId] = useState("angels-of-death");
@@ -170,6 +171,45 @@ export default function App() {
         </div>
       </header>
 
+      <section className="max-w-6xl mx-auto px-4 mb-4">
+        <div className="mode-bar" role="tablist" aria-label="Combat mode">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={mode === "shoot"}
+            className={`mode-btn ${mode === "shoot" ? "on" : ""}`}
+            onClick={() => setMode("shoot")}
+          >
+            <span className="mode-glyph">»</span> SHOOT
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={mode === "fight"}
+            className={`mode-btn ${mode === "fight" ? "on" : ""}`}
+            onClick={() => setMode("fight")}
+          >
+            <span className="mode-glyph">×</span> FIGHT
+          </button>
+        </div>
+      </section>
+
+      {mode === "fight" && (
+        <section className="max-w-6xl mx-auto px-4 mt-2 mb-10">
+          <div className="panel p-8 corner-brackets text-center">
+            <div className="label-cap mb-3" style={{ color: "var(--accent-primary)" }}>MELEE PROTOCOLS</div>
+            <h2 style={SECTION_H2_STYLE} className="text-2xl tracking-[0.3em] mb-3">INCOMING TRANSMISSION</h2>
+            <div className="text-sm" style={{ color: "var(--text-muted)" }}>
+              Fight &amp; Retaliate calculus is being calibrated.
+            </div>
+            <div className="text-[10px] mt-3 tracking-[0.25em]" style={{ color: "var(--text-footer)" }}>
+              + + AWAITING MACHINE-SPIRIT CONSECRATION + +
+            </div>
+          </div>
+        </section>
+      )}
+
+      {mode === "shoot" && (<>
       <section className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="panel p-4 corner-brackets">
           <div className="flex items-baseline justify-between mb-3">
@@ -341,6 +381,7 @@ export default function App() {
           </div>
         </section>
       )}
+      </>)}
 
       <footer className="max-w-6xl mx-auto px-4 pb-8 text-center text-[10px] tracking-[0.2em]"
               style={{ color: "var(--text-footer)" }}>
