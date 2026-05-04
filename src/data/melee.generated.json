@@ -1,0 +1,5823 @@
+{
+  "kasrkin-sergeant": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "kasrkin-combat-medic": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-demo-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-gunner": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-recon-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-sharpshooter": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-vox-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "aod-captain": [
+    {
+      "name": "Power fist",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "aod-assault-sergeant": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Power fist",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Thunder hammer",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock",
+        "Stun"
+      ]
+    }
+  ],
+  "aod-intercessor-sergeant": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Power fist",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Thunder hammer",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock",
+        "Stun"
+      ]
+    }
+  ],
+  "aod-assault-grenadier": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "aod-assault-warrior": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "aod-heavy-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "aod-intercessor-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "aod-intercessor-warrior": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "aod-eliminator-sniper": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "battleclade-technoarcheologist": [
+    {
+      "name": "Servo-arc claw",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Severe",
+        "Shock"
+      ]
+    }
+  ],
+  "battleclade-auto-proxy-servitor": [
+    {
+      "name": "Taser goad",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Lethal 5+",
+        "Shock"
+      ]
+    }
+  ],
+  "battleclade-breacher-servitor": [
+    {
+      "name": "Hydraulic pincer & lascutter",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "battleclade-combat-servitor": [
+    {
+      "name": "Servo-claw",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "battleclade-gun-servitor": [
+    {
+      "name": "Augmetic claw",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "battleclade-servitor-underseer": [
+    {
+      "name": "Dataspikes",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "battleclade-technomedic-servitor": [
+    {
+      "name": "Servo-chirurgic claw",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "insidiant-superior": [
+    {
+      "name": "Null mace",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Shock",
+        "Anti-PSYKER*"
+      ]
+    }
+  ],
+  "insidiant-abjuror": [
+    {
+      "name": "Blessed sword & praesidium",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Shield*"
+      ]
+    },
+    {
+      "name": "Blessed sword & praesidium",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "insidiant-censor": [
+    {
+      "name": "Virge of admonition",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Shock",
+        "Anti-PSYKER*"
+      ]
+    }
+  ],
+  "insidiant-cremator": [
+    {
+      "name": "Null mace",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Shock",
+        "Anti-PSYKER*"
+      ]
+    }
+  ],
+  "insidiant-denuncia": [
+    {
+      "name": "Staff of declamation",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 3,
+      "rules": [
+        "Shock"
+      ]
+    }
+  ],
+  "insidiant-mortisanctus": [
+    {
+      "name": "Blessed broadsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+",
+        "Brutal"
+      ]
+    }
+  ],
+  "insidiant-reliquarius": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "insidiant-warrior": [
+    {
+      "name": "Null mace",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Shock",
+        "Anti-PSYKER*"
+      ]
+    }
+  ],
+  "dkok-watchmaster": [
+    {
+      "name": "Bayonet",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "dkok-bruiser": [
+    {
+      "name": "Trench club",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 3,
+      "rules": [
+        "Shock"
+      ]
+    }
+  ],
+  "dkok-confidant": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "dkok-gunner": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "dkok-medic": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "dkok-sapper": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "dkok-sniper": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "dkok-spotter": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "dkok-trooper": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "dkok-veteran": [
+    {
+      "name": "Bionic arm",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "dkok-vox-operator": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "dkok-zealot": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Hand axe",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "an operative is within 3\" of that marker",
+        "subtract"
+      ]
+    }
+  ],
+  "dw-watch-sergeant": [
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "dw-aegis-veteran": [
+    {
+      "name": "Power maul & storm shield",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock",
+        "Shield*"
+      ]
+    }
+  ],
+  "dw-blademaster-veteran": [
+    {
+      "name": "Xenophase blade (duel)",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "dw-bombard-veteran": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "dw-breacher-veteran": [
+    {
+      "name": "Auxiliary grenade launcher",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Piercing 1"
+      ]
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "dw-demolisher-veteran": [
+    {
+      "name": "Heavy thunder hammer",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 6,
+      "crit_dmg": 7,
+      "rules": [
+        "Shock",
+        "Stun"
+      ]
+    }
+  ],
+  "dw-disruptor-veteran": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "dw-gunner-veteran": [
+    {
+      "name": "Heavy plasma incinerator",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Piercing 1"
+      ]
+    },
+    {
+      "name": "Heavy plasma incinerator",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Hot",
+        "Lethal 5+",
+        "Piercing 1"
+      ]
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "dw-headtaker-veteran": [
+    {
+      "name": "Combat knives",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "dw-horde-slayer-veteran": [
+    {
+      "name": "Infernus heavy bolter",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Piercing Crits 1"
+      ]
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "dw-marksman-veteran": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "starstrider-elucia-vhane": [
+    {
+      "name": "Monomolecular cane-rapier",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "starstrider-canid": [
+    {
+      "name": "Vicious bite",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "starstrider-death-cult-executioner": [
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "starstrider-lectro-maester": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "starstrider-rejuvenat-adept": [
+    {
+      "name": "Scalpel claw",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "starstrider-voidmaster": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "starstrider-voidsman": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-proctor-exactant": [
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-chirurgant": [
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-leashmaster": [
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-cyber-mastiff": [
+    {
+      "name": "Mechanical bite",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "arbites-castigator": [
+    {
+      "name": "Excruciator maul",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending",
+        "Shock"
+      ]
+    }
+  ],
+  "arbites-gunner": [
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-malocator": [
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-marksman": [
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-revelatum": [
+    {
+      "name": "Scoped shotpistol (long range)",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-subductor": [
+    {
+      "name": "Shock maul & assault shield",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Shock",
+        "Repress*"
+      ]
+    }
+  ],
+  "arbites-vigilant": [
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "arbites-vox-signifier": [
+    {
+      "name": "Repression baton",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hc-ruststalker-princeps": [
+    {
+      "name": "Chordclaw & transonic blades",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Balanced",
+        "Rending"
+      ]
+    }
+  ],
+  "hc-infiltrator-princeps": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Taser goad",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Lethal 5+",
+        "Shock"
+      ]
+    }
+  ],
+  "hc-ranger-alpha": [
+    {
+      "name": "Arc maul",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Shock"
+      ]
+    },
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Taser goad",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Lethal 5+",
+        "Shock"
+      ]
+    }
+  ],
+  "hc-vanguard-alpha": [
+    {
+      "name": "Arc maul",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Shock"
+      ]
+    },
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Taser goad",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Lethal 5+",
+        "Shock"
+      ]
+    }
+  ],
+  "hc-infiltrator-warrior": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Taser goad",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Lethal 5+",
+        "Shock"
+      ]
+    }
+  ],
+  "hc-ruststalker-warrior": [
+    {
+      "name": "Chordclaw & transonic razor",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Balanced"
+      ]
+    },
+    {
+      "name": "Transonic blades",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "hc-ranger-diktat": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hc-ranger-gunner": [
+    {
+      "name": "Arc rifle1",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Piercing 1",
+        "Stun"
+      ]
+    },
+    {
+      "name": "Plasma caliver (supercharge)1",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Hot",
+        "Lethal 5+",
+        "Piercing 1"
+      ]
+    },
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hc-ranger-surveyor": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hc-ranger-warrior": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hc-vanguard-diktat": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hc-vanguard-gunner": [
+    {
+      "name": "Arc rifle1",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Piercing 1",
+        "Stun"
+      ]
+    },
+    {
+      "name": "Plasma caliver (supercharge)1",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Hot",
+        "Lethal 5+",
+        "Piercing 1"
+      ]
+    },
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hc-vanguard-surveyor": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hc-vanguard-warrior": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "inb-sergeant-at-arms": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Navis hatchet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "inb-armsman": [
+    {
+      "name": "Navis hatchet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "inb-axejack": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "inb-endurant": [
+    {
+      "name": "Shield bash",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": [
+        "Brutal",
+        "Shield*"
+      ]
+    }
+  ],
+  "inb-grenadier": [
+    {
+      "name": "Navis hatchet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "inb-gunner": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "inb-hatchcutter": [
+    {
+      "name": "Chainfist",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal",
+        "Rending"
+      ]
+    }
+  ],
+  "inb-surveyor": [
+    {
+      "name": "Navis hatchet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "inb-void-jammer": [
+    {
+      "name": "Navis hatchet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ia-interrogator": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-autosavant": [
+    {
+      "name": "Mechanical appendages",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "ia-death-world-veteran": [
+    {
+      "name": "Knife",
+      "atk": 1,
+      "hit": 2,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Polearm",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ia-enlightener": [
+    {
+      "name": "Paired blades",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Balanced",
+        "Rending"
+      ]
+    }
+  ],
+  "ia-hexorcist": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-mystic": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-penal-legionnaire": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ia-pistolier": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-questkeeper": [
+    {
+      "name": "Eviscerator",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "ia-gun-servitor": [
+    {
+      "name": "Servo claw",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ia-sos-prosecutor": [
+    {
+      "name": "Gun butt",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-sos-vigilator": [
+    {
+      "name": "Executioner greatblade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "ia-sos-witchseeker": [
+    {
+      "name": "Gun butt",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-scion-gunner": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-scion-medic": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-scion-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ia-scion-vox-operator": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "nov-superior": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "nov-condemnor": [
+    {
+      "name": "Null rod",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 3,
+      "rules": [
+        "Anti-PSYKER*",
+        "Shock"
+      ]
+    }
+  ],
+  "nov-dialogus": [
+    {
+      "name": "Dialogus stave",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 3,
+      "rules": [
+        "Shock"
+      ]
+    }
+  ],
+  "nov-duellist": [
+    {
+      "name": "Duelling blades",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Riposte*"
+      ]
+    }
+  ],
+  "nov-exactor": [
+    {
+      "name": "Neural whips (melee)",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": [
+        "Lethal 5+",
+        "Shock"
+      ]
+    }
+  ],
+  "nov-hospitaller": [
+    {
+      "name": "Surgical saw",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": [
+        "Lethal 5+",
+        "Rending"
+      ]
+    }
+  ],
+  "nov-militant": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Novitiate blade",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "nov-penitent": [
+    {
+      "name": "Penitent eviscerator",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal",
+        "Zealous Rage*"
+      ]
+    }
+  ],
+  "nov-preceptor": [
+    {
+      "name": "Mace of the Righteous",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Severe"
+      ]
+    }
+  ],
+  "nov-pronatus": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "nov-purgatus": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "nov-reliquarius": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ph-infiltrator-sergeant": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-infiltrator-commsman": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-infiltrator-helix-adept": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-infiltrator-saboteur": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-infiltrator-veteran": [
+    {
+      "name": "Custom bolt carbine",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Custom*"
+      ]
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-infiltrator-voxbreaker": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-infiltrator-warrior": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-incursor-sergeant": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-incursor-marksman": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-incursor-minelayer": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-incursor-warrior": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-reiver-sergeant": [
+    {
+      "name": "Combat knife",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ph-reiver-warrior": [
+    {
+      "name": "Combat knife",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "rat-fixer": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "rat-battlemutt": [
+    {
+      "name": "Bite",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "rat-bullgryn": [
+    {
+      "name": "Power maul",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock"
+      ]
+    },
+    {
+      "name": "Brute shield",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Slabshield",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "rat-ogryn": [
+    {
+      "name": "Bayonet",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "rat-big-shot": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "rat-bomber": [
+    {
+      "name": "Bionic arm",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "rat-hardbit": [
+    {
+      "name": "Combat knife",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Balanced"
+      ]
+    }
+  ],
+  "rat-raider": [
+    {
+      "name": "Dagger",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "rat-sneak": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "rat-sniper": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "rat-spotter": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "rat-stashmaster": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "rat-vox-thief": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "sanc-confessor": [
+    {
+      "name": "Mace of Censure",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Shock"
+      ]
+    }
+  ],
+  "sanc-cherub": [
+    {
+      "name": "Incentiviser",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 3,
+      "rules": [
+        "Shock"
+      ]
+    }
+  ],
+  "sanc-conflagrator": [
+    {
+      "name": "Gun butts",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "sanc-death-cult-assassin": [
+    {
+      "name": "Ritual blades",
+      "atk": 4,
+      "hit": 2,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": []
+    }
+  ],
+  "sanc-drill-abbot": [
+    {
+      "name": "Great hammer",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Brutal",
+        "Shock"
+      ]
+    }
+  ],
+  "sanc-persecutor": [
+    {
+      "name": "Eviscerator",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "sanc-miraculist": [
+    {
+      "name": "Burning hands",
+      "atk": 1,
+      "hit": 2,
+      "normal_dmg": 7,
+      "crit_dmg": 8,
+      "rules": [
+        "Brutal",
+        "Limited 1",
+        "Blaze*"
+      ]
+    },
+    {
+      "name": "Fists",
+      "atk": 2,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "sanc-missionary": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "sanc-preacher": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "sanc-reliquant": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "sanc-salvationist": [
+    {
+      "name": "Soulstave",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "scout-sergeant": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "scout-heavy-gunner": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "scout-hunter": [
+    {
+      "name": "Combat blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "scout-sniper": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "scout-tracker": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "scout-warrior": [
+    {
+      "name": "Combat blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "aq-tempestor": [
+    {
+      "name": "Hot‑shot lascarbine",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "aq-grenadier": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "aq-gunner": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "aq-marksman": [
+    {
+      "name": "Hot‑shot long‑las (mobile)",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "aq-precursor": [
+    {
+      "name": "Tempestus dagger",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "aq-servo-sentry": [
+    {
+      "name": "Hot‑shot volley gun (focused)",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Piercing Crits 1"
+      ]
+    }
+  ],
+  "aq-trooper": [
+    {
+      "name": "Hot‑shot lascarbine",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "ws-pack-leader": [
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "ws-fangbearer": [
+    {
+      "name": "Combat blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ws-frosteye": [
+    {
+      "name": "Instigator bolt carbine",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Piercing Crits 1",
+        "Silent"
+      ]
+    },
+    {
+      "name": "Combat blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ws-gunner": [
+    {
+      "name": "Combat blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ws-hunter": [
+    {
+      "name": "Combat blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ws-trapmaster": [
+    {
+      "name": "Combat blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ws-fenrisian-wolf": [
+    {
+      "name": "Fangs",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "bl-chieftain": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Improvised blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "bl-brimstone-grenadier": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bl-butcher": [
+    {
+      "name": "Power weapon & cleaver",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+",
+        "Blood Offering*"
+      ]
+    }
+  ],
+  "bl-corpseman": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bl-commsman": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bl-enforcer": [
+    {
+      "name": "Power fist",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "bl-flenser": [
+    {
+      "name": "Skinning blades",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Ceaseless",
+        "Stalk*"
+      ]
+    }
+  ],
+  "bl-gunner": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bl-ogryn": [
+    {
+      "name": "Power maul & mutant claw",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Rending",
+        "Shock"
+      ]
+    }
+  ],
+  "bl-sharpshooter": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bl-thug": [
+    {
+      "name": "Heavy club",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "bl-trench-sweeper": [
+    {
+      "name": "Bayonet & shield",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": [
+        "Shield*"
+      ]
+    }
+  ],
+  "bl-trooper": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "cc-demagogue": [
+    {
+      "name": "Diabolical stave (melee)",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock",
+        "Stun"
+      ]
+    }
+  ],
+  "cc-blessed-blade": [
+    {
+      "name": "Commune blade",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "cc-iconarch": [
+    {
+      "name": "Crude melee weapon",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "cc-mindwitch": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "cc-devotee": [
+    {
+      "name": "Crude melee weapon",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "cc-mutant": [
+    {
+      "name": "Blasphemous appendages",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Ceaseless",
+        "Rending"
+      ]
+    }
+  ],
+  "cc-torment": [
+    {
+      "name": "Hideous mutations",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Rending"
+      ]
+    }
+  ],
+  "fg-ironhorn": [
+    {
+      "name": "Bludgeon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Corrupted chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "fg-deathknell": [
+    {
+      "name": "Bludgeon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "fg-fluxbray": [
+    {
+      "name": "Triple cleavers",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless"
+      ]
+    }
+  ],
+  "fg-gnarlscar": [
+    {
+      "name": "Bionic fist",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "fg-gorehorn": [
+    {
+      "name": "Skullcleaver",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+",
+        "Headtaker*"
+      ]
+    }
+  ],
+  "fg-herd-goad": [
+    {
+      "name": "Crackthorn whip (melee)",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": [
+        "Lethal 4+",
+        "Shock"
+      ]
+    }
+  ],
+  "fg-mangler": [
+    {
+      "name": "Vicious claws",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Ceaseless",
+        "Tactual Hunter*"
+      ]
+    }
+  ],
+  "fg-shaman": [
+    {
+      "name": "Braystave",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Shock"
+      ]
+    }
+  ],
+  "fg-toxhorn": [
+    {
+      "name": "Cleaver",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "fg-vandal": [
+    {
+      "name": "Mancrusher",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Vicious Blows*"
+      ]
+    }
+  ],
+  "fg-warrior": [
+    {
+      "name": "Bludgeon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Cleaver",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "gx-vulgrar": [
+    {
+      "name": "Fleshmelded weapons",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Engineered*"
+      ]
+    }
+  ],
+  "gx-bloatspawn": [
+    {
+      "name": "Mutant claw & tentacles",
+      "atk": 6,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Mutant claw & tentacles",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Swipe*"
+      ]
+    }
+  ],
+  "gx-fleshscreamer": [
+    {
+      "name": "Mutant fist and cleaver",
+      "atk": 1,
+      "hit": 3,
+      "normal_dmg": 8,
+      "crit_dmg": 9,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Mutant fist and cleaver",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": []
+    }
+  ],
+  "gx-lumberghast": [
+    {
+      "name": "Mutant claw",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 6,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "gx-mutant": [
+    {
+      "name": "Heavy axe",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Improvised weapon",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Ceaseless"
+      ]
+    }
+  ],
+  "gx-glitchling": [
+    {
+      "name": "Diseased nippers",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "gx-cursemite": [
+    {
+      "name": "Bloodsucking proboscis",
+      "atk": 2,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": [
+        "Rending",
+        "Feast*"
+      ]
+    }
+  ],
+  "gx-eyestinger-swarm": [
+    {
+      "name": "Sting",
+      "atk": 5,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": [
+        "Shock"
+      ]
+    }
+  ],
+  "gx-sludge-grub": [
+    {
+      "name": "Fanged maw",
+      "atk": 2,
+      "hit": 4,
+      "normal_dmg": 1,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "gm-blood-herald": [
+    {
+      "name": "Chainblade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "gm-aspirant": [
+    {
+      "name": "Chainglaive",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "gm-bloodtaker": [
+    {
+      "name": "Ritual blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Ritual*"
+      ]
+    }
+  ],
+  "gm-impaler": [
+    {
+      "name": "Fleshskewer (stab)",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "gm-skullclaimer": [
+    {
+      "name": "Great chainaxe",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "gm-stalker": [
+    {
+      "name": "Pickrippers",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "lg-aspiring-champion": [
+    {
+      "name": "Power fist",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Power maul",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Tainted chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "lg-chosen": [
+    {
+      "name": "Daemon blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 7,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "lg-anointed": [
+    {
+      "name": "Daemonic claw",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "lg-balefire-acolyte": [
+    {
+      "name": "Fell dagger",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "PSYCHIC",
+        "Rending",
+        "Siphon Life*"
+      ]
+    }
+  ],
+  "lg-butcher": [
+    {
+      "name": "Double-handed chainaxe",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "lg-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "lg-heavy-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "lg-icon-bearer": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "lg-shrivetalon": [
+    {
+      "name": "Flensing blades",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "lg-warrior": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "mw-chaos-lord": [
+    {
+      "name": "Lightning claw",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+",
+        "Rending"
+      ]
+    },
+    {
+      "name": "Power fist",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal",
+        "Shock"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Relic lightning claws",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+",
+        "Rending"
+      ]
+    }
+  ],
+  "mw-champion": [
+    {
+      "name": "Power fist",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal",
+        "Shock"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Mutated claws",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "mw-depredator": [
+    {
+      "name": "Great chainaxe",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "mw-huntmaster": [
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "mw-raptor": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "mw-shrieker": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "mw-skysear": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "mw-warp-talon": [
+    {
+      "name": "Lightning claws",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+",
+        "Rending"
+      ]
+    }
+  ],
+  "nc-visionary": [
+    {
+      "name": "8                         Nostraman chainblade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    },
+    {
+      "name": "Power fist",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Power maul",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "nc-fearmonger": [
+    {
+      "name": "Tainted blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Terrorchem*"
+      ]
+    }
+  ],
+  "nc-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "nc-heavy-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "nc-screecher": [
+    {
+      "name": "Lightning claws",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "nc-skinthief": [
+    {
+      "name": "Nostraman chainglaive",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "nc-ventrilokar": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "nc-warrior": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "pm-champion": [
+    {
+      "name": "Plague sword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Severe",
+        "Poison*",
+        "Toxic*"
+      ]
+    }
+  ],
+  "pm-plaguecaster": [
+    {
+      "name": "Corrupted staff",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "PSYCHIC",
+        "Severe",
+        "Shock",
+        "Stun",
+        "Poison*"
+      ]
+    }
+  ],
+  "pm-bombardier": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "pm-fighter": [
+    {
+      "name": "Flail of Corruption",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Severe",
+        "Shock",
+        "Poison*"
+      ]
+    }
+  ],
+  "pm-heavy-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "pm-icon-bearer": [
+    {
+      "name": "Plague knife",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Severe",
+        "Poison*"
+      ]
+    }
+  ],
+  "pm-warrior": [
+    {
+      "name": "Plague knife",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Severe",
+        "Poison*"
+      ]
+    }
+  ],
+  "wc-sorcerer-destiny": [
+    {
+      "name": "Force stave",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "PSYCHIC",
+        "Shock"
+      ]
+    },
+    {
+      "name": "Prosperine khopesh",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Balanced",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "wc-sorcerer-tempyrion": [
+    {
+      "name": "Force stave",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "PSYCHIC",
+        "Shock"
+      ]
+    },
+    {
+      "name": "Prosperine khopesh",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Balanced",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "wc-sorcerer-warpfire": [
+    {
+      "name": "Force stave",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "PSYCHIC",
+        "Shock"
+      ]
+    },
+    {
+      "name": "Prosperine khopesh",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Balanced",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "wc-rubric-gunner": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "wc-rubric-icon-bearer": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "wc-rubric-warrior": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "wc-tzaangor-champion": [
+    {
+      "name": "Greataxe",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Greatblade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+",
+        "Rending"
+      ]
+    }
+  ],
+  "wc-tzaangor-horn-bearer": [
+    {
+      "name": "Dagger",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "wc-tzaangor-icon-bearer": [
+    {
+      "name": "Dagger",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "wc-tzaangor-warrior": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Tzaangor blade & shield",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Shield*"
+      ]
+    },
+    {
+      "name": "Tzaangor blades",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Balanced"
+      ]
+    }
+  ],
+  "bk-dire-avenger-exarch": [
+    {
+      "name": "Diresword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+",
+        "Rending"
+      ]
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Gun butts",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "bk-dire-avenger-warrior": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "bk-howling-banshee-exarch": [
+    {
+      "name": "Executioner",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 7,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Mirrorswords",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Triskele (slice)",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "bk-howling-banshee-warrior": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "bk-striking-scorpion-exarch": [
+    {
+      "name": "Biting blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Rending"
+      ]
+    },
+    {
+      "name": "Scorpion’s claw and chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal",
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Twin chainswords",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Rending"
+      ]
+    }
+  ],
+  "bk-striking-scorpion-warrior": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "bb-commander": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Chainsword and claw",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Balanced",
+        "Rending"
+      ]
+    },
+    {
+      "name": "Power weapon and claw",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Balanced",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "bb-agitator": [
+    {
+      "name": "Shock maul",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Shock"
+      ]
+    }
+  ],
+  "bb-gunner": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bb-iconward": [
+    {
+      "name": "Large knife",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "bb-knife-fighter": [
+    {
+      "name": "Poisoned fighting knives",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "bb-medic": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bb-sapper": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bb-sniper": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bb-trooper": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bb-veteran": [
+    {
+      "name": "Bayonet & claw",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": [
+        "Balanced"
+      ]
+    }
+  ],
+  "bb-vox-operator": [
+    {
+      "name": "Bayonet",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "bb-magus": [
+    {
+      "name": "Bio dagger",
+      "atk": 2,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 4+"
+      ]
+    },
+    {
+      "name": "Force stave",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "PSYCHIC",
+        "Shock"
+      ]
+    }
+  ],
+  "bb-patriarch": [
+    {
+      "name": "Claws",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Relentless",
+        "Rending"
+      ]
+    }
+  ],
+  "bb-psychic-familiar": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "bb-primus": [
+    {
+      "name": "Bonesword and toxin injector claw",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+",
+        "Rending"
+      ]
+    }
+  ],
+  "cn-geomancer": [
+    {
+      "name": "Tremorglaive (sweep)",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Severe",
+        "Shock",
+        "Stun"
+      ]
+    }
+  ],
+  "cn-macrocyte-accelerator": [
+    {
+      "name": "Claws & spark",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Lethal 5+",
+        "Stun"
+      ]
+    }
+  ],
+  "cn-macrocyte-reanimator": [
+    {
+      "name": "Claws & tail",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "cn-macrocyte-warrior": [
+    {
+      "name": "Claws & tail",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "cn-tomb-crawler": [
+    {
+      "name": "Claws",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "cv-felarch": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "cv-fate-dealer": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "cv-gunner": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "cv-heavy-gunner": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "cv-kurnathi": [
+    {
+      "name": "Dual power weapons",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "cv-kurnite-hunter": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "cv-shade-runner": [
+    {
+      "name": "Hekatarii blades",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "cv-soul-weaver": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "cv-starstorm-duellist": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "cv-warrior": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "cv-way-seeker": [
+    {
+      "name": "Witch staff",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "PSYCHIC",
+        "Shock"
+      ]
+    }
+  ],
+  "fk-kill-broker": [
+    {
+      "name": "Ritual blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "fk-bow-hunter": [
+    {
+      "name": "Blade",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "fk-cold-blood": [
+    {
+      "name": "Blade",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "fk-cut-skin": [
+    {
+      "name": "Cut-skin's blades",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "fk-heavy-gunner": [
+    {
+      "name": "Blade",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "fk-hound": [
+    {
+      "name": "Ripping fangs",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "fk-long-sight": [
+    {
+      "name": "Blade",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "fk-pistolier": [
+    {
+      "name": "Blade",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "fk-stalker": [
+    {
+      "name": "Stalker's blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Balanced",
+        "Rending"
+      ]
+    }
+  ],
+  "fk-tracker": [
+    {
+      "name": "Blade",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "fk-warrior": [
+    {
+      "name": "Blade",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ha-archsybarite": [
+    {
+      "name": "Agoniser",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Lethal 5+",
+        "Shock"
+      ]
+    },
+    {
+      "name": "Array of blades",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Venom blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 4+"
+      ]
+    }
+  ],
+  "ha-agent": [
+    {
+      "name": "Array of blades",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ha-crimson-duellist": [
+    {
+      "name": "Razorflail",
+      "atk": 4,
+      "hit": 2,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Tangle*"
+      ]
+    }
+  ],
+  "ha-disciple-of-yaelindra": [
+    {
+      "name": "Array of blades",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ha-elixicant": [
+    {
+      "name": "Array of blades",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ha-flayer": [
+    {
+      "name": "Pain sculptors",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Flay*"
+      ]
+    }
+  ],
+  "ha-gunner": [
+    {
+      "name": "Array of blades",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ha-heavy-gunner": [
+    {
+      "name": "Array of blades",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ha-skysplinter-assassin": [
+    {
+      "name": "Array of blades",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "hks-theyn": [
+    {
+      "name": "Concussion gauntlet",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal",
+        "Shock"
+      ]
+    },
+    {
+      "name": "Plasma weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "hks-dozr": [
+    {
+      "name": "Concussion knux",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+",
+        "Shock"
+      ]
+    }
+  ],
+  "hks-field-medic": [
+    {
+      "name": "Plasma knife",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "hks-grenadier": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hks-gunner": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hks-jump-pack-warrior": [
+    {
+      "name": "Plasma weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+",
+        "Force Impact*"
+      ]
+    }
+  ],
+  "hks-kinlynk": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hks-kognitaar": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hks-lokatr": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hks-lugger": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hks-warrior": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hk-theyn": [
+    {
+      "name": "8                           Plasma knife",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "hk-bladekyn": [
+    {
+      "name": "Dual plasma knives",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "hk-bombast": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hk-gunner": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hk-ironbraek": [
+    {
+      "name": "Entrencher",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "hk-riflekyn": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "hk-tracker": [
+    {
+      "name": "Hatchet",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "hk-warrior": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Plasma knife",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "hi-chronomancer": [
+    {
+      "name": "Entropic lance (ranged)",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 3,
+      "rules": [
+        "Devastating 3",
+        "Piercing 1",
+        "Magnify*"
+      ]
+    },
+    {
+      "name": "Aeonstave (melee)",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Lethal 5+",
+        "Shock"
+      ]
+    },
+    {
+      "name": "Entropic lance (melee)",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 6,
+      "rules": []
+    }
+  ],
+  "hi-psychomancer": [
+    {
+      "name": "Abyssal lance (melee)",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Devastating 1"
+      ]
+    }
+  ],
+  "hi-technomancer": [
+    {
+      "name": "Staff of light (ranged)",
+      "atk": 6,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Rending",
+        "Magnify*"
+      ]
+    },
+    {
+      "name": "Staff of light (melee)",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "hi-plasmacyte-accelerator": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "hi-plasmacyte-reanimator": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "hi-apprentek": [
+    {
+      "name": "Arcane conduit (ranged)",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Piercing 1",
+        "Magnify*"
+      ]
+    },
+    {
+      "name": "Arcane conduit (melee)",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "hi-deathmark": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "hi-immortal-despotek": [
+    {
+      "name": "Bayonet",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "hi-immortal-guardian": [
+    {
+      "name": "Bayonet",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ko-boss-nob": [
+    {
+      "name": "Big choppa",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Punishing"
+      ]
+    },
+    {
+      "name": "Power klaw",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "ko-bomb-squig": [
+    {
+      "name": "Bite",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ko-boy": [
+    {
+      "name": "Choppa",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "ko-breacha-boy": [
+    {
+      "name": "Breacha ram",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal",
+        "Severe",
+        "Shock"
+      ]
+    }
+  ],
+  "ko-burna-boy": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ko-comms-boy": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ko-dakka-boy": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ko-grot": [
+    {
+      "name": "Grot choppa",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ko-rokkit-boy": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "ko-slasha-boy": [
+    {
+      "name": "Twin choppas",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "ko-snipa-boy": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "md-nightfiend": [
+    {
+      "name": "Huskblade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+",
+        "Shock"
+      ]
+    }
+  ],
+  "md-abyssal": [
+    {
+      "name": "Glimmersteel blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "md-chooser": [
+    {
+      "name": "Baleblade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal",
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "md-dirgemaw": [
+    {
+      "name": "Glimmersteel blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "md-shadeweaver": [
+    {
+      "name": "Glimmersteel blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "md-warrior": [
+    {
+      "name": "Glimmersteel blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "pf-shasui": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-assault-grenadier": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-blooded": [
+    {
+      "name": "Bionic arm",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "pf-comms-specialist": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-drone-controller": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-marksman": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-medical-technician": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-shasla": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-transpectral-interference": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-weapons-expert": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-mb3-recon-drone": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-mv1-gun-drone": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-mv4-shield-drone": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-mv7-marker-drone": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-mv31-pulse-accelerator": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "pf-mv33-grav-inhibitor": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "rv-prime": [
+    {
+      "name": "Scything talons & rending claws",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "rv-felltalon": [
+    {
+      "name": "Toxic scythes",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+",
+        "Shock",
+        "Poison*"
+      ]
+    }
+  ],
+  "rv-tremorscythe": [
+    {
+      "name": "Scything talons",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "rv-venomspitter": [
+    {
+      "name": "Scything talons",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "rv-warrior": [
+    {
+      "name": "Scything talons",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "rv-wrecker": [
+    {
+      "name": "Scything talons & crushing claws",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Crush*"
+      ]
+    }
+  ],
+  "vp-strain-leader": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "vp-oversight-drone": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 1,
+      "crit_dmg": 2,
+      "rules": []
+    }
+  ],
+  "vp-longsting": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "vp-shadestrain": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "vp-skyblast": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "vp-swarmguard": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "-                                                          -"
+      ]
+    }
+  ],
+  "vp-warrior": [
+    {
+      "name": "Claws",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "vd-lead-player": [
+    {
+      "name": "Blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Severe"
+      ]
+    },
+    {
+      "name": "Caress",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    },
+    {
+      "name": "Embrace",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Kiss",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 7,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "vd-death-jester": [
+    {
+      "name": "Shrieker blade",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "vd-player": [
+    {
+      "name": "Blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Severe"
+      ]
+    },
+    {
+      "name": "Caress",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    },
+    {
+      "name": "Embrace",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Kiss",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 7,
+      "rules": []
+    }
+  ],
+  "vd-shadowseer": [
+    {
+      "name": "Miststave",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 4,
+      "rules": [
+        "Shock"
+      ]
+    }
+  ],
+  "wk-boss-nob": [
+    {
+      "name": "Choppa",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Smash hammer",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "wk-bomb-squig": [
+    {
+      "name": "Bite",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "wk-breaka-demolisha": [
+    {
+      "name": "Tankhammer (bash)",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "wk-breaka-fighter": [
+    {
+      "name": "Smash hammer",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "wk-breaka-krusha": [
+    {
+      "name": "Knucklebustas",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal",
+        "Shock",
+        "Smash*"
+      ]
+    }
+  ],
+  "wk-tankbusta-gunner": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "wk-tankbusta-rokkiteer": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "wb-neophyte-leader": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power maul",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock"
+      ]
+    },
+    {
+      "name": "Power pick",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "wb-kelermorph": [
+    {
+      "name": "Kelermorph knife",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "wb-locus": [
+    {
+      "name": "Locus blades",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "wb-neophyte-gunner": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "wb-neophyte-heavy-gunner": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "wb-neophyte-icon-bearer": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "wb-sanctus-sniper": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "wb-sanctus-talon": [
+    {
+      "name": "Sanctus bio-dagger",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 4+",
+        "Shock"
+      ]
+    }
+  ],
+  "wb-neophyte-warrior": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "xv-designator": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "xv-infiltrator": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "xv-liberator": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "xv-lodestar": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "xv-neutraliser": [
+    {
+      "name": "Fists",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "xv-mv15-gun-drone": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "xv-mv75-marker-drone": [
+    {
+      "name": "Ram",
+      "atk": 3,
+      "hit": 5,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ]
+}

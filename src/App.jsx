@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 
 import { FACTIONS } from "./data/factions.js";
 import { categoryFor } from "./data/factionCategories.js";
 import { simulate } from "./sim/simulate.js";
+import { fightSimulate } from "./sim/fight.js";
 import { ATTACKER_EFFECTS, DEFENDER_EFFECTS } from "./sim/abilities.js";
 import { FONT_CSS, THEMES } from "./ui/styles.js";
 import { Field, Select, Toggle, HeadlineStat, LegendDot } from "./ui/primitives.jsx";
@@ -70,6 +71,15 @@ export default function App() {
   const [stats, setStats] = useState(null);
   const [computing, setComputing] = useState(false);
 
+  // ── Fight-mode state ────────────────────────────────────────────────────
+  const [meleeAIdx, setMeleeAIdx] = useState(0);
+  const [meleeBIdx, setMeleeBIdx] = useState(0);
+  const [healthA, setHealthA] = useState(null); // re-initialised on operative change below
+  const [priorityA, setPriorityA] = useState("MAX_DMG");
+  const [priorityB, setPriorityB] = useState("MAX_DMG");
+  const [initiator, setInitiator] = useState("A");
+  const [fightStats, setFightStats] = useState(null);
+
   const shooterFaction = factionById(shooterFactionId);
   const shooter = opById(shooterFaction, shooterOpId);
   const targetFaction = factionById(targetFactionId);
@@ -88,6 +98,8 @@ export default function App() {
   if (lastShooterKey !== curShooterKey) {
     setLastShooterKey(curShooterKey);
     setWeaponIdx(0);
+    setMeleeAIdx(0);
+    setHealthA(shooter.wounds);
     const allowed = new Set(availableAttackerIds(shooterFaction, shooter));
     setAtkEffOn((s) => s.filter((id) => allowed.has(id)));
     setWrekaBanked(0);
@@ -98,13 +110,25 @@ export default function App() {
   const curTargetKey = `${targetFaction.id}/${target.id}`;
   if (lastTargetKey !== curTargetKey) {
     setLastTargetKey(curTargetKey);
+    setMeleeBIdx(0);
     const allowed = new Set(availableDefenderIds(targetFaction, target));
     setDefEffOn((s) => s.filter((id) => allowed.has(id)));
     setCurrentHealth(target.wounds);
   }
 
-  const weapon = shooter.weapons[Math.min(weaponIdx, Math.max(shooter.weapons.length - 1, 0))];
+  // healthA bootstrap on first render (shooter.wounds isn't known until after
+  // the shooter is resolved above; null sentinel ensures this only runs once)
+  if (healthA === null) setHealthA(shooter.wounds);
+
+  const rangedWeapons = shooter.weapons.filter((w) => w.kind !== "melee");
+  const weapon = rangedWeapons[Math.min(weaponIdx, Math.max(rangedWeapons.length - 1, 0))];
   const hasWeapon = !!weapon;
+
+  const meleeWeaponsA = shooter.weapons.filter((w) => w.kind === "melee");
+  const meleeWeaponsB = target.weapons.filter((w) => w.kind === "melee");
+  const meleeWeaponA = meleeWeaponsA[Math.min(meleeAIdx, Math.max(meleeWeaponsA.length - 1, 0))];
+  const meleeWeaponB = meleeWeaponsB[Math.min(meleeBIdx, Math.max(meleeWeaponsB.length - 1, 0))];
+  const fightReady = !!meleeWeaponA && !!meleeWeaponB;
 
   const availAtkIds = availableAttackerIds(shooterFaction, shooter);
   const availDefIds = availableDefenderIds(targetFaction, target);
@@ -123,6 +147,29 @@ export default function App() {
     setTargetFactionId(fid);
     const f = factionById(fid);
     setTargetOpId(f.operatives[0].id);
+  }
+
+  function runFight() {
+    if (!fightReady) return;
+    setComputing(true);
+    setTimeout(() => {
+      const hpA = Math.max(1, Math.min(healthA ?? shooter.wounds, shooter.wounds));
+      const hpB = Math.max(1, Math.min(currentHealth, target.wounds));
+      const s = fightSimulate({
+        weaponA: meleeWeaponA,
+        weaponB: meleeWeaponB,
+        hpA, hpB,
+        priorityA, priorityB, initiator,
+      }, trials);
+      setFightStats({
+        ...s,
+        nameA: shooter.full_name, nameB: target.full_name,
+        weaponNameA: meleeWeaponA.name, weaponNameB: meleeWeaponB.name,
+        startHpA: hpA, startHpB: hpB,
+        priorityA, priorityB, initiator,
+      });
+      setComputing(false);
+    }, 10);
   }
 
   function runFire() {
@@ -146,11 +193,23 @@ export default function App() {
   const shooterOpOptions = shooterFaction.operatives.map((o) => ({ value: o.id, label: o.full_name }));
   const targetOpOptions = targetFaction.operatives.map((o) => ({ value: o.id, label: o.full_name }));
   const weaponOptions = hasWeapon
-    ? shooter.weapons.map((w, i) => ({
+    ? rangedWeapons.map((w, i) => ({
         value: String(i),
         label: `${w.name}  (A${w.atk} · ${w.hit}+ · ${w.normal_dmg}/${w.crit_dmg})`,
       }))
     : [{ value: "0", label: "— no ranged weapon —" }];
+  const meleeWeaponOptionsA = meleeWeaponsA.length
+    ? meleeWeaponsA.map((w, i) => ({
+        value: String(i),
+        label: `${w.name}  (A${w.atk} · ${w.hit}+ · ${w.normal_dmg}/${w.crit_dmg})`,
+      }))
+    : [{ value: "0", label: "— no melee weapon —" }];
+  const meleeWeaponOptionsB = meleeWeaponsB.length
+    ? meleeWeaponsB.map((w, i) => ({
+        value: String(i),
+        label: `${w.name}  (A${w.atk} · ${w.hit}+ · ${w.normal_dmg}/${w.crit_dmg})`,
+      }))
+    : [{ value: "0", label: "— no melee weapon —" }];
 
   return (
     <div
@@ -194,20 +253,106 @@ export default function App() {
         </div>
       </section>
 
-      {mode === "fight" && (
-        <section className="max-w-6xl mx-auto px-4 mt-2 mb-10">
-          <div className="panel p-8 corner-brackets text-center">
-            <div className="label-cap mb-3" style={{ color: "var(--accent-primary)" }}>MELEE PROTOCOLS</div>
-            <h2 style={SECTION_H2_STYLE} className="text-2xl tracking-[0.3em] mb-3">INCOMING TRANSMISSION</h2>
-            <div className="text-sm" style={{ color: "var(--text-muted)" }}>
-              Fight &amp; Retaliate calculus is being calibrated.
+      {mode === "fight" && (<>
+      <section className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <CombatantPanel
+          side="A"
+          label="COMBATANT A"
+          factionId={shooterFactionId}
+          factionOptions={factionOptions}
+          changeFaction={changeShooterFaction}
+          op={shooter}
+          opOptions={shooterOpOptions}
+          setOpId={setShooterOpId}
+          meleeWeapons={meleeWeaponsA}
+          weaponOptions={meleeWeaponOptionsA}
+          weaponIdx={meleeAIdx}
+          setWeaponIdx={setMeleeAIdx}
+          weapon={meleeWeaponA}
+          health={Math.min(healthA ?? shooter.wounds, shooter.wounds)}
+          setHealth={setHealthA}
+          priority={priorityA}
+          setPriority={setPriorityA}
+          isInitiator={initiator === "A"}
+        />
+        <CombatantPanel
+          side="B"
+          label="COMBATANT B"
+          factionId={targetFactionId}
+          factionOptions={factionOptions}
+          changeFaction={changeTargetFaction}
+          op={target}
+          opOptions={targetOpOptions}
+          setOpId={setTargetOpId}
+          meleeWeapons={meleeWeaponsB}
+          weaponOptions={meleeWeaponOptionsB}
+          weaponIdx={meleeBIdx}
+          setWeaponIdx={setMeleeBIdx}
+          weapon={meleeWeaponB}
+          health={Math.min(currentHealth, target.wounds)}
+          setHealth={setCurrentHealth}
+          priority={priorityB}
+          setPriority={setPriorityB}
+          isInitiator={initiator === "B"}
+        />
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 mt-4">
+        <div className="panel p-4">
+          <div className="flex items-baseline justify-between mb-3">
+            <h2 style={SECTION_H2_STYLE} className="text-lg tracking-[0.25em]">ENGAGEMENT</h2>
+            <span className="chip">SEQUENCE</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <div className="label-cap mb-1">Initiator</div>
+              <Select
+                value={initiator}
+                onChange={(v) => setInitiator(v)}
+                options={[
+                  { value: "A", label: `A — ${shooter.full_name}` },
+                  { value: "B", label: `B — ${target.full_name}` },
+                ]}
+              />
+              <div className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>
+                Initiator resolves their first die first; resolution then alternates.
+              </div>
             </div>
-            <div className="text-[10px] mt-3 tracking-[0.25em]" style={{ color: "var(--text-footer)" }}>
-              + + AWAITING MACHINE-SPIRIT CONSECRATION + +
+            <div>
+              <div className="label-cap mb-1">Allocator priority</div>
+              <div className="text-[10px]" style={{ color: "var(--text-muted)" }}>
+                MAX&nbsp;DMG always strikes (highest-damage die first).<br />
+                MIN&nbsp;RCVD parries opponent's highest-damage die while they have any dice left, then strikes.
+              </div>
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 mt-4">
+        <div className="panel p-4 flex flex-col md:flex-row items-center gap-3 justify-between">
+          <div className="flex items-center gap-3">
+            <span className="label-cap">TRIALS</span>
+            <Select value={String(trials)} onChange={(v) => setTrials(parseInt(v, 10))}
+              options={[
+                { value: "10000", label: "10 000 · quick" },
+                { value: "50000", label: "50 000 · default" },
+                { value: "200000", label: "200 000 · high precision" },
+              ]} />
+          </div>
+          <button
+            type="button"
+            className="btn-fire px-10 py-3 text-lg w-full md:w-auto"
+            onClick={runFight}
+            disabled={computing || !fightReady}
+          >
+            {computing ? "COMPUTING..." : !fightReady ? "NO MELEE WEAPON" : "FIGHT"}
+          </button>
+        </div>
+      </section>
+
+      {fightStats && <FightResultsPanel stats={fightStats} a={shooter} b={target} theme={theme} />}
+      </>)}
 
       {mode === "shoot" && (<>
       <section className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -683,6 +828,165 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme })
             {defEffOn.map((id, i) => <span key={`d${i}`} className="chip" style={CONDITION_CHIP_STYLE}>D · {DEFENDER_EFFECTS[id]?.label || id}</span>)}
             {atkEffOn.map((id, i) => <span key={`a${i}`} className="chip" style={CONDITION_CHIP_STYLE}>A · {ATTACKER_EFFECTS[id]?.label || id}</span>)}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CombatantPanel({
+  side, label, factionId, factionOptions, changeFaction,
+  op, opOptions, setOpId,
+  meleeWeapons, weaponOptions, weaponIdx, setWeaponIdx, weapon,
+  health, setHealth, priority, setPriority, isInitiator,
+}) {
+  const hasWeapon = !!weapon;
+  return (
+    <div className="panel p-4 corner-brackets">
+      <div className="flex items-baseline justify-between mb-3">
+        <h2 style={SECTION_H2_STYLE} className="text-lg tracking-[0.25em]">{label}</h2>
+        <div className="flex gap-1">
+          {isInitiator && <span className="chip chip-warn">INITIATOR</span>}
+          <span className="chip">{side}</span>
+        </div>
+      </div>
+      <Field label="Faction"><Select value={factionId} onChange={changeFaction} options={factionOptions} /></Field>
+      <Field label="Operative"><Select value={op.id} onChange={setOpId} options={opOptions} /></Field>
+      <Field label="Melee weapon">
+        <Select value={String(weaponIdx)} onChange={(v) => setWeaponIdx(parseInt(v, 10))} options={weaponOptions} />
+      </Field>
+
+      {hasWeapon ? (
+        <>
+          <div className="mt-2 mb-3 flex flex-wrap gap-2">
+            <span className="chip">ATK {weapon.atk}</span>
+            <span className="chip">HIT {weapon.hit}+</span>
+            <span className="chip">DMG {weapon.normal_dmg}/{weapon.crit_dmg}</span>
+          </div>
+          {weapon.rules.length > 0 && (
+            <div className="mb-3 flex flex-wrap gap-1">
+              {weapon.rules.map((r, i) => (
+                <span key={i} className="chip" style={RULE_CHIP_STYLE}>{r}</span>
+              ))}
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="text-[10px] mt-2 mb-3" style={{ color: "var(--text-muted)" }}>
+          This operative has no melee profile on its datacard.
+        </div>
+      )}
+
+      <HealthSlider target={op} value={health} onChange={setHealth} />
+
+      <Field label="Priority">
+        <Select
+          value={priority}
+          onChange={(v) => setPriority(v)}
+          options={[
+            { value: "MAX_DMG", label: "Maximise damage dealt (prioritise strikes)" },
+            { value: "MIN_RCVD", label: "Minimise damage received (prioritise parries)" },
+          ]}
+        />
+      </Field>
+    </div>
+  );
+}
+
+function FightResultsPanel({ stats, a, b, theme }) {
+  const tickStyle = { fill: theme["text-muted"], fontFamily: "JetBrains Mono", fontSize: 10 };
+  const axisStroke = { stroke: theme["border"] };
+  const pIncapColor = (p) => p > 0.5 ? theme["accent-action"] : p > 0.2 ? theme["warn"] : theme["text"];
+  const priorityLabel = (p) => p === "MAX_DMG" ? "MAX DMG" : "MIN RCVD";
+
+  const histo = (dist, hp) => (
+    <div style={{ height: 220, background: "var(--bg-base-1)", border: "1px solid var(--border)", padding: "12px 8px 8px 0" }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={dist} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
+          <XAxis dataKey="dmg" tick={tickStyle} axisLine={axisStroke} tickLine={axisStroke}
+            label={{ value: "damage taken", fill: theme["text-label"], fontFamily: "Oswald", fontSize: 11, letterSpacing: "0.2em", position: "insideBottom", offset: -5 }} />
+          <YAxis tick={tickStyle} axisLine={axisStroke} tickLine={axisStroke}
+            tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
+          <Tooltip cursor={{ fill: theme["accent-action-soft"] }}
+            contentStyle={{ background: theme["bg-base-2"], border: `1px solid ${theme["accent-primary"]}`, fontFamily: "JetBrains Mono", fontSize: 12 }}
+            labelStyle={{ color: theme["accent-primary"], marginBottom: 4 }}
+            itemStyle={{ color: theme["text"] }}
+            formatter={(v) => [`${(v * 100).toFixed(2)}%`, "probability"]} labelFormatter={(v) => `${v} damage`} />
+          <Bar dataKey="p" isAnimationActive={false}>
+            {dist.map((entry, i) => {
+              const incap = entry.dmg >= hp;
+              const zero = entry.dmg === 0;
+              const fill = incap ? theme["accent-action"] : zero ? theme["no-damage"] : theme["accent-primary"];
+              const opacity = incap ? 0.9 : zero ? 0.6 : 0.78;
+              return <Cell key={i} fill={fill} fillOpacity={opacity} />;
+            })}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+
+  return (
+    <section className="max-w-6xl mx-auto px-4 mt-6 mb-10">
+      <div className="panel p-4 corner-brackets">
+        <div className="flex items-baseline justify-between mb-4 flex-wrap gap-2">
+          <h2 style={SECTION_H2_STYLE} className="text-lg tracking-[0.25em]">FIGHT DATA</h2>
+          <span className="chip chip-dim">{stats.trials.toLocaleString()} TRIALS</span>
+        </div>
+        <div className="text-xs mb-4 tracking-wider" style={{ color: "var(--text-muted)" }}>
+          {stats.nameA} · {stats.weaponNameA}
+          <span className="mx-2" style={{ color: "var(--accent-action)" }}>×</span>
+          {stats.nameB} · {stats.weaponNameB}
+          <span className="mx-2" style={{ color: "var(--text-footer)" }}>·</span>
+          initiator&nbsp;{stats.initiator} · A:{priorityLabel(stats.priorityA)} · B:{priorityLabel(stats.priorityB)}
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="p-3" style={{ background: "var(--input-bg)", border: "1px solid var(--border)" }}>
+            <div className="label-cap mb-2">Combatant A · {a.full_name}</div>
+            <div className="grid grid-cols-2 gap-2">
+              <HeadlineStat label="DMG TAKEN" value={stats.meanDmgToA.toFixed(2)}
+                accent="var(--accent-action)" hint={`of ${stats.startHpA} hp`} />
+              <HeadlineStat label="P(INCAP)" value={`${(stats.pIncapA * 100).toFixed(1)}%`}
+                accent={pIncapColor(stats.pIncapA)} />
+            </div>
+          </div>
+          <div className="p-3" style={{ background: "var(--input-bg)", border: "1px solid var(--border)" }}>
+            <div className="label-cap mb-2">Combatant B · {b.full_name}</div>
+            <div className="grid grid-cols-2 gap-2">
+              <HeadlineStat label="DMG TAKEN" value={stats.meanDmgToB.toFixed(2)}
+                accent="var(--accent-action)" hint={`of ${stats.startHpB} hp`} />
+              <HeadlineStat label="P(INCAP)" value={`${(stats.pIncapB * 100).toFixed(1)}%`}
+                accent={pIncapColor(stats.pIncapB)} />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+          <HeadlineStat label="P(BOTH ALIVE)" value={`${(stats.pNeitherIncap * 100).toFixed(1)}%`}
+            accent={theme["text"]} />
+          <HeadlineStat label="P(A INCAP ONLY)" value={`${(stats.pOnlyAIncap * 100).toFixed(1)}%`}
+            accent={pIncapColor(stats.pOnlyAIncap)} />
+          <HeadlineStat label="P(B INCAP ONLY)" value={`${(stats.pOnlyBIncap * 100).toFixed(1)}%`}
+            accent={pIncapColor(stats.pOnlyBIncap)} />
+          <HeadlineStat label="P(BOTH INCAP)" value={`${(stats.pBothIncap * 100).toFixed(1)}%`}
+            accent={pIncapColor(stats.pBothIncap)} hint="mutual destruction" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+          <div>
+            <div className="label-cap mb-2">Damage to A</div>
+            {histo(stats.distA, stats.startHpA)}
+          </div>
+          <div>
+            <div className="label-cap mb-2">Damage to B</div>
+            {histo(stats.distB, stats.startHpB)}
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-4 mt-2 text-[10px]" style={{ color: "var(--text-muted)" }}>
+          <LegendDot color={theme["no-damage"]} label="NO DAMAGE" />
+          <LegendDot color={theme["accent-primary"]} label="PARTIAL" />
+          <LegendDot color={theme["accent-action"]} label="INCAPACITATE" />
         </div>
       </div>
     </section>

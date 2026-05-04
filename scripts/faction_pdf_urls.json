@@ -1,0 +1,158 @@
+{
+  "_comment": "Maps faction id (from src/data/factions.js) to the current card-style team-rules PDF on assets.warhammer-community.com. Where multiple candidate URLs are known, list newest first; resolve_pdf_urls.py picks the one with the most recent Last-Modified header. The legacy 02.10.24 URLs are intentionally excluded as fallbacks; use them only via manual override. See CLAUDE.md > 'Discovering a faction's current PDF URL' for how to refresh entries.",
+
+  "kasrkin": [
+    "https://assets.warhammer-community.com/eng_28-01_kill_team_team_rules_kasrkin-u0i6ljfum0-hys1lk2hte.pdf"
+  ],
+  "angels-of-death": [
+    "https://assets.warhammer-community.com/eng_jul25_kt_teamrules_angels_of_death-pc6bcik2jz-grzjl9rp7j.pdf"
+  ],
+  "battleclade": [
+    "https://assets.warhammer-community.com/eng_25-06_kill_team_team_rules_battleclade-einfab6xm8-61kjobanf9.pdf",
+    "https://assets.warhammer-community.com/eng_25-02_kt_teamrules_battleclade-mkrhyiwbgq-bjsj9lyj5c.pdf"
+  ],
+  "celestian-insidiants": [
+    "https://assets.warhammer-community.com/eng_28-01_kill_team_team_rules_celestian_insidiants-de5ycilovy-6fa4cw56e9.pdf"
+  ],
+  "death-korps": [
+    "https://assets.warhammer-community.com/eng_30-04_kill_team_team_rules_death_korps-mlejcjcz7t-uiqaeclrdo.pdf"
+  ],
+  "deathwatch": [
+    "https://assets.warhammer-community.com/eng_28-01_kill_team_team_rules_deathwatch-wngg7m6abd-uc8ksrsq97.pdf"
+  ],
+  "elucidian-starstrider": [
+    "https://assets.warhammer-community.com/eng_30-04_kill_team_team_rules_elucidian_starstriders-zglx4jf2gp-bpa1brxnre.pdf"
+  ],
+  "exaction-squad": [
+    "https://assets.warhammer-community.com/eng_28-01_kill_team_team_rules_exaction_squad-owtfhxa0gg-n6msfm6mk6.pdf"
+  ],
+  "hunter-clade": [
+    "https://assets.warhammer-community.com/eng_29-10_kt_teamrules_hunter_clade-lskv24wuji-e3mudbrre9.pdf",
+    "https://assets.warhammer-community.com/eng_jun25_kt_teamrules_hunter_clade-ctkmmtqtcu-tyhgs6ala9.pdf"
+  ],
+  "imperial-navy-breacher": [
+    "https://assets.warhammer-community.com/eng_jul25_kt_teamrules_imperial_navy_breachers-fe9o3l2nhv-whpv6kllcr.pdf"
+  ],
+  "inquisitorial-agent": [
+    "https://assets.warhammer-community.com/eng_jun25_kt_teamrules_inquisitorial_agents-sib2gb48hs-ppfnhotogq.pdf"
+  ],
+  "novitiates": [
+    "https://assets.warhammer-community.com/eng_19-11_kill_team_team_rules_novitiates-j0yjr9habt-q2xdo87xjk.pdf"
+  ],
+  "phobos-strike-team": [
+    "https://assets.warhammer-community.com/eng_jul25_kt_teamrules_phobos_strike_team-b6ucsxeqii-zz4xcyoa3s.pdf"
+  ],
+  "ratlings": [
+    "https://assets.warhammer-community.com/eng_28-01_kt_teamrules_ratlings-loogoevawx-nrcsregyye.pdf"
+  ],
+  "sanctifiers": [
+    "https://assets.warhammer-community.com/eng_25-02_kt_teamrules_sanctifiers-3vpsecfbfe-vclbyfaed7.pdf",
+    "https://assets.warhammer-community.com/eng_29-10_kt_teamrules_sanctifiers-kqblpr59bo-aoqltet5bi.pdf"
+  ],
+  "scout-squad": [
+    "https://assets.warhammer-community.com/eng_28-01_kt_teamrules_scout_squad-khwwrygy00-yi4rroozc8.pdf",
+    "https://assets.warhammer-community.com/eng_29-10_kt_teamrules_scout_squad-e8hfnecv2k-17reba063p.pdf"
+  ],
+  "tempestus-aquilons": [
+    "https://assets.warhammer-community.com/eng_29-10_kt_teamrules_tempestus_aquilons-4ekfmt7wwp-r7mk6vjh9r.pdf"
+  ],
+  "wolf-scouts": [
+    "https://assets.warhammer-community.com/eng_29-04_kt_teamrules_wolf_scout-98qutcyf0n-a3v14lxt0s.pdf",
+    "https://assets.warhammer-community.com/eng_28-01_kt_teamrules_wolf_scouts-7rdhkc4jn4-ttpun6cqc9.pdf",
+    "https://assets.warhammer-community.com/eng_25-02_kt_teamrules_wolf_scouts-g0zbokxi1i-lurcgglppy.pdf"
+  ],
+
+  "blooded": [
+    "https://assets.warhammer-community.com/eng_29-10_kill_team_team_rules_blooded-b7jk4yhsul-muduqqloxg.pdf"
+  ],
+  "chaos-cult": [
+    "https://assets.warhammer-community.com/eng_jul25_kt_teamrules_chaos_cult-2i74jwysks-qqdbyewoso.pdf"
+  ],
+  "fellgor-ravager": [
+    "https://assets.warhammer-community.com/eng_30-04_kill_team_team_rules_fellgor_ravagers-w2wligpgjk-u9e8lcd55h.pdf",
+    "https://assets.warhammer-community.com/eng_29-10_kill_team_team_rules_fellgor_ravagers-yfjgxodpqm-ap39gdzuas.pdf"
+  ],
+  "gellerpox-infected": [
+    "https://assets.warhammer-community.com/eng_29-10_kill_team_team_rules_gellerpox_infected-nhhm7c7xlv-vkglix92eh.pdf"
+  ],
+  "goremonger": [
+    "https://assets.warhammer-community.com/eng_jul25_kt_teamrules_goremongers-eiartrdtca-uoouahirzs.pdf"
+  ],
+  "legionary": [
+    "https://assets.warhammer-community.com/eng_jul25_kt_teamrules_legionaries-yge8gdcg8d-7jzhwggysk.pdf",
+    "https://assets.warhammer-community.com/eng_29-10_kill_team_team_rules_legionaries-e5hsbsasn6-l5akyfyeyu.pdf"
+  ],
+  "murderwing": [
+    "https://assets.warhammer-community.com/eng_29-04_kt_teamrules_murderwing-ws5qr6gye1-apk2xviaml.pdf",
+    "https://assets.warhammer-community.com/eng_01-04_kt_teamrules_murderwing-x2ycoqsqf6-zd64sifxqz.pdf"
+  ],
+  "nemesis-claw": [
+    "https://assets.warhammer-community.com/eng_kt_teamrules_nemesis_claw_jan25-uedoq3iw0y-igfuclf6ez.pdf"
+  ],
+  "plague-marines": [
+    "https://assets.warhammer-community.com/eng_kt_teamrules_plague_marines_jan25-oewceupxsk-zyi5ixnx7x.pdf"
+  ],
+  "warpcoven": [
+    "https://assets.warhammer-community.com/eng_29-10_kt_teamrules_warpcoven-tlhahocect-tlnqbowcfv.pdf",
+    "https://assets.warhammer-community.com/eng_kt_teamrules_warpcoven_jan25-urohvosk4b-miolxvy1ui.pdf"
+  ],
+
+  "blades-of-khaine": [
+    "https://assets.warhammer-community.com/eng_25-06_kill_team_team_rules_blades_of_khaine-k8wf6glyqc-bv9kowmyfi.pdf"
+  ],
+  "brood-brother": [
+    "https://assets.warhammer-community.com/eng_25-06_kill_team_team_rules_brood_brothers-gqdxrqq34d-bw8tsg0bqy.pdf"
+  ],
+  "canoptek-circle": [
+    "https://assets.warhammer-community.com/eng_10-09_killteam_team_rules_canoptek_circle-vigtn30sca-5dhnxtudeh.pdf"
+  ],
+  "corsair-voidscarred": [
+    "https://assets.warhammer-community.com/eng_30-04_kill_team_team_rules_corsair_voidscarred-e0jxysqd5e-semoce0kuq.pdf"
+  ],
+  "farstalker-kinband": [
+    "https://assets.warhammer-community.com/eng_30-04_kill_team_team_rules_farstalker_kinband-ldwpetazot-h3fflxsua7.pdf"
+  ],
+  "hand-of-the-archon": [
+    "https://assets.warhammer-community.com/eng_25-06_kill_team_team_rules_hand_of_the_archons-igdeappq43-lqblomlbzz.pdf",
+    "https://assets.warhammer-community.com/eng_30-04_kill_team_team_rules_hand_of_the_archon-jvjfzhmeqw-esmxu439gk.pdf",
+    "https://assets.warhammer-community.com/eng_28-01_kill_team_team_rules_hand_of_the_archon-ijq4ui6dxc-qnz6k5jaxl.pdf"
+  ],
+  "hearthkyn-salvagers": [
+    "https://assets.warhammer-community.com/eng_25-06_kill_team_team_rules_hearthkyn_salvagers-ls4o8wzxwh-nlu2cfljls.pdf",
+    "https://assets.warhammer-community.com/eng_30-04_kill_team_team_rules_hearthkyn_salvagers-h6hvk1iuvz-tjsmpoghpx.pdf",
+    "https://assets.warhammer-community.com/eng_17-12_kill_team_team_rules_hearthkyn_salvagers-b0qod2ppui-buodk7l96s.pdf"
+  ],
+  "hernkyn-yaegir": [
+    "https://assets.warhammer-community.com/killteam_teamrules_hernkynyaegirs_eng_20-lsfsvxcffk.pdf"
+  ],
+  "hierotek-circle": [
+    "https://assets.warhammer-community.com/eng_jul25_kt_teamrules_hierotek_circle-b33pachmzh-m2mwssv1qv.pdf"
+  ],
+  "kommandos": [
+    "https://assets.warhammer-community.com/eng_jun25_kt_teamrules_kommandos-nzxwcv24o9-accaiuhd80.pdf"
+  ],
+  "mandrakes": [
+    "https://assets.warhammer-community.com/killteam_teamrules_mandrakes_eng_20-zn81x6h30t.pdf"
+  ],
+  "pathfinders": [
+    "https://assets.warhammer-community.com/eng_28-01_kt_teamrules_pathfinders-vpiombenfv-fobu7lopgx.pdf"
+  ],
+  "raveners": [
+    "https://assets.warhammer-community.com/eng_jun25_kt_teamrules_raveners-8ug6s19cav-n5wncm2odq.pdf"
+  ],
+  "vespid-stingwings": [
+    "https://assets.warhammer-community.com/eng_29-10_kt_teamrules_vespid_stingwings-ky5h2gokob-sfyqxxchxd.pdf"
+  ],
+  "void-dancer-troupe": [
+    "https://assets.warhammer-community.com/eng_30-04_kill_team_team_rules_void-dancer_troupe-zibxkb7slf-bmeoi31dh2.pdf"
+  ],
+  "wrecka-krew": [
+    "https://assets.warhammer-community.com/eng_29-10_kt_teamrules_wrecka_krew-pyqbpxzdfq-q1rfbxc4zb.pdf"
+  ],
+  "wyrmblade": [
+    "https://assets.warhammer-community.com/eng_29-10_kt_teamrules_wyrmblade-ewxxxogagv-mk51xr1be9.pdf"
+  ],
+  "xv26-stealth-battlesuits": [
+    "https://assets.warhammer-community.com/eng_17-12_killteam_xv26_stealth_battlesuits_online_rules-noe604q009-vmw72m7mmx.pdf"
+  ]
+}
