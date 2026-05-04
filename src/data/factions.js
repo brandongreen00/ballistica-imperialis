@@ -1,7 +1,9 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    KILL TEAMS
 
-   Source of truth: https://wahapedia.ru/kill-team3/
+   Source of truth: Warhammer Community card-style team-rules PDFs at
+     https://assets.warhammer-community.com/rules-downloads/kill-team/team-rules/<faction-slug>/killteam_teamrules_<factionslug>_eng_<dd.mm.yy>.pdf
+   See CLAUDE.md for details on locating the latest dated PDF for each faction.
 
    Schema:
      {
@@ -205,11 +207,10 @@ export const FACTIONS = [
         id: "aod-heavy-gunner",
         name: "Gunner",
         full_name: "HEAVY INTERCESSOR GUNNER",
-        save: 3, wounds: 18, apl: 3, move: "5\"",
+        save: 3, wounds: 18, apl: 3, move: "4\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Bolt pistol", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\""], is_pistol: true },
           { name: "Heavy bolter (focused)", atk: 5, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Piercing Crits 1"], is_pistol: false },
           { name: "Heavy bolter (sweeping)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Piercing Crits 1", "Torrent 1\""], is_pistol: false },
         ],
@@ -276,7 +277,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Eradication pistol", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 2, rules: ["Range 8\"", "Devastating 3", "Lethal 5+"], is_pistol: true },
+          { name: "Eradication pistol", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 2, rules: ["Range 8\"", "1\" Devastating 3", "Lethal 5+"], is_pistol: true },
         ],
       },
       {
@@ -307,6 +308,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
+          { name: "Lascutter (close range)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 2\"", "Lethal 5+", "Piercing 2"], is_pistol: false },
           { name: "Lascutter (short range)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 6\"", "Lethal 5+"], is_pistol: false },
         ],
       },
@@ -320,7 +322,7 @@ export const FACTIONS = [
         weapons: [
           { name: "Incendine igniter", atk: 4, hit: 2, normal_dmg: 4, crit_dmg: 4, rules: ["Range 6\"", "Saturate", "Torrent 1\""], is_pistol: false },
           { name: "Meltagun", atk: 4, hit: 4, normal_dmg: 6, crit_dmg: 3, rules: ["Range 6\"", "Devastating 4", "Piercing 2"], is_pistol: false },
-          { name: "Phosphor blaster", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Blast 1\"", "Severe"], is_pistol: false },
+          { name: "Phosphor blaster", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Severe"], is_pistol: false },
         ],
       },
       {
@@ -528,7 +530,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Lasgun", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], is_pistol: false },
-          { name: "Remote detonator", atk: 4, hit: 2, normal_dmg: 5, crit_dmg: 6, rules: ["Heavy (Dash only)", "Limited", "Piercing 1", "Silent"], is_pistol: false },
+          { name: "Remote detonator", atk: 4, hit: 2, normal_dmg: 5, crit_dmg: 6, rules: ["Heavy (Dash only)", "Limited 1", "Piercing 1", "Silent", "Detonate*"], is_pistol: false },
         ],
       },
       {
@@ -678,7 +680,7 @@ export const FACTIONS = [
           { name: "Auxiliary grenade launcher (frag)", atk: 4, hit: 3, normal_dmg: 2, crit_dmg: 4, rules: ["Blast 2\""], is_pistol: false },
           { name: "Auxiliary grenade launcher (krak)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Piercing 1"], is_pistol: false },
           { name: "Hellstorm bolt rifle", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Torrent 1\""], is_pistol: false },
-          { name: "Melta bomb", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Range 3\"", "Devastating 3", "Heavy", "Limited", "Piercing 2"], is_pistol: false, is_grenade_or_bomb: true },
+          { name: "Melta bomb", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Range 3\"", "Devastating 3", "Heavy (Reposition only)", "Limited 1", "Piercing 2"], is_pistol: false, is_grenade_or_bomb: true },
         ],
       },
       {
@@ -1187,12 +1189,14 @@ export const FACTIONS = [
         id: "inb-sergeant-at-arms",
         name: "Sergeant-At-Arms",
         full_name: "NAVIS SERGEANT-AT-ARMS",
-        save: 4, wounds: 9, apl: 2, move: "6\"",
+        save: 4, wounds: 8, apl: 2, move: "6\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
           { name: "Bolt pistol", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\""], is_pistol: true },
           { name: "Heirloom autopistol", atk: 4, hit: 3, normal_dmg: 2, crit_dmg: 4, rules: ["Range 8\"", "Lethal 5+"], is_pistol: true },
+          { name: "Navis shotgun (close range)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\""], is_pistol: false },
+          { name: "Navis shotgun (long range)", atk: 4, hit: 5, normal_dmg: 1, crit_dmg: 2, rules: [], is_pistol: false },
         ],
       },
       {
@@ -1231,7 +1235,7 @@ export const FACTIONS = [
         id: "inb-endurant",
         name: "Endurant",
         full_name: "NAVIS ENDURANT",
-        save: 2, wounds: 11, apl: 2, move: "4\"",
+        save: 2, wounds: 10, apl: 2, move: "4\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
@@ -1256,7 +1260,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Demolition charge", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 6, rules: ["Range 3\"", "Blast 2\"", "Heavy", "Limited", "Piercing 1", "Saturate"], is_pistol: false },
+          { name: "Demolition charge", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 6, rules: ["Range 3\"", "Blast 2\"", "Heavy (Reposition only)", "Limited 1", "Piercing 1", "Saturate"], is_pistol: false },
           { name: "Navis shotgun (close range)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\""], is_pistol: false },
           { name: "Navis shotgun (long range)", atk: 4, hit: 5, normal_dmg: 1, crit_dmg: 2, rules: [], is_pistol: false },
         ],
@@ -1265,7 +1269,7 @@ export const FACTIONS = [
         id: "inb-gunner",
         name: "Gunner",
         full_name: "NAVIS GUNNER",
-        save: 4, wounds: 9, apl: 2, move: "6\"",
+        save: 4, wounds: 8, apl: 2, move: "6\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
@@ -1307,7 +1311,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Gheistskull detonator", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Blast 1\"", "Lethal 4+", "Limited", "Silent", "Stun"], is_pistol: false },
+          { name: "Gheistskull detonator", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Blast 1\"", "Lethal 5+", "Limited 1", "Silent", "Stun"], is_pistol: false },
           { name: "Navis shotgun (close range)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\""], is_pistol: false },
           { name: "Navis shotgun (long range)", atk: 4, hit: 5, normal_dmg: 1, crit_dmg: 2, rules: [], is_pistol: false },
         ],
@@ -1723,7 +1727,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Marksman bolt carbine", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Lethal 5+"], is_pistol: false },
-          { name: "Remote detonator", atk: 4, hit: 2, normal_dmg: 5, crit_dmg: 6, rules: ["Heavy (Dash only)", "Limited", "Piercing 1", "Silent"], is_pistol: false },
+          { name: "Remote detonator", atk: 4, hit: 2, normal_dmg: 5, crit_dmg: 6, rules: ["Heavy (Dash only)", "Limited 1", "Piercing 1", "Silent", "Detonate*"], is_pistol: false },
         ],
       },
       {
@@ -1903,7 +1907,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Explosive arsenal", atk: 5, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 3\"", "Blast 1\"", "Heavy", "Limited", "Piercing 1", "Saturate"], is_pistol: false },
+          { name: "Explosive arsenal", atk: 5, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 3\"", "Blast 1\"", "Heavy (Reposition only)", "Limited 1", "Piercing 1", "Saturate"], is_pistol: false },
           { name: "Sniper rifle (mobile)", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: [], is_pistol: false },
           { name: "Sniper rifle (stationary)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["Devastating 3", "Heavy"], is_pistol: false },
         ],
@@ -2028,7 +2032,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Twin hand flamers (focused)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\"", "Saturate", "Torrent 2\"", "Blaze"], is_pistol: false },
-          { name: "Twin hand flamers (twin torrent)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\"", "Saturate", "Torrent 0\"", "Blaze"], is_pistol: false },
+          { name: "Twin hand flamers (twin torrent)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\"", "Saturate", "Torrent 0\"", "Twin Torrent*", "Blaze"], is_pistol: false },
         ],
       },
       {
@@ -2070,8 +2074,8 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Holy light", atk: 4, hit: 2, normal_dmg: 4, crit_dmg: 3, rules: ["Range 8\"", "Devastating 3", "Limited", "Piercing 1", "Saturate", "Blaze"], is_pistol: false },
-          { name: "Wreathe in fire", atk: 4, hit: 2, normal_dmg: 4, crit_dmg: 4, rules: ["Blast 1\"", "Limited", "Blaze"], is_pistol: false },
+          { name: "Holy light", atk: 4, hit: 2, normal_dmg: 4, crit_dmg: 3, rules: ["Range 8\"", "Devastating 3", "Limited 1", "Piercing 1", "Saturate", "Blaze"], is_pistol: false },
+          { name: "Wreathe in fire", atk: 4, hit: 2, normal_dmg: 4, crit_dmg: 4, rules: ["Blast 1\"", "Limited 1", "Wreathed*", "Blaze"], is_pistol: false },
         ],
       },
       {
@@ -2253,7 +2257,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Hot-shot laspistol", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\""], is_pistol: true },
-          { name: "Melta bomb", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Range 3\"", "Devastating 3", "Heavy", "Limited", "Piercing 2"], is_pistol: false, is_grenade_or_bomb: true },
+          { name: "Melta bomb", atk: 4, hit: 3, normal_dmg: 5, crit_dmg: 3, rules: ["Range 3\"", "Devastating 3", "Heavy (Reposition only)", "Limited 1", "Piercing 2"], is_pistol: false, is_grenade_or_bomb: true },
         ],
       },
       {
@@ -2455,7 +2459,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Diabolyk bomb", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 3, rules: ["Range 6\"", "Blast 2\"", "Devastating 2", "Limited", "Heavy", "Piercing 1", "Saturate"], is_pistol: false },
+          { name: "Diabolyk bomb", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 3, rules: ["Range 6\"", "Blast 2\"", "Devastating 2", "Heavy (Reposition only)", "Limited 1", "Piercing 1", "Saturate"], is_pistol: false },
           { name: "Lasgun", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], is_pistol: false },
         ],
       },
@@ -2709,7 +2713,7 @@ export const FACTIONS = [
         id: "fg-gnarlscar",
         name: "Gnarlscar",
         full_name: "FELLGOR GNARLSCAR",
-        save: 5, wounds: 10, apl: 2, move: "6\"",
+        save: 5, wounds: 11, apl: 2, move: "6\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
@@ -2743,7 +2747,7 @@ export const FACTIONS = [
         id: "fg-mangler",
         name: "Mangler",
         full_name: "FELLGOR MANGLER",
-        save: 5, wounds: 10, apl: 2, move: "6\"",
+        save: 5, wounds: 11, apl: 2, move: "6\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [],
@@ -2802,9 +2806,9 @@ export const FACTIONS = [
     defender_effects: ["plagueridden_determination"],
     operatives: [
       {
-        id: "gx-vulglar",
-        name: "Vulglar Thrice-Cursed",
-        full_name: "VULGLAR THRICE-CURSED",
+        id: "gx-vulgrar",
+        name: "Vulgrar Thrice-Cursed",
+        full_name: "VULGRAR THRICE-CURSED",
         save: 5, wounds: 21, apl: 2, move: "5\"",
         defender_abilities: [],
         attacker_effects: [],
@@ -2850,7 +2854,7 @@ export const FACTIONS = [
         defender_abilities: ["mutant_crit_to_normal"],
         attacker_effects: [],
         weapons: [
-          { name: "Frag grenade", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 4, rules: ["Range 6\"", "Blast 2\"", "Limited", "Saturate"], is_pistol: false },
+          { name: "Frag grenade", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 4, rules: ["Range 6\"", "Blast 2\"", "Limited 1", "Saturate"], is_pistol: false },
         ],
       },
       {
@@ -2892,7 +2896,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Acid spit", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 2, rules: ["Range 6\"", "Devastating 1", "Piercing 1"], is_pistol: false },
+          { name: "Acid spit", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 2, rules: ["Range 6\"", "Blast 1\"", "Devastating 1", "Piercing 1"], is_pistol: false },
         ],
       },
     ],
@@ -2947,7 +2951,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Autopistol", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["Range 8\""], is_pistol: true },
-          { name: "Fleshskewer (ranged)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Stun"], is_pistol: false },
+          { name: "Fleshskewer (ranged)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Drag*", "Prey*", "Stun"], is_pistol: false },
         ],
       },
       {
@@ -3271,8 +3275,8 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Scoped bolt pistol (short range)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\"", "Lethal 5+"], is_pistol: true },
-          { name: "Scoped bolt pistol (long range)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: [], is_pistol: false },
-          { name: "Terrorchem vial", atk: 5, hit: 3, normal_dmg: 2, crit_dmg: 0, rules: ["Range 6\"", "Blast 2\"", "Devastating 3", "Limited", "Saturate"], is_pistol: false },
+          { name: "Scoped bolt pistol (long range)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: [], is_pistol: true },
+          { name: "Terrorchem vial", atk: 5, hit: 3, normal_dmg: 2, crit_dmg: 0, rules: ["Range 6\"", "Blast 2\"", "Devastating 3", "Limited 1", "Saturate", "Terrorchem*"], is_pistol: false },
         ],
       },
       {
@@ -3398,7 +3402,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Plague spewer", atk: 5, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 7\"", "Saturate", "Severe", "Torrent 2\""], is_pistol: false },
+          { name: "Plague spewer", atk: 5, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 7\"", "Poison*", "Saturate", "Severe", "Torrent 2\""], is_pistol: false },
         ],
       },
       {
@@ -3420,8 +3424,8 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Entropy", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 7, rules: ["PSYCHIC", "Range 7\"", "Saturate", "Severe"], is_pistol: false },
-          { name: "Plague wind", atk: 6, hit: 3, normal_dmg: 2, crit_dmg: 3, rules: ["PSYCHIC", "Saturate", "Severe", "Torrent 1\""], is_pistol: false },
+          { name: "Entropy", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 7, rules: ["PSYCHIC", "Range 7\"", "Poison*", "Saturate", "Severe"], is_pistol: false },
+          { name: "Plague wind", atk: 6, hit: 3, normal_dmg: 2, crit_dmg: 3, rules: ["PSYCHIC", "Poison*", "Saturate", "Severe", "Torrent 1\""], is_pistol: false },
         ],
       },
       {
@@ -3432,7 +3436,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Boltgun", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: [], is_pistol: false },
+          { name: "Boltgun", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Toxic*"], is_pistol: false },
         ],
       },
     ],
@@ -3449,11 +3453,11 @@ export const FACTIONS = [
         id: "wc-sorcerer-destiny",
         name: "Sorcerer of Destiny",
         full_name: "SORCERER OF DESTINY",
-        save: 3, wounds: 15, apl: 3, move: "6\"",
+        save: 3, wounds: 14, apl: 3, move: "6\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Doombolt", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 2, rules: ["PSYCHIC", "Devastating 2", "Lethal 5+"], is_pistol: false },
+          { name: "Doombolt", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 4, rules: ["PSYCHIC", "Devastating 2", "Lethal 5+"], is_pistol: false },
           { name: "Inferno bolt pistol", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\"", "Piercing 1"], is_pistol: true },
           { name: "Warpflame pistol", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\"", "Piercing 1", "Torrent 1\""], is_pistol: true },
         ],
@@ -3462,7 +3466,7 @@ export const FACTIONS = [
         id: "wc-sorcerer-tempyrion",
         name: "Sorcerer of Tempyrion",
         full_name: "SORCERER OF TEMPYRION",
-        save: 3, wounds: 15, apl: 3, move: "6\"",
+        save: 3, wounds: 14, apl: 3, move: "6\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
@@ -3475,13 +3479,13 @@ export const FACTIONS = [
         id: "wc-sorcerer-warpfire",
         name: "Sorcerer of Warpfire",
         full_name: "SORCERER OF WARPFIRE",
-        save: 3, wounds: 15, apl: 3, move: "6\"",
+        save: 3, wounds: 14, apl: 3, move: "6\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Firestorm", atk: 5, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["PSYCHIC", "Saturate", "Seek Light", "Torrent 2\""], is_pistol: false },
+          { name: "Firestorm", atk: 5, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["PSYCHIC", "Saturate", "Seek", "Torrent 2\""], is_pistol: false },
           { name: "Inferno bolt pistol", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\"", "Piercing 1"], is_pistol: true },
-          { name: "Mindburn", atk: 5, hit: 4, normal_dmg: 1, crit_dmg: 1, rules: ["PSYCHIC", "Lethal 5+", "Saturate", "Seek Light"], is_pistol: false },
+          { name: "Mindburn", atk: 5, hit: 4, normal_dmg: 1, crit_dmg: 1, rules: ["PSYCHIC", "Lethal 5+", "Mindburn*", "Saturate", "Seek"], is_pistol: false },
           { name: "Warpflame pistol", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\"", "Piercing 1", "Torrent 1\""], is_pistol: true },
         ],
       },
@@ -3489,7 +3493,7 @@ export const FACTIONS = [
         id: "wc-rubric-gunner",
         name: "Rubric Gunner",
         full_name: "RUBRIC MARINE GUNNER",
-        save: 3, wounds: 14, apl: 3, move: "5\"",
+        save: 2, wounds: 14, apl: 3, move: "5\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
@@ -3502,7 +3506,7 @@ export const FACTIONS = [
         id: "wc-rubric-icon-bearer",
         name: "Rubric Icon Bearer",
         full_name: "RUBRIC MARINE ICON BEARER",
-        save: 3, wounds: 14, apl: 3, move: "5\"",
+        save: 2, wounds: 14, apl: 3, move: "5\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
@@ -3513,7 +3517,7 @@ export const FACTIONS = [
         id: "wc-rubric-warrior",
         name: "Rubric Warrior",
         full_name: "RUBRIC MARINE WARRIOR",
-        save: 3, wounds: 14, apl: 3, move: "5\"",
+        save: 2, wounds: 14, apl: 3, move: "5\"",
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
@@ -3713,7 +3717,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Lasgun", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], is_pistol: false },
-          { name: "Gene-needler", atk: 1, hit: 4, normal_dmg: 5, crit_dmg: 7, rules: ["Lethal 5+", "Limited"], is_pistol: false },
+          { name: "Gene-needler", atk: 1, hit: 4, normal_dmg: 5, crit_dmg: 7, rules: ["Lethal 5+", "Limited 1"], is_pistol: false },
         ],
       },
       {
@@ -3724,7 +3728,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Demolition charge", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 6, rules: ["Range 3\"", "Blast 2\"", "Heavy", "Limited", "Piercing 1", "Saturate"], is_pistol: false },
+          { name: "Demolition charge", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 6, rules: ["Range 3\"", "Blast 2\"", "Heavy (Reposition only)", "Limited 1", "Piercing 1", "Saturate"], is_pistol: false },
         ],
       },
       {
@@ -3834,7 +3838,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Tremorglaive (part matter)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Piercing 1", "Piercing Crits 2"], is_pistol: false },
-          { name: "Tremorglaive (quake)", atk: 5, hit: 3, normal_dmg: 1, crit_dmg: 2, rules: ["Blast 2\"", "Seek Light", "Stun"], is_pistol: false },
+          { name: "Tremorglaive (quake)", atk: 6, hit: 3, normal_dmg: 1, crit_dmg: 3, rules: ["Blast 2\"", "Seek Light", "Stun"], is_pistol: false },
         ],
       },
       {
@@ -3868,8 +3872,8 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Gauss scalpel", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["Piercing 1"], is_pistol: false },
-          { name: "Tesla caster (focused)", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], is_pistol: false },
-          { name: "Tesla caster (living lightning)", atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["Blast 2\""], is_pistol: false },
+          { name: "Tesla caster (focused)", atk: 5, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], is_pistol: false },
+          { name: "Tesla caster (living lightning)", atk: 5, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["Blast 2\""], is_pistol: false },
         ],
       },
       {
@@ -4027,7 +4031,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Freezing grasp", atk: 4, hit: 3, normal_dmg: 1, crit_dmg: 2, rules: ["PSYCHIC", "Severe", "Silent", "Stun"], is_pistol: false },
-          { name: "Lightning strike", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 3, rules: ["PSYCHIC", "Devastating 2"], is_pistol: false },
+          { name: "Lightning strike", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 3, rules: ["PSYCHIC", "2\" Devastating 2"], is_pistol: false },
           { name: "Shuriken pistol", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\"", "Rending"], is_pistol: true },
         ],
       },
@@ -4129,7 +4133,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Dual Kroot pistols (focused)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 8\"", "Ceaseless", "Lethal 5+"], is_pistol: true },
-          { name: "Dual Kroot pistols (salvo)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 8\""], is_pistol: true },
+          { name: "Dual Kroot pistols (salvo)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 8\"", "Salvo*"], is_pistol: true },
         ],
       },
       {
@@ -4276,7 +4280,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Razorwing", atk: 4, hit: 4, normal_dmg: 1, crit_dmg: 2, rules: ["Saturate", "Seek", "Silent"], is_pistol: false },
+          { name: "Razorwing", atk: 5, hit: 4, normal_dmg: 1, crit_dmg: 2, rules: ["Saturate", "Seek", "Silent"], is_pistol: false },
           { name: "Shardcarbine", atk: 4, hit: 2, normal_dmg: 2, crit_dmg: 2, rules: ["Devastating 2", "Lethal 5+"], is_pistol: false },
         ],
       },
@@ -4337,7 +4341,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Autoch-pattern bolt pistol", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\"", "Accurate 1"], is_pistol: true },
-          { name: "C8 HX charge", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 6, rules: ["Range 4\"", "Blast 1\"", "Heavy (Reposition only)", "Limited", "Piercing 1", "Saturate"], is_pistol: false },
+          { name: "C8 HX charge", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 6, rules: ["Range 4\"", "Blast 1\"", "Heavy (Reposition only)", "Limited 1", "Piercing 1", "Saturate"], is_pistol: false },
         ],
       },
       {
@@ -4459,7 +4463,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Throwing plasma knife", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 6\"", "Lethal 5+", "Limited", "Silent"], is_pistol: false },
+          { name: "Throwing plasma knife", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 6\"", "Lethal 5+", "Limited 1", "Silent"], is_pistol: false },
         ],
       },
       {
@@ -4519,7 +4523,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "SiNR handbow", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 5, rules: ["Silent"], is_pistol: false },
-          { name: "Throwing hatchet", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 6\"", "Limited", "Rending", "Silent"], is_pistol: false },
+          { name: "Throwing hatchet", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 6\"", "Limited 1", "Rending", "Silent"], is_pistol: false },
         ],
       },
       {
@@ -4565,7 +4569,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: ["magnify_ceaseless"],
         weapons: [
-          { name: "Abyssal lance", atk: 5, hit: 3, normal_dmg: 2, crit_dmg: 2, rules: ["Blast 2\"", "Devastating 1", "Piercing 2"], is_pistol: false },
+          { name: "Abyssal lance", atk: 5, hit: 3, normal_dmg: 2, crit_dmg: 2, rules: ["Blast 2\"", "2\" Devastating 1", "Piercing 2"], is_pistol: false },
         ],
       },
       {
@@ -4632,7 +4636,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Gauss blaster", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Piercing 1"], is_pistol: false },
-          { name: "Tesla carbine", atk: 5, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["Devastating 1"], is_pistol: false },
+          { name: "Tesla carbine", atk: 5, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["2\" Devastating 1"], is_pistol: false },
         ],
       },
       {
@@ -4644,7 +4648,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Gauss blaster", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Piercing 1"], is_pistol: false },
-          { name: "Tesla carbine", atk: 5, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["Devastating 1"], is_pistol: false },
+          { name: "Tesla carbine", atk: 5, hit: 3, normal_dmg: 3, crit_dmg: 3, rules: ["2\" Devastating 1"], is_pistol: false },
         ],
       },
     ],
@@ -4676,7 +4680,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Explosives", atk: 6, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Blast 1\"", "Limited"], is_pistol: false },
+          { name: "Explosives", atk: 6, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Blast 1\"", "Limited 1"], is_pistol: false },
         ],
       },
       {
@@ -4710,7 +4714,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Burna (standard)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 8\"", "Saturate", "Torrent 2\""], is_pistol: false },
-          { name: "Burna (deluge)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 4\"", "Saturate", "Seek Light", "Torrent 0\""], is_pistol: false },
+          { name: "Burna (deluge)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 4\"", "Saturate", "Seek Light"], is_pistol: false },
         ],
       },
       {
@@ -4932,7 +4936,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Fusion grenade", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 3, rules: ["Range 6\"", "Devastating 2", "Limited", "Piercing 2", "Saturate"], is_pistol: false },
+          { name: "Fusion grenade", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 3, rules: ["Range 6\"", "Devastating 2", "Limited 1", "Piercing 2", "Saturate"], is_pistol: false },
           { name: "Pulse carbine", atk: 4, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: [], is_pistol: false },
         ],
       },
@@ -5072,7 +5076,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Pincer tail", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Silent"], is_pistol: false },
-          { name: "Toxic glands", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 6\"", "Silent"], is_pistol: false },
+          { name: "Toxic glands", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 6\"", "Poison*", "Silent"], is_pistol: false },
         ],
       },
       {
@@ -5095,8 +5099,8 @@ export const FACTIONS = [
         attacker_effects: ["distend_dorsal_sac"],
         weapons: [
           { name: "Pincer tail", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 3\"", "Silent"], is_pistol: false },
-          { name: "Venom bolt (blast)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 8\"", "Blast 2\""], is_pistol: false },
-          { name: "Venom bolt (focused)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Piercing 1"], is_pistol: false },
+          { name: "Venom bolt (blast)", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 5, rules: ["Range 8\"", "Blast 2\"", "Poison*"], is_pistol: false },
+          { name: "Venom bolt (focused)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Piercing 1", "Poison*"], is_pistol: false },
         ],
       },
       {
@@ -5159,8 +5163,8 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Neutron rail rifle (standard)", atk: 4, hit: 4, normal_dmg: 4, crit_dmg: 4, rules: ["Devastating 2"], is_pistol: false },
-          { name: "Neutron rail rifle (aimed)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 4, rules: ["Devastating 2", "Heavy (Dash only)", "Lethal 5+"], is_pistol: false },
+          { name: "Neutron rail rifle (standard)", atk: 4, hit: 4, normal_dmg: 4, crit_dmg: 4, rules: ["Devastating 2", "Neutron Fragment*"], is_pistol: false },
+          { name: "Neutron rail rifle (aimed)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 4, rules: ["Devastating 2", "Heavy (Dash only)", "Lethal 5+", "Neutron Fragment*"], is_pistol: false },
         ],
       },
       {
@@ -5172,7 +5176,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Neutron sting", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 3, rules: ["Range 8\"", "Devastating 2"], is_pistol: false },
-          { name: "Neutron grenade", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\"", "Blast 2\"", "Devastating 2", "Limited", "Saturate"], is_pistol: false },
+          { name: "Neutron grenade", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 3, rules: ["Range 6\"", "Blast 2\"", "Devastating 2", "Limited 1", "Saturate"], is_pistol: false },
         ],
       },
       {
@@ -5183,7 +5187,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Neutron grenade launcher", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 3, rules: ["Blast 2\"", "Devastating 2"], is_pistol: false },
+          { name: "Neutron grenade launcher", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 3, rules: ["Blast 2\"", "Devastating 2", "Neutron Bombardment*"], is_pistol: false },
         ],
       },
       {
@@ -5195,7 +5199,7 @@ export const FACTIONS = [
         attacker_effects: [],
         weapons: [
           { name: "Flamer (standard)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Range 8\"", "Saturate", "Torrent 2\""], is_pistol: false },
-          { name: "Flamer (skytorch)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Saturate", "Torrent 0\""], is_pistol: false },
+          { name: "Flamer (skytorch)", atk: 4, hit: 2, normal_dmg: 3, crit_dmg: 3, rules: ["Saturate", "Skytorch*", "Torrent 0\""], is_pistol: false },
         ],
       },
       {
@@ -5240,8 +5244,8 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Shrieker cannon (focused)", atk: 5, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Rending", "Heavy (Reposition only)"], is_pistol: false },
-          { name: "Shrieker cannon (sweeping)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Rending", "Heavy (Dash only)", "Torrent 2\""], is_pistol: false },
+          { name: "Shrieker cannon (focused)", atk: 5, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Rending", "Heavy (Reposition only)", "Humbling Cruelty*"], is_pistol: false },
+          { name: "Shrieker cannon (sweeping)", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Rending", "Heavy (Dash only)", "Torrent 2\"", "Humbling Cruelty*"], is_pistol: false },
         ],
       },
       {
@@ -5265,7 +5269,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Hallucinogen grenade", atk: 4, hit: 3, normal_dmg: 1, crit_dmg: 1, rules: ["Range 6\"", "Blast 2\"", "Lethal 5+", "Seek Light", "Silent", "Stun"], is_pistol: false },
+          { name: "Hallucinogen grenade", atk: 4, hit: 3, normal_dmg: 1, crit_dmg: 1, rules: ["Range 6\"", "Blast 2\"", "Lethal 5+", "Seek", "Silent", "Stun"], is_pistol: false },
           { name: "Neuro disruptor", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Piercing 1", "Stun"], is_pistol: true },
           { name: "Shuriken pistol", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\"", "Rending"], is_pistol: true },
         ],
@@ -5290,7 +5294,7 @@ export const FACTIONS = [
         weapons: [
           { name: "Rokkit pistol", atk: 6, hit: 5, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Blast 1\""], is_pistol: true },
           { name: "Two rokkit pistols (focused)", atk: 6, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Blast 1\"", "Ceaseless"], is_pistol: true },
-          { name: "Two rokkit pistols (salvo)", atk: 6, hit: 5, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Blast 1\""], is_pistol: true },
+          { name: "Two rokkit pistols (salvo)", atk: 6, hit: 5, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Blast 1\"", "Salvo*"], is_pistol: true },
         ],
       },
       {
@@ -5301,7 +5305,7 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
-          { name: "Explosives", atk: 6, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Blast 1\"", "Limited"], is_pistol: false },
+          { name: "Explosives", atk: 6, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Blast 1\"", "Limited 1"], is_pistol: false },
         ],
       },
       {
@@ -5351,8 +5355,9 @@ export const FACTIONS = [
         defender_abilities: [],
         attacker_effects: [],
         weapons: [
+          { name: "Pulsa rokkit", atk: 6, hit: 5, normal_dmg: 0, crit_dmg: 0, rules: ["Heavy (Reposition only)", "Limited 1", "Pulsa*"], is_pistol: false },
           { name: "Rokkit launcha", atk: 6, hit: 5, normal_dmg: 4, crit_dmg: 5, rules: ["Blast 1\""], is_pistol: false },
-          { name: "Rokkit rack", atk: 6, hit: 5, normal_dmg: 4, crit_dmg: 5, rules: ["Blast 2\"", "Heavy (Reposition only)", "Limited", "Relentless"], is_pistol: false },
+          { name: "Rokkit rack", atk: 6, hit: 5, normal_dmg: 4, crit_dmg: 5, rules: ["Blast 2\"", "Heavy (Reposition only)", "Limited 1", "Relentless"], is_pistol: false },
         ],
       },
     ],
@@ -5542,7 +5547,7 @@ export const FACTIONS = [
         weapons: [
           { name: "Burst cannon (focused)", atk: 5, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Ceaseless"], is_pistol: false },
           { name: "Burst cannon (sweeping)", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Ceaseless", "Torrent 1\""], is_pistol: false },
-          { name: "EMP bomb", atk: 5, hit: 3, normal_dmg: 2, crit_dmg: 2, rules: ["Range 4\"", "Blast 2\"", "Devastating 1", "Heavy (Reposition only)", "Lethal 4+", "Limited", "Saturate"], is_pistol: false },
+          { name: "EMP bomb", atk: 5, hit: 3, normal_dmg: 2, crit_dmg: 2, rules: ["Range 4\"", "Blast 2\"", "Devastating 1", "Heavy (Reposition only)", "Lethal 4+", "Limited 1", "Saturate"], is_pistol: false },
           { name: "Fusion blaster (short range)", atk: 4, hit: 4, normal_dmg: 6, crit_dmg: 3, rules: ["Range 6\"", "Devastating 4", "Piercing 2"], is_pistol: false },
           { name: "Fusion blaster (long range)", atk: 4, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Range 12\"", "Piercing 1"], is_pistol: false },
         ],
@@ -5619,25 +5624,25 @@ export const FACTIONS = [
 const UNIVERSAL_FRAG_GRENADE = {
   name: "Frag grenade",
   atk: 4, hit: 4, normal_dmg: 2, crit_dmg: 4,
-  rules: ["Range 6\"", "Blast 2\"", "Limited", "Saturate"],
+  rules: ["Range 6\"", "Blast 2\"", "Limited 1", "Saturate"],
   is_pistol: false,
 };
 const UNIVERSAL_KRAK_GRENADE = {
   name: "Krak grenade",
   atk: 4, hit: 4, normal_dmg: 4, crit_dmg: 5,
-  rules: ["Range 6\"", "Heavy (Dash only)", "Limited", "Piercing 1"],
+  rules: ["Range 6\"", "Heavy (Dash only)", "Limited 1", "Piercing 1"],
   is_pistol: false,
 };
 const GRENADIER_FRAG_GRENADE = {
   name: "Frag grenade (Grenadier)",
   atk: 4, hit: 3, normal_dmg: 2, crit_dmg: 4,
-  rules: ["Range 6\"", "Blast 2\"", "Limited", "Saturate"],
+  rules: ["Range 6\"", "Blast 2\"", "Limited 1", "Saturate"],
   is_pistol: false,
 };
 const GRENADIER_KRAK_GRENADE = {
   name: "Krak grenade (Grenadier)",
   atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5,
-  rules: ["Range 6\"", "Heavy (Dash only)", "Limited", "Piercing 1"],
+  rules: ["Range 6\"", "Heavy (Dash only)", "Limited 1", "Piercing 1"],
   is_pistol: false,
 };
 

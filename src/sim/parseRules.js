@@ -7,7 +7,7 @@ const RULE_PATTERNS = [
   [/^Accurate\s+(\d+)$/,             "Accurate"],
   [/^Piercing\s+(\d+)$/,             "Piercing"],
   [/^Piercing Crits\s+(\d+)$/,       "Piercing Crits"],
-  [/^Devastating\s+(\d+)$/,          "Devastating"],
+  [/^(?:\d+"\s+)?Devastating\s+(\d+)$/, "Devastating"],
   [/^Range\s+\d+"$/,                 "Range"],
   [/^Torrent\s+\d+"$/,               "Torrent"],
   [/^Blast\s+\d+"$/,                 "Blast"],
@@ -26,7 +26,7 @@ const RULE_PATTERNS = [
   [/^Heavy(\s*\([^)]*\))?$/,         "Heavy"],
   [/^Silent$/,                       "Silent"],
   [/^Seek( Light)?$/,                "Seek"],
-  [/^Limited$/,                      "Limited"],
+  [/^Limited(\s+\d+)?$/,             "Limited"],
   [/^Concealed Position\*?$/,        "ConcealedPosition"],
 ];
 
