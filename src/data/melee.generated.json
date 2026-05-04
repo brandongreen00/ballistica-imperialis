@@ -1,0 +1,412 @@
+{
+  "kasrkin-sergeant": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "kasrkin-combat-medic": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-demo-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-gunner": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-recon-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-sharpshooter": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "kasrkin-vox-trooper": [
+    {
+      "name": "Gun butt",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    }
+  ],
+  "aod-captain": [
+    {
+      "name": "Power fist",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    }
+  ],
+  "aod-assault-sergeant": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Power fist",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Thunder hammer",
+      "atk": 5,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock",
+        "Stun"
+      ]
+    }
+  ],
+  "aod-intercessor-sergeant": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Power fist",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 7,
+      "rules": [
+        "Brutal"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Thunder hammer",
+      "atk": 4,
+      "hit": 4,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Shock",
+        "Stun"
+      ]
+    }
+  ],
+  "aod-assault-grenadier": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "aod-assault-warrior": [
+    {
+      "name": "Chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": []
+    }
+  ],
+  "aod-heavy-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "aod-intercessor-gunner": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "aod-intercessor-warrior": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "aod-eliminator-sniper": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "bk-dire-avenger-exarch": [
+    {
+      "name": "Diresword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Lethal 5+",
+        "Rending"
+      ]
+    },
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 4,
+      "rules": []
+    },
+    {
+      "name": "Gun butts",
+      "atk": 3,
+      "hit": 4,
+      "normal_dmg": 2,
+      "crit_dmg": 3,
+      "rules": []
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "bk-dire-avenger-warrior": [
+    {
+      "name": "Fists",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 2,
+      "crit_dmg": 4,
+      "rules": []
+    }
+  ],
+  "bk-howling-banshee-exarch": [
+    {
+      "name": "Executioner",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 3,
+      "crit_dmg": 7,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Mirrorswords",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Ceaseless",
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Power weapon",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Triskele (slice)",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ],
+  "bk-howling-banshee-warrior": [
+    {
+      "name": "Power weapon",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Lethal 5+"
+      ]
+    }
+  ],
+  "bk-striking-scorpion-exarch": [
+    {
+      "name": "Biting blade",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 5,
+      "crit_dmg": 6,
+      "rules": [
+        "Rending"
+      ]
+    },
+    {
+      "name": "Scorpion’s claw and chainsword",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 6,
+      "rules": [
+        "Brutal",
+        "Lethal 5+"
+      ]
+    },
+    {
+      "name": "Twin chainswords",
+      "atk": 5,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Ceaseless",
+        "Rending"
+      ]
+    }
+  ],
+  "bk-striking-scorpion-warrior": [
+    {
+      "name": "Chainsword",
+      "atk": 4,
+      "hit": 3,
+      "normal_dmg": 4,
+      "crit_dmg": 5,
+      "rules": [
+        "Rending"
+      ]
+    }
+  ]
+}
