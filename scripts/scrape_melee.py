@@ -143,8 +143,15 @@ APL_HEADER_RE = re.compile(r"\bAPL\b.*\bMOVE\b.*\bSAVE\b.*\bWOUNDS\b", re.I)
 STAT_LINE_RE = re.compile(
     r"\b(?P<apl>\d)\s+(?P<move>\d+\")\s+(?P<save>\d\s*\+)\s+(?P<wounds>\d{1,2})\b"
 )
-WEAPON_HEADER_RE = re.compile(r"\bNAME\b.*\bATK\b.*\bHIT\b.*\bDMG\b.*\bWR\b", re.I)
-NAME_LINE_RE = re.compile(r"^[A-Z][A-Z'’&\- ]{2,}$")
+WEAPON_HEADER_RE = re.compile(
+    # Accepts both full ("NAME ATK HIT DMG WR") and abbreviated
+    # ("NAME A HIT D WR") header forms — Sanctifiers / Goremonger PDFs use
+    # the abbreviated form.
+    r"\bNAME\b.*\b(?:ATK|A)\b.*\bHIT\b.*\b(?:DMG|D)\b.*\bWR\b",
+    re.I,
+)
+# Operative names are uppercase and may include digits (e.g. "XV26 SHAS'VRE").
+NAME_LINE_RE = re.compile(r"^[A-Z][A-Z0-9'’&\- ]{2,}$")
 
 
 @dataclass
@@ -189,16 +196,25 @@ def split_cards(text: str) -> list[list[str]]:
 def find_operative_name(card_lines: list[str], apl_idx: int) -> str:
     """The operative name appears on the line(s) IMMEDIATELY AFTER the APL
     header, before the stat-values line. Sometimes wraps over two all-caps
-    lines.
+    lines, and sometimes the stat values are appended to the end of the second
+    name line (e.g. plague-marines: ``BOMBARDIER  3  5"  3+  9``).
     """
     parts: list[str] = []
     for i in range(apl_idx + 1, min(len(card_lines), apl_idx + 5)):
-        ln = card_lines[i].strip()
+        raw = card_lines[i].rstrip()
+        ln = raw.strip()
         if not ln:
             if parts:
                 break
             continue
-        if STAT_LINE_RE.search(ln):
+        # if the line has stats embedded, peel them off and consider the prefix
+        # as a candidate name continuation
+        m = STAT_LINE_RE.search(ln)
+        if m:
+            prefix = ln[: m.start()].strip()
+            cleaned = re.sub(r"[^A-Za-z0-9'’&\- ]", "", prefix).strip()
+            if NAME_LINE_RE.match(cleaned):
+                parts.append(cleaned)
             break
         cleaned = re.sub(r"[^A-Za-z0-9'’&\- ]", "", ln).strip()
         if NAME_LINE_RE.match(cleaned):
@@ -231,37 +247,60 @@ def parse_card(card_lines: list[str]) -> ParsedCard:
     # walk past the "NAME ATK HIT DMG WR" header
     weapons: list[ParsedWeapon] = []
     after_header = False
-    for ln in card_lines[apl_idx:]:
-        if WEAPON_HEADER_RE.search(ln):
+    # Some PDFs render side-by-side weapon tables on the same line
+    # (e.g. kommandos "Dynamite ... Harpoon ..."). Split such lines so each
+    # weapon is parsed independently. We look for 2+ weapon-row signatures
+    # on a single line and slice between them.
+    sub_signature = re.compile(
+        r"\b[A-Z][A-Za-z'’&\-() ]{2,30}\s{2,}\d\s+\d\+\s+\d+/\d+"
+    )
+    for raw_ln in card_lines[apl_idx:]:
+        if WEAPON_HEADER_RE.search(raw_ln):
             after_header = True
             continue
         if not after_header:
             continue
-        m = ROW_RE.match(ln.rstrip())
-        if not m:
-            continue
-        w_name = m.group("name").strip().lstrip("•").strip()
-        # filter obvious non-weapon rows
-        if not w_name or len(w_name) > 60:
-            continue
-        if w_name.upper() in {"NAME", "WR"}:
-            continue
-        rules_str = m.group("rules").lstrip("\x07").strip()
-        rules = (
-            []
-            if rules_str in {"-", "—", ""}
-            else [r.strip() for r in rules_str.split(",") if r.strip()]
-        )
-        weapons.append(
-            ParsedWeapon(
-                name=w_name,
-                atk=int(m.group("atk")),
-                hit=int(m.group("hit").rstrip("+")),
-                normal_dmg=int(m.group("ndmg")),
-                crit_dmg=int(m.group("cdmg")),
-                rules=rules,
+        # try to split if the line contains 2+ weapon-row signatures
+        sub_lines = [raw_ln]
+        sigs = list(sub_signature.finditer(raw_ln))
+        if len(sigs) >= 2:
+            sub_lines = []
+            for k, sig in enumerate(sigs):
+                start = sig.start()
+                # for each chunk, take from this sig's start to the next sig's
+                # start (or end of line for the last)
+                end = sigs[k + 1].start() if k + 1 < len(sigs) else len(raw_ln)
+                sub_lines.append("    " + raw_ln[start:end])
+        for ln in sub_lines:
+            m = ROW_RE.match(ln.rstrip())
+            if not m:
+                continue
+            w_name = m.group("name").strip().lstrip("•").strip()
+            # filter obvious non-weapon rows
+            if not w_name or len(w_name) > 60:
+                continue
+            if w_name.upper() in {"NAME", "WR"}:
+                continue
+            rules_str = m.group("rules").lstrip("\x07").strip()
+            # Normalise unicode dashes (figure dash, en-dash, em-dash,
+            # non-breaking hyphen, hyphen-minus) so that "no rules" markers
+            # are detected uniformly.
+            DASH_NO_RULES = {"-", "‑", "–", "—", "−", ""}
+            rules = (
+                []
+                if rules_str in DASH_NO_RULES
+                else [r.strip() for r in rules_str.split(",") if r.strip()]
             )
-        )
+            weapons.append(
+                ParsedWeapon(
+                    name=w_name,
+                    atk=int(m.group("atk")),
+                    hit=int(m.group("hit").rstrip("+")),
+                    normal_dmg=int(m.group("ndmg")),
+                    crit_dmg=int(m.group("cdmg")),
+                    rules=rules,
+                )
+            )
     return ParsedCard(name, apl, move, save, wounds, weapons)
 
 
@@ -377,10 +416,20 @@ def process_faction(faction: dict, urls: list[str]) -> tuple[dict, FactionReport
             # rules say ranged → skip
             if is_ranged_by_rules(w.rules):
                 continue
-            # fuzzy ranged-name match (handles drop-cap mangled names)
+            # fuzzy ranged-name match — only catches drop-cap mangling on
+            # ranged weapons whose first character was eaten by the PDF's
+            # decorative initial. We only check the direction
+            # `existing.endswith(parsed)` and require the size difference to be
+            # 1-2 characters; otherwise we get false positives like
+            # `Claws & spark` matching the existing `Spark`.
             existing_norm = {normalise(n): n for n in existing_ranged.get(op_id, set())}
             wnn = normalise(w.name)
-            if any(en.endswith(wnn) or wnn.endswith(en) for en in existing_norm):
+            mangled = any(
+                en.endswith(wnn) and 1 <= len(en) - len(wnn) <= 2
+                for en in existing_norm
+                if len(wnn) >= 4
+            )
+            if mangled:
                 rep.classification_warnings.append(
                     f"{op_id}: '{w.name}' fuzzy-matched existing ranged weapon — skipped"
                 )

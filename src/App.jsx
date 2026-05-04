@@ -103,7 +103,8 @@ export default function App() {
     setCurrentHealth(target.wounds);
   }
 
-  const weapon = shooter.weapons[Math.min(weaponIdx, Math.max(shooter.weapons.length - 1, 0))];
+  const rangedWeapons = shooter.weapons.filter((w) => w.kind !== "melee");
+  const weapon = rangedWeapons[Math.min(weaponIdx, Math.max(rangedWeapons.length - 1, 0))];
   const hasWeapon = !!weapon;
 
   const availAtkIds = availableAttackerIds(shooterFaction, shooter);
@@ -146,7 +147,7 @@ export default function App() {
   const shooterOpOptions = shooterFaction.operatives.map((o) => ({ value: o.id, label: o.full_name }));
   const targetOpOptions = targetFaction.operatives.map((o) => ({ value: o.id, label: o.full_name }));
   const weaponOptions = hasWeapon
-    ? shooter.weapons.map((w, i) => ({
+    ? rangedWeapons.map((w, i) => ({
         value: String(i),
         label: `${w.name}  (A${w.atk} · ${w.hit}+ · ${w.normal_dmg}/${w.crit_dmg})`,
       }))
