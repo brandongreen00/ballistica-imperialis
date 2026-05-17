@@ -207,6 +207,13 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Balanced" }] },
     note: "Starstrider — only when shooting an operative within 6\"",
   },
+  improved_coordinates_uplink: {
+    id: "improved_coordinates_uplink",
+    label: "Improved Coordinates Uplink (Saturate)",
+    type: "add_rules",
+    params: { rules: [{ name: "Saturate" }] },
+    note: "Starstrider — PRIVATEER SUPPORT ASSET only; target within 6\" of a friendly NAVIS operative (target also cannot be obscured)",
+  },
   merciless: {
     id: "merciless",
     label: "Merciless (Balanced vs wounded)",
