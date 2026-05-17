@@ -843,7 +843,7 @@ export const FACTIONS = [
     id: "elucidian-starstrider",
     name: "ELUCIDIAN STARSTRIDER",
     short: "STARSTRIDER",
-    attacker_effects: ["lethal_proximity"],
+    attacker_effects: ["lethal_proximity", "improved_coordinates_uplink"],
     defender_effects: ["undaunted_explorers"],
     operatives: [
       {
@@ -856,6 +856,11 @@ export const FACTIONS = [
         weapons: [
           { name: "Heirloom relic pistol", atk: 4, hit: 3, normal_dmg: 4, crit_dmg: 5, rules: ["Range 8\"", "Piercing Crits 1", "Seek Light"], is_pistol: true },
           { name: "Monomolecular cane-rapier", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 6, rules: ["Lethal 5+"], kind: "melee" },
+          { name: "Archeotech beam (PSA)", atk: 4, hit: 3, normal_dmg: 6, crit_dmg: 7, rules: ["Heavy (Reposition only)", "Piercing 2", "Silent"], is_pistol: false },
+          { name: "Plasma battery (PSA)", atk: 5, hit: 4, normal_dmg: 5, crit_dmg: 6, rules: ["Heavy (Reposition only)", "Lethal 5+", "Piercing 1", "Silent"], is_pistol: false },
+          { name: "Macrocannon (PSA)", atk: 5, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Heavy (Reposition only)", "Piercing Crits 1", "Saturate", "Silent", "Torrent 2\""], is_pistol: false },
+          { name: "Guided shell (PSA)", atk: 5, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Blast 2\"", "Heavy (Reposition only)", "Silent"], is_pistol: false },
+          { name: "Cluster bomb (PSA)", atk: 5, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["Blast 3\"", "Heavy (Reposition only)", "Silent"], is_pistol: false },
         ],
       },
       {
@@ -917,6 +922,11 @@ export const FACTIONS = [
           { name: "Artificer shotgun (long range)", atk: 4, hit: 5, normal_dmg: 2, crit_dmg: 2, rules: [], is_pistol: false },
           { name: "Relic laspistol", atk: 4, hit: 3, normal_dmg: 2, crit_dmg: 4, rules: ["Range 8\"", "Lethal 5+"], is_pistol: true },
           { name: "Gun butt", atk: 3, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], kind: "melee" },
+          { name: "Archeotech beam (PSA)", atk: 4, hit: 3, normal_dmg: 6, crit_dmg: 7, rules: ["Heavy (Reposition only)", "Piercing 2", "Silent"], is_pistol: false },
+          { name: "Plasma battery (PSA)", atk: 5, hit: 4, normal_dmg: 5, crit_dmg: 6, rules: ["Heavy (Reposition only)", "Lethal 5+", "Piercing 1", "Silent"], is_pistol: false },
+          { name: "Macrocannon (PSA)", atk: 5, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Heavy (Reposition only)", "Piercing Crits 1", "Saturate", "Silent", "Torrent 2\""], is_pistol: false },
+          { name: "Guided shell (PSA)", atk: 5, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Blast 2\"", "Heavy (Reposition only)", "Silent"], is_pistol: false },
+          { name: "Cluster bomb (PSA)", atk: 5, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["Blast 3\"", "Heavy (Reposition only)", "Silent"], is_pistol: false },
         ],
       },
       {
@@ -931,6 +941,11 @@ export const FACTIONS = [
           { name: "Rotor cannon (focused)", atk: 5, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Heavy (Dash only)", "Rending"], is_pistol: false },
           { name: "Rotor cannon (sweeping)", atk: 4, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Heavy (Dash only)", "Rending", "Torrent 1\""], is_pistol: false },
           { name: "Gun butt", atk: 3, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: [], kind: "melee" },
+          { name: "Archeotech beam (PSA)", atk: 4, hit: 3, normal_dmg: 6, crit_dmg: 7, rules: ["Heavy (Reposition only)", "Piercing 2", "Silent"], is_pistol: false },
+          { name: "Plasma battery (PSA)", atk: 5, hit: 4, normal_dmg: 5, crit_dmg: 6, rules: ["Heavy (Reposition only)", "Lethal 5+", "Piercing 1", "Silent"], is_pistol: false },
+          { name: "Macrocannon (PSA)", atk: 5, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Heavy (Reposition only)", "Piercing Crits 1", "Saturate", "Silent", "Torrent 2\""], is_pistol: false },
+          { name: "Guided shell (PSA)", atk: 5, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Blast 2\"", "Heavy (Reposition only)", "Silent"], is_pistol: false },
+          { name: "Cluster bomb (PSA)", atk: 5, hit: 4, normal_dmg: 2, crit_dmg: 3, rules: ["Blast 3\"", "Heavy (Reposition only)", "Silent"], is_pistol: false },
         ],
       },
     ],
