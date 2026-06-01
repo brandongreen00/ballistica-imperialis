@@ -392,7 +392,7 @@ export const FACTIONS = [
     id: "celestian-insidiants",
     name: "CELESTIAN INSIDIANTS",
     short: "INSIDIANTS",
-    attacker_effects: ["inspiration_severe"],
+    attacker_effects: ["inspiration_severe", "suspect_eliminate_punishing", "fervent_hate_ceaseless", "fervent_hate_relentless"],
     defender_effects: [],
     operatives: [
       {

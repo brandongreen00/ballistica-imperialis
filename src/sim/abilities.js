@@ -116,6 +116,27 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Severe" }] },
     note: "Insidiants gain Severe while INSPIRING — toggle to assume that state",
   },
+  suspect_eliminate_punishing: {
+    id: "suspect_eliminate_punishing",
+    label: "Suspect & Eliminate (Punishing)",
+    type: "add_rules",
+    params: { rules: [{ name: "Punishing" }] },
+    note: "Insidiants strategy ploy — when shooting or fighting an enemy operative that has one of your Suspicion tokens",
+  },
+  fervent_hate_ceaseless: {
+    id: "fervent_hate_ceaseless",
+    label: "Fervent Hate (Ceaseless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Ceaseless" }] },
+    note: "Insidiants firefight ploy — vs an enemy operative without the IMPERIUM keyword",
+  },
+  fervent_hate_relentless: {
+    id: "fervent_hate_relentless",
+    label: "Fervent Hate (Relentless)",
+    type: "add_rules",
+    params: { rules: [{ name: "Relentless" }] },
+    note: "Insidiants firefight ploy — Relentless instead of Ceaseless when the non-IMPERIUM target also has the CHAOS and/or PSYKER keyword",
+  },
   siege_warfare: {
     id: "siege_warfare",
     label: "Siege Warfare (1CP)",
