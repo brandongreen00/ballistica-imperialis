@@ -134,7 +134,17 @@ export default function App() {
 
   function toggleEffect(setList, list, id, allowed) {
     if (!allowed) return;
-    setList(list.includes(id) ? list.filter((x) => x !== id) : [...list, id]);
+    if (list.includes(id)) {
+      setList(list.filter((x) => x !== id));
+      return;
+    }
+    // Effects sharing a `group` are mutually exclusive (e.g. the XV26 Kauyon
+    // Accurate tiers) — turning one on clears any other active member.
+    const group = (ATTACKER_EFFECTS[id] || DEFENDER_EFFECTS[id])?.group;
+    const pruned = group
+      ? list.filter((x) => (ATTACKER_EFFECTS[x] || DEFENDER_EFFECTS[x])?.group !== group)
+      : list;
+    setList([...pruned, id]);
   }
 
   function changeShooterFaction(fid) {

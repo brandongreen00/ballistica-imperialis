@@ -152,7 +152,7 @@ export const FACTIONS = [
     name: "ANGELS OF DEATH",
     short: "ANGELS",
     attacker_effects: [],
-    defender_effects: ["transhuman", "indomitus"],
+    defender_effects: ["transhuman", "indomitus", "aod_hardy"],
     operatives: [
       {
         id: "aod-captain",
@@ -6099,7 +6099,7 @@ export const FACTIONS = [
     id: "xv26-stealth-battlesuits",
     name: "XV26 STEALTH BATTLESUITS",
     short: "XV26",
-    attacker_effects: ["patient_hunters", "prepare_ambush_seek", "markerlight_severe"],
+    attacker_effects: ["patient_hunters", "prepare_ambush_seek", "markerlight_severe", "kauyon_accurate_1", "kauyon_accurate_2", "kauyon_accurate_3"],
     defender_effects: [],
     operatives: [
       {

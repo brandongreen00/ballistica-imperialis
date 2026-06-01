@@ -89,6 +89,11 @@
        force_crit_six        — {}
                                only natural 6s count as crits, regardless of
                                Lethal weapon rule (Wrecka Krusha Armoured Up)
+       crit_save_on          — { threshold }
+                               defence dice results of >= threshold count as
+                               critical saves (normally only a natural 6),
+                               e.g. the Angels of Death Hardy chapter tactic
+                               makes 5+ critical saves
        crit_to_normal_attack — { count }
                                convert <count> attacker crit hits to normal
                                hits before saves (Gellerpox Mutant)
@@ -661,6 +666,36 @@ export const ATTACKER_EFFECTS = {
     params: { rules: [{ name: "Severe" }] },
     note: "XV26 — only when shooting a marked target",
   },
+  // XV26 Kauyon faction rule: a friendly operative's ranged weapons gain
+  // Accurate X, where X is set by the target's location (1 within 3" of your
+  // territory, 2 within your territory, 3 within 3" of your drop zone). The
+  // Shas'vre's For the Greater Good can raise X by 1 (max 3) when XV26 losses
+  // mount. Pick the tier that matches the engagement — they share a group so
+  // only one applies at a time.
+  kauyon_accurate_1: {
+    id: "kauyon_accurate_1",
+    label: "Kauyon (Accurate 1)",
+    type: "accurate",
+    params: { count: 1 },
+    group: "kauyon",
+    note: "XV26 Kauyon — target within 3\" of your territory",
+  },
+  kauyon_accurate_2: {
+    id: "kauyon_accurate_2",
+    label: "Kauyon (Accurate 2)",
+    type: "accurate",
+    params: { count: 2 },
+    group: "kauyon",
+    note: "XV26 Kauyon — target within your territory",
+  },
+  kauyon_accurate_3: {
+    id: "kauyon_accurate_3",
+    label: "Kauyon (Accurate 3)",
+    type: "accurate",
+    params: { count: 3 },
+    group: "kauyon",
+    note: "XV26 Kauyon — target within 3\" of your drop zone (or raised by For the Greater Good)",
+  },
 };
 
 export const DEFENDER_EFFECTS = {
@@ -689,6 +724,13 @@ export const DEFENDER_EFFECTS = {
     type: "discard_fail_for_save",
     params: { min_fails: 2, count: 1 },
     note: "Indomitus needs ≥2 failed defence dice to trigger",
+  },
+  aod_hardy: {
+    id: "aod_hardy",
+    label: "Hardy (5+ crit saves)",
+    type: "crit_save_on",
+    params: { threshold: 5 },
+    note: "Angels of Death Hardy chapter tactic — when this operative is shot, defence dice of 5+ are critical saves. Its retaliation −1 damage clause is melee-only and isn't modelled in the shooting sim.",
   },
   take_cover: {
     id: "take_cover",

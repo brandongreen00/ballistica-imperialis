@@ -79,19 +79,28 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   if (env.shooterInjured) hit = Math.min(6, hit + 1);
   let crit = 6;
   let preRet = 0;
+  // Accurate x: retain up to x attack dice as normal successes without rolling
+  // them. Instances of Accurate do not simply stack — per the weapon rule, a
+  // weapon with two or more instances of Accurate may be treated as a single
+  // Accurate 2 instead. We gather every source (printed rules, injected
+  // add_rules, and accurate-type effects such as the XV26 Kauyon faction rule)
+  // and resolve to the better of the highest single instance or — when 2+
+  // instances are present — Accurate 2.
+  const accurateVals = [];
   for (const r of rules) {
     if (r.name === "Lethal" && r.value < crit) crit = r.value;
-    else if (r.name === "Accurate") {
-      const k = Math.min(r.value, atkDice); atkDice -= k; preRet += k;
-    }
+    else if (r.name === "Accurate") accurateVals.push(r.value);
   }
   for (const e of defEff) {
     if (e.type === "force_crit_six") crit = 6;
   }
   for (const e of atkEff) {
-    if (e.type === "accurate") {
-      const k = Math.min(e.params.count, atkDice); atkDice -= k; preRet += k;
-    }
+    if (e.type === "accurate") accurateVals.push(e.params.count);
+  }
+  if (accurateVals.length > 0) {
+    const highest = Math.max(...accurateVals);
+    const accurateX = accurateVals.length >= 2 ? Math.max(highest, 2) : highest;
+    const k = Math.min(accurateX, atkDice); atkDice -= k; preRet += k;
   }
   if (env.obscured) atkDice = Math.max(0, atkDice - 1);
   const vAcc = !env.targetEngaged ? 0
@@ -231,6 +240,12 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     }
   }
 
+  // A defence die normally crits only on a natural 6. Rules like the Angels of
+  // Death Hardy chapter tactic make defence dice results of 5+ critical saves.
+  let defCritT = 6;
+  for (const e of defEff) {
+    if (e.type === "crit_save_on") defCritT = Math.min(defCritT, e.params.threshold);
+  }
   let defC = 0, defN = coverSaves;
   for (const v of defRolls) {
     if (soulstrike) {
@@ -238,7 +253,7 @@ function runShoot(target, weapon, env, defEff, atkEff) {
       else if (v === 1) defC++;
       else if (v <= apl) defN++;
     } else {
-      if (v === 6) defC++; else if (v >= saveT) defN++;
+      if (v >= defCritT) defC++; else if (v >= saveT) defN++;
     }
   }
 
