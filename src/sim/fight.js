@@ -20,6 +20,10 @@ import { parseRules } from "./parseRules.js";
      Brutal (parry restriction), Shock (crit-use side-effect),
      Hot (self-damage), Stun / Silent / Limited / PSYCHIC (no calc effect)
 
+   Per-side attacker effects (from abilities.js) are resolved before the fight:
+   add_rules inject extra weapon rules and modify_dmg adjusts the Dmg stat
+   (e.g. the Insidiant Warrior's Inspired Strikes — +1 Crit Dmg while INSPIRING).
+
    Not supported (silently ignored): Devastating, Storm, Piercing, Range,
    and all asterisked team-specific rules (Poison*, Repress*, Shield*, etc).
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -212,18 +216,45 @@ function fightOnce(weaponA, weaponB, hpA, hpB, priorityA, priorityB, initiator) 
 
 /* ── public API ─────────────────────────────────────────────────────────── */
 
-function prepareWeapon(w) {
-  const parsedRules = parseRules(w.rules);
+// Resolve a side's attacker effects into the modifiers the fight engine
+// understands: extra weapon rules (Severe, Punishing, Balanced, Ceaseless,
+// Relentless, Brutal, Shock, ...) injected onto that fighter's weapon, plus
+// Dmg-stat changes (Insidiant Warrior Inspired Strikes — +1 Crit Dmg while
+// INSPIRING). Composite effects are flattened. Shooting-only effects (Saturate,
+// Accurate, Devastating, ...) carry no melee-relevant rule, so they contribute
+// nothing here.
+function collectEffectMods(effects) {
+  let normal = 0, crit = 0;
+  const addRules = [];
+  const visit = (e) => {
+    if (!e) return;
+    if (e.type === "composite") { for (const s of e.params.effects) visit(s); return; }
+    if (e.type === "add_rules") {
+      for (const r of e.params.rules) addRules.push({ name: r.name, value: r.value ?? null, raw: r.name });
+    } else if (e.type === "modify_dmg") {
+      normal += e.params.normal ?? 0;
+      crit += e.params.crit ?? 0;
+    }
+  };
+  for (const e of effects) visit(e);
+  return { normal, crit, addRules };
+}
+
+function prepareWeapon(w, effects = []) {
+  const { normal, crit, addRules } = collectEffectMods(effects);
+  const parsedRules = [...parseRules(w.rules), ...addRules];
   return {
     ...w,
+    normal_dmg: Math.max(0, w.normal_dmg + normal),
+    crit_dmg: Math.max(0, w.crit_dmg + crit),
     parsedRules,
     parsedRulesNames: new Set(parsedRules.map((r) => r.name)),
   };
 }
 
 export function fightSimulate(params, trials) {
-  const wA = prepareWeapon(params.weaponA);
-  const wB = prepareWeapon(params.weaponB);
+  const wA = prepareWeapon(params.weaponA, params.effectsA || []);
+  const wB = prepareWeapon(params.weaponB, params.effectsB || []);
   const hpA = Math.max(1, params.hpA);
   const hpB = Math.max(1, params.hpB);
 

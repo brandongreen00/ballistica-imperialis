@@ -22,6 +22,10 @@
        modify_atk_dice     — { amount }  add <amount> to the weapon's Atk
                                          characteristic (Inquisitorial Tome
                                          Denunciation +1 within 2")
+       modify_dmg          — { normal?, crit? }
+                                         add to the weapon's Normal / Critical
+                                         Dmg stat (Insidiant Warrior Inspired
+                                         Strikes: +1 Crit Dmg while INSPIRING)
        normal_to_crit_attack — { count } promote <count> retained normal hits
                                          to critical hits, post-categorise
                                          (Hearthkyn Salvagers Grudge tokens)
@@ -120,6 +124,13 @@ export const ATTACKER_EFFECTS = {
     type: "add_rules",
     params: { rules: [{ name: "Severe" }] },
     note: "Insidiants gain Severe while INSPIRING — toggle to assume that state",
+  },
+  inspired_strikes: {
+    id: "inspired_strikes",
+    label: "Inspired Strikes (+1 Crit Dmg)",
+    type: "modify_dmg",
+    params: { crit: 1 },
+    note: "Insidiant Warrior — while INSPIRING, +1 to the Critical Dmg stat of its weapons (the same INSPIRING state that grants Inspiration's Severe; toggle both together)",
   },
   suspect_eliminate_punishing: {
     id: "suspect_eliminate_punishing",

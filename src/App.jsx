@@ -33,6 +33,25 @@ function isAttackerEffectGated(effect, weapon) {
   return false;
 }
 
+// Weapon rules the fight engine (sim/fight.js) actually resolves. An attacker
+// effect is only worth surfacing in melee if it changes the Dmg stat or injects
+// one of these rules — shooting-only effects (Saturate, Accurate, Devastating,
+// Blast, Piercing, ...) would be silent no-ops in a fight.
+const MELEE_RELEVANT_RULES = new Set([
+  "Lethal", "Balanced", "Ceaseless", "Relentless",
+  "Severe", "Rending", "Punishing", "Brutal", "Shock", "Hot",
+]);
+function attackerEffectAppliesInMelee(effect) {
+  if (!effect) return false;
+  if (effect.type === "modify_dmg") return true;
+  if (effect.type === "add_rules") return (effect.params?.rules || []).some((r) => MELEE_RELEVANT_RULES.has(r.name));
+  if (effect.type === "composite") return (effect.params?.effects || []).some(attackerEffectAppliesInMelee);
+  return false;
+}
+function meleeAttackerIds(faction, op) {
+  return availableAttackerIds(faction, op).filter((id) => attackerEffectAppliesInMelee(ATTACKER_EFFECTS[id]));
+}
+
 const CATEGORY_TAGLINE = {
   imperium: "+ + COGITATOR MARK VI + + FIRING SOLUTIONS + +",
   chaos:    "+ + DAEMONIC AUSPEX + + UNHOLY CALCULUS + +",
@@ -77,6 +96,9 @@ export default function App() {
   const [healthA, setHealthA] = useState(null); // re-initialised on operative change below
   const [priorityA, setPriorityA] = useState("MAX_DMG");
   const [priorityB, setPriorityB] = useState("MAX_DMG");
+  // Fighter A reuses the shooter's atkEffOn (same operative); fighter B (the
+  // target/retaliator) needs its own attacker-effect selection.
+  const [atkEffOnB, setAtkEffOnB] = useState([]);
   const [fightStats, setFightStats] = useState(null);
 
   const shooterFaction = factionById(shooterFactionId);
@@ -112,6 +134,8 @@ export default function App() {
     setMeleeBIdx(0);
     const allowed = new Set(availableDefenderIds(targetFaction, target));
     setDefEffOn((s) => s.filter((id) => allowed.has(id)));
+    const allowedAtkB = new Set(availableAttackerIds(targetFaction, target));
+    setAtkEffOnB((s) => s.filter((id) => allowedAtkB.has(id)));
     setCurrentHealth(target.wounds);
   }
 
@@ -131,6 +155,8 @@ export default function App() {
 
   const availAtkIds = availableAttackerIds(shooterFaction, shooter);
   const availDefIds = availableDefenderIds(targetFaction, target);
+  const meleeAtkIdsA = meleeAttackerIds(shooterFaction, shooter);
+  const meleeAtkIdsB = meleeAttackerIds(targetFaction, target);
 
   function toggleEffect(setList, list, id, allowed) {
     if (!allowed) return;
@@ -164,11 +190,18 @@ export default function App() {
     setTimeout(() => {
       const hpA = Math.max(1, Math.min(healthA ?? shooter.wounds, shooter.wounds));
       const hpB = Math.max(1, Math.min(currentHealth, target.wounds));
+      const meleeIdsA = new Set(meleeAttackerIds(shooterFaction, shooter));
+      const meleeIdsB = new Set(meleeAttackerIds(targetFaction, target));
+      const onA = atkEffOn.filter((id) => meleeIdsA.has(id));
+      const onB = atkEffOnB.filter((id) => meleeIdsB.has(id));
+      const effectsA = onA.map((id) => ATTACKER_EFFECTS[id]).filter(Boolean);
+      const effectsB = onB.map((id) => ATTACKER_EFFECTS[id]).filter(Boolean);
       const s = fightSimulate({
         weaponA: meleeWeaponA,
         weaponB: meleeWeaponB,
         hpA, hpB,
         priorityA, priorityB, initiator: "A",
+        effectsA, effectsB,
       }, trials);
       setFightStats({
         ...s,
@@ -176,6 +209,8 @@ export default function App() {
         weaponNameA: meleeWeaponA.name, weaponNameB: meleeWeaponB.name,
         startHpA: hpA, startHpB: hpB,
         priorityA, priorityB,
+        appliedA: onA.map((id) => ATTACKER_EFFECTS[id]?.label || id),
+        appliedB: onB.map((id) => ATTACKER_EFFECTS[id]?.label || id),
       });
       setComputing(false);
     }, 10);
@@ -304,6 +339,10 @@ export default function App() {
           setHealth={setHealthA}
           priority={priorityA}
           setPriority={setPriorityA}
+          availAtkIds={meleeAtkIdsA}
+          atkEffOn={atkEffOn}
+          setAtkEffOn={setAtkEffOn}
+          toggleEffect={toggleEffect}
         />
         <CombatantPanel
           side="B"
@@ -324,6 +363,10 @@ export default function App() {
           setHealth={setCurrentHealth}
           priority={priorityB}
           setPriority={setPriorityB}
+          availAtkIds={meleeAtkIdsB}
+          atkEffOn={atkEffOnB}
+          setAtkEffOn={setAtkEffOnB}
+          toggleEffect={toggleEffect}
         />
       </section>
 
@@ -873,6 +916,7 @@ function CombatantPanel({
   op, opOptions, setOpId,
   meleeWeapons, weaponOptions, weaponIdx, setWeaponIdx, weapon,
   health, setHealth, priority, setPriority,
+  availAtkIds = [], atkEffOn = [], setAtkEffOn, toggleEffect,
 }) {
   const hasWeapon = !!weapon;
   return (
@@ -908,6 +952,27 @@ function CombatantPanel({
       ) : (
         <div className="text-[10px] mt-2 mb-3" style={{ color: "var(--text-muted)" }}>
           This operative has no melee profile on its datacard.
+        </div>
+      )}
+
+      {availAtkIds.length > 0 && (
+        <div className="mb-3">
+          <div className="label-cap mb-1">Attacker Effects</div>
+          <div className="flex flex-wrap gap-2">
+            {availAtkIds.map((id) => {
+              const eff = ATTACKER_EFFECTS[id];
+              if (!eff) return null;
+              return (
+                <Toggle key={id} label={eff.label} checked={atkEffOn.includes(id)}
+                  onChange={() => toggleEffect(setAtkEffOn, atkEffOn, id, true)} />
+              );
+            })}
+          </div>
+          {availAtkIds.some((id) => ATTACKER_EFFECTS[id]?.note) && (
+            <div className="text-[10px] mt-1" style={{ color: "var(--text-muted)" }}>
+              {availAtkIds.map((id) => ATTACKER_EFFECTS[id]?.note).filter(Boolean).join(" · ")}
+            </div>
+          )}
         </div>
       )}
 
@@ -961,6 +1026,13 @@ function FightResultsPanel({ stats, a, b, theme }) {
           <span className="mx-2" style={{ color: "var(--text-footer)" }}>·</span>
           fighter:{priorityLabel(stats.priorityA)} · retaliator:{priorityLabel(stats.priorityB)}
         </div>
+
+        {((stats.appliedA?.length || 0) + (stats.appliedB?.length || 0)) > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4 text-xs">
+            {(stats.appliedA || []).map((l, i) => <span key={`ea${i}`} className="chip" style={CONDITION_CHIP_STYLE}>A · {l}</span>)}
+            {(stats.appliedB || []).map((l, i) => <span key={`eb${i}`} className="chip" style={CONDITION_CHIP_STYLE}>B · {l}</span>)}
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div className="p-3" style={{ background: "var(--input-bg)", border: "1px solid var(--border)" }}>
