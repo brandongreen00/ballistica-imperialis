@@ -76,6 +76,19 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   // +1, Denunciation +1, Sanctification −1), before Accurate/obscured/vantage
   // reservations — this is the "attack dice" the weapon actually rolls.
   const effAtk = atkDice;
+
+  // modify_dmg: attacker effects that change the weapon's Dmg characteristic
+  // (e.g. Insidiant Warrior Inspired Strikes — +1 Critical Dmg while INSPIRING).
+  // With no such effect active these equal the printed stats, so the damage
+  // maths below is byte-for-byte unchanged for every other shooter.
+  let normalDmg = weapon.normal_dmg;
+  let critDmg = weapon.crit_dmg;
+  for (const e of atkEff) {
+    if (e.type === "modify_dmg") {
+      normalDmg = Math.max(0, normalDmg + (e.params.normal ?? 0));
+      critDmg = Math.max(0, critDmg + (e.params.crit ?? 0));
+    }
+  }
   let hit = weapon.hit;
   for (const e of defEff) {
     if (e.type === "worsen_attacker_hit") hit = Math.min(6, hit + e.params.amount);
@@ -278,11 +291,11 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   // resolve saves
   const brutal = has("Brutal");
   const [remN, remC] = allocateSavesOptimally(
-    atkN, atkC, defN, defC, weapon.normal_dmg, weapon.crit_dmg, brutal
+    atkN, atkC, defN, defC, normalDmg, critDmg, brutal
   );
   // per-die damage caps (e.g. Warpcoven All is Dust)
-  let normDmgPer = weapon.normal_dmg;
-  let critDmgPer = weapon.crit_dmg;
+  let normDmgPer = normalDmg;
+  let critDmgPer = critDmg;
   for (const e of defEff) {
     if (e.type === "cap_die_damage") {
       if (e.params.dice_type === "normal" || e.params.dice_type === "all") {
@@ -301,7 +314,7 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   for (const e of defEff) {
     if (e.type === "damage_reduction_per_die") {
       const apply = (which) => {
-        const dmgPer = which === "crit" ? weapon.crit_dmg : weapon.normal_dmg;
+        const dmgPer = which === "crit" ? critDmg : normalDmg;
         const dice = which === "crit" ? damCritDice : damNormDice;
         if (dmgPer >= e.params.threshold && dice > 0) {
           dmg = Math.max(0, dmg - dice * e.params.reduce_by);
@@ -316,7 +329,7 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   for (const e of defEff) {
     if (e.type === "damage_reduction_per_die_d6") {
       const apply = (which) => {
-        const dmgPer = which === "crit" ? weapon.crit_dmg : weapon.normal_dmg;
+        const dmgPer = which === "crit" ? critDmg : normalDmg;
         const dice = which === "crit" ? damCritDice : damNormDice;
         if (dmgPer >= e.params.dmg_threshold) {
           for (let i = 0; i < dice; i++) {
@@ -334,7 +347,7 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   // post_damage: ignore_damage_dice
   for (const e of defEff) {
     if (e.type === "ignore_damage_dice") {
-      const dmgPer = e.params.dice_type === "crit" ? weapon.crit_dmg : weapon.normal_dmg;
+      const dmgPer = e.params.dice_type === "crit" ? critDmg : normalDmg;
       const avail = e.params.dice_type === "crit" ? damCritDice : damNormDice;
       const k = Math.min(e.params.count, avail);
       if (k > 0) {
@@ -353,8 +366,8 @@ function runShoot(target, weapon, env, defEff, atkEff) {
   for (const e of defEff) {
     if (e.type === "halve_one_die_damage") {
       const candidates = [];
-      if (damNormDice > 0) candidates.push(weapon.normal_dmg);
-      if (damCritDice > 0) candidates.push(weapon.crit_dmg);
+      if (damNormDice > 0) candidates.push(normalDmg);
+      if (damCritDice > 0) candidates.push(critDmg);
       if (candidates.length > 0) {
         const lowest = Math.min(...candidates);
         const halved = Math.max(e.params.min, Math.ceil(lowest / 2));

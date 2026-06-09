@@ -487,7 +487,7 @@ export const FACTIONS = [
         full_name: "INSIDIANT WARRIOR",
         save: 3, wounds: 9, apl: 2, move: "6\"",
         defender_abilities: [],
-        attacker_effects: [],
+        attacker_effects: ["inspired_strikes"],
         weapons: [
           { name: "Bolt pistol", atk: 4, hit: 3, normal_dmg: 3, crit_dmg: 4, rules: ["Range 8\""], is_pistol: true },
           { name: "Condemnor stakethrower", atk: 4, hit: 3, normal_dmg: 2, crit_dmg: 2, rules: ["Devastating 1", "Piercing Crits 1", "Silent", "Anti-PSYKER"], is_pistol: false },
