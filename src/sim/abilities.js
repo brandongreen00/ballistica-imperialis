@@ -7,6 +7,12 @@
      type    — drives behaviour in the simulator
      params  — type-specific parameters
      note    — optional caveat surfaced in the UI for approximations
+     crit_trigger — optional { label } marking an attacker effect that fires
+                    on a critical success that inflicts damage (an on-crit
+                    token / extra effect). When present — or when the weapon
+                    carries the Poison rule — the results panel surfaces
+                    P(crit deals damage), defence-aware (see simulate.js
+                    pCritDamage)
 
    Supported types and their semantics inside the simulator:
 
@@ -988,12 +994,21 @@ export const DEFENDER_EFFECTS = {
     params: { dice_type: "normal", count: 1 },
     note: "Kommandos — ignore one normal die damage (excludes Squig/Grot)",
   },
-  whipcord_emergence: {
-    id: "whipcord_emergence",
-    label: "Whipcord Emergence (reroll fails)",
+  whipcord_emergence_burrowed: {
+    id: "whipcord_emergence_burrowed",
+    label: "Whipcord Emergence — Burrowed (reroll 1)",
+    type: "defence_reroll",
+    params: { fails: true, count: 1 },
+    group: "whipcord_emergence",
+    note: "Raveners — Burrowed this TP & not on Tunnel: re-roll one defence die",
+  },
+  whipcord_emergence_tunnel: {
+    id: "whipcord_emergence_tunnel",
+    label: "Whipcord Emergence — On Tunnel (reroll any)",
     type: "defence_reroll",
     params: { fails: true },
-    note: "Raveners — only when defender Burrowed or on Tunnel",
+    group: "whipcord_emergence",
+    note: "Raveners — on your Tunnel: re-roll any defence dice (regardless of Burrow)",
   },
   prismatic_blur: {
     id: "prismatic_blur",
