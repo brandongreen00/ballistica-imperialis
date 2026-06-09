@@ -388,6 +388,9 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     damage: dmg,
     selfDamage: selfDmg,
     damDice: damNormDice + damCritDice,
+    // Critical successes that actually inflicted damage (after saves and any
+    // crit-die ignores). >0 means an on-crit effect such as Poison triggers.
+    critDmgDice: damCritDice,
     effAtk,
     wrekaGen,
     wrekaSpent,
@@ -404,6 +407,7 @@ export function simulate(target, weapon, env, defEff, atkEff, trials, currentHea
 
   let sumD = 0, sumSD = 0, nAny = 0, nIncap = 0, nSelf = 0, nInjure = 0;
   let sumWGen = 0, sumWSpent = 0, sumWEnd = 0;
+  let nCritDmg = 0;
   let effAtk = weapon.atk;
   const diceCounts = [0, 0, 0, 0, 0, 0];
   const dist = new Map();
@@ -414,6 +418,7 @@ export function simulate(target, weapon, env, defEff, atkEff, trials, currentHea
     sumSD += r.selfDamage;
     if (r.damage > 0) nAny++;
     if (r.damage >= health) nIncap++;
+    if (r.critDmgDice > 0) nCritDmg++;
     if (r.selfDamage > 0) nSelf++;
     const newHealth = Math.max(0, health - r.damage);
     if (!alreadyInjured && newHealth <= injuredThreshold) nInjure++;
@@ -431,6 +436,10 @@ export function simulate(target, weapon, env, defEff, atkEff, trials, currentHea
     meanSelfDmg: sumSD / trials,
     pAny: nAny / trials,
     pIncap: nIncap / trials,
+    // P(at least one critical success inflicts damage) — the trigger condition
+    // for on-crit effects like Poison, defence-aware (saves can stop crits on
+    // non-Devastating weapons; Devastating crits always get through).
+    pCritDamage: nCritDmg / trials,
     pInjure: alreadyInjured ? null : nInjure / trials,
     pSelf: nSelf / trials,
     pNDice: [1, 2, 3, 4, 5].map((k) => ({ n: k, p: diceCounts[k] / trials })),

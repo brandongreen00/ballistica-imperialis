@@ -33,6 +33,20 @@ function isAttackerEffectGated(effect, weapon) {
   return false;
 }
 
+// Crit-triggered effects (e.g. Poison) apply when you inflict damage with a
+// critical success. When the current shot has one, the results panel surfaces
+// the odds of that happening (P(crit deals damage), defence-aware). Sources:
+// the Poison weapon rule, plus any active attacker effect carrying a
+// `crit_trigger: { label }` descriptor.
+function critTriggerLabel(weapon, activeAtkEffs) {
+  const labels = [];
+  if (weapon?.rules?.some((r) => /^Poison\b/.test(r))) labels.push("Poison");
+  for (const e of activeAtkEffs) {
+    if (e?.crit_trigger?.label) labels.push(e.crit_trigger.label);
+  }
+  return labels.length ? uniq(labels).join(" · ") : null;
+}
+
 const CATEGORY_TAGLINE = {
   imperium: "+ + COGITATOR MARK VI + + FIRING SOLUTIONS + +",
   chaos:    "+ + DAEMONIC AUSPEX + + UNHOLY CALCULUS + +",
@@ -738,6 +752,13 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme })
   const tickStyle = { fill: theme["text-muted"], fontFamily: "JetBrains Mono", fontSize: 10 };
   const axisStroke = { stroke: theme["border"] };
 
+  // On-crit effects (Poison, etc.) for the current shot — gated the same way
+  // as the simulator gates attacker effects, so detection matches what fired.
+  const activeAtkEffs = atkEffOn
+    .map((id) => ATTACKER_EFFECTS[id])
+    .filter((e) => e && !isAttackerEffectGated(e, weapon));
+  const critTrigger = critTriggerLabel(weapon, activeAtkEffs);
+
   return (
     <section className="max-w-6xl mx-auto px-4 mt-6 mb-10">
       <div className="panel p-4 corner-brackets">
@@ -766,6 +787,12 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme })
             : <HeadlineStat label="ATTACK DICE" value={stats.effAtk}
                 accent={stats.effAtk !== weapon.atk ? "var(--accent-primary)" : undefined}
                 hint={`HIT ${weapon.hit}+${env.shooterInjured ? " (+1 injured)" : ""}${stats.effAtk !== weapon.atk ? ` · base ${weapon.atk}` : ""}`} />}
+          {critTrigger && (
+            <HeadlineStat label={`P(${critTrigger.toUpperCase()})`}
+              value={`${(stats.pCritDamage * 100).toFixed(1)}%`}
+              accent={stats.pCritDamage > 0.3 ? "var(--accent-action)" : "var(--text)"}
+              hint="≥1 crit deals damage" />
+          )}
         </div>
 
         {stats.wreka && (

@@ -7,6 +7,12 @@
      type    — drives behaviour in the simulator
      params  — type-specific parameters
      note    — optional caveat surfaced in the UI for approximations
+     crit_trigger — optional { label } marking an attacker effect that fires
+                    on a critical success that inflicts damage (an on-crit
+                    token / extra effect). When present — or when the weapon
+                    carries the Poison rule — the results panel surfaces
+                    P(crit deals damage), defence-aware (see simulate.js
+                    pCritDamage)
 
    Supported types and their semantics inside the simulator:
 
