@@ -72,6 +72,10 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     if (e.type === "modify_atk_dice") atkDice += e.params.amount;
   }
   atkDice = Math.max(0, atkDice);
+  // Atk characteristic after stat-modifying effects (e.g. Distend Dorsal Sac
+  // +1, Denunciation +1, Sanctification −1), before Accurate/obscured/vantage
+  // reservations — this is the "attack dice" the weapon actually rolls.
+  const effAtk = atkDice;
   let hit = weapon.hit;
   for (const e of defEff) {
     if (e.type === "worsen_attacker_hit") hit = Math.min(6, hit + e.params.amount);
@@ -384,6 +388,7 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     damage: dmg,
     selfDamage: selfDmg,
     damDice: damNormDice + damCritDice,
+    effAtk,
     wrekaGen,
     wrekaSpent,
     wrekaEndBank,
@@ -399,10 +404,12 @@ export function simulate(target, weapon, env, defEff, atkEff, trials, currentHea
 
   let sumD = 0, sumSD = 0, nAny = 0, nIncap = 0, nSelf = 0, nInjure = 0;
   let sumWGen = 0, sumWSpent = 0, sumWEnd = 0;
+  let effAtk = weapon.atk;
   const diceCounts = [0, 0, 0, 0, 0, 0];
   const dist = new Map();
   for (let i = 0; i < trials; i++) {
     const r = runShoot(target, w, env, defEff, atkEff);
+    effAtk = r.effAtk; // constant across trials (deterministic stat modifiers)
     sumD += r.damage;
     sumSD += r.selfDamage;
     if (r.damage > 0) nAny++;
@@ -428,6 +435,7 @@ export function simulate(target, weapon, env, defEff, atkEff, trials, currentHea
     pSelf: nSelf / trials,
     pNDice: [1, 2, 3, 4, 5].map((k) => ({ n: k, p: diceCounts[k] / trials })),
     dist: distArr,
+    effAtk,
     maxATK: Math.max(weapon.atk, 5),
     currentHealth: health,
     injuredThreshold,

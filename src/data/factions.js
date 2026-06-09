@@ -5614,7 +5614,7 @@ export const FACTIONS = [
     name: "RAVENERS",
     short: "RAVENERS",
     attacker_effects: [],
-    defender_effects: ["whipcord_emergence"],
+    defender_effects: ["whipcord_emergence_burrowed", "whipcord_emergence_tunnel"],
     operatives: [
       {
         id: "rv-prime",

@@ -763,7 +763,9 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme })
           <HeadlineStat label="P(DEAL DAMAGE)" value={`${(stats.pAny * 100).toFixed(1)}%`} hint="any target damage" />
           {stats.meanSelfDmg > 0
             ? <HeadlineStat label="SELF-DAMAGE" value={stats.meanSelfDmg.toFixed(2)} accent="var(--warn)" hint={`Hot: ${(stats.pSelf * 100).toFixed(1)}%`} />
-            : <HeadlineStat label="ATTACK DICE" value={weapon.atk} hint={`HIT ${weapon.hit}+${env.shooterInjured ? " (+1 injured)" : ""}`} />}
+            : <HeadlineStat label="ATTACK DICE" value={stats.effAtk}
+                accent={stats.effAtk !== weapon.atk ? "var(--accent-primary)" : undefined}
+                hint={`HIT ${weapon.hit}+${env.shooterInjured ? " (+1 injured)" : ""}${stats.effAtk !== weapon.atk ? ` · base ${weapon.atk}` : ""}`} />}
         </div>
 
         {stats.wreka && (
@@ -794,7 +796,7 @@ function ResultsPanel({ stats, target, weapon, env, defEffOn, atkEffOn, theme })
         <div className="mb-6">
           <div className="label-cap mb-2">Probability of Damaging with at Least N Attack Dice</div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
-            {stats.pNDice.filter((x) => x.n <= Math.max(weapon.atk + 1, 4)).map((x) => (
+            {stats.pNDice.filter((x) => x.n <= Math.max(stats.effAtk + 1, 4)).map((x) => (
               <div key={x.n} className="p-3" style={{ background: "var(--input-bg)", border: "1px solid var(--border)" }}>
                 <div className="label-cap">≥ {x.n} {x.n === 1 ? "DIE" : "DICE"}</div>
                 <div className="bignum text-xl" style={{ color: "var(--text)" }}>{(x.p * 100).toFixed(1)}%</div>
