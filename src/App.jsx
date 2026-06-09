@@ -557,6 +557,16 @@ export default function App() {
         {CATEGORY_FOOTER[category]}
         <div className="mt-2 text-[9px] tracking-[0.15em]">
           <a
+            href="https://ktcalc.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--text-footer)", textDecoration: "underline", textUnderlineOffset: "2px" }}
+          >
+            The original KT Math tool - full customisation for any scenarios I haven't accounted for
+          </a>
+        </div>
+        <div className="mt-2 text-[9px] tracking-[0.15em]">
+          <a
             href="https://buymeacoffee.com/wemougtdcg"
             target="_blank"
             rel="noopener noreferrer"
