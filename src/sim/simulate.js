@@ -358,6 +358,24 @@ function runShoot(target, weapon, env, defEff, atkEff) {
     }
   }
 
+  // ignore_damage_dice_d6: once per action, roll num_d6 D6 against one
+  // damaging retained die; on any result >= d6_threshold, ignore that die's
+  // damage in full (Celestian Insidiants Saintly Relics). The defender picks
+  // the higher-value die to target, mirroring halve_one_die_damage below.
+  for (const e of defEff) {
+    if (e.type === "ignore_damage_dice_d6" && (damNormDice > 0 || damCritDice > 0)) {
+      const preferCrit = damCritDice > 0 && (damNormDice === 0 || critDmg >= normalDmg);
+      const which = preferCrit ? "crit" : "normal";
+      const dmgPer = which === "crit" ? critDmg : normalDmg;
+      let hit6 = false;
+      for (let j = 0; j < e.params.num_d6; j++) if (d6() >= e.params.d6_threshold) hit6 = true;
+      if (hit6) {
+        dmg = Math.max(0, dmg - dmgPer);
+        if (which === "crit") damCritDice -= 1; else damNormDice -= 1;
+      }
+    }
+  }
+
   // halve one damaging die's damage (Starstrider Undaunted Explorers).
   // Defender uses the ploy on the first damaging die; the attacker resolves
   // dice in their preferred order, so they pick the lowest-damage die first

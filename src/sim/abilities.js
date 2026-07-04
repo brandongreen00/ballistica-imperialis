@@ -114,6 +114,12 @@
                                replaces the operative's modified save target
                                with <value> for the defence roll, ignoring
                                Piercing modifiers
+       ignore_damage_dice_d6 — { d6_threshold, num_d6, max_per_action }
+                               once per action, roll <num_d6> D6 against one
+                               damaging retained die (defender's choice of
+                               normal/crit): if any result is >= d6_threshold,
+                               ignore that die's damage in full (Celestian
+                               Insidiants Saintly Relics)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const ATTACKER_EFFECTS = {
@@ -1051,6 +1057,43 @@ export const DEFENDER_EFFECTS = {
     type: "damage_reduction_per_die",
     params: { dice_type: "normal", threshold: 3, reduce_by: 1 },
     note: "Traitor Thug — same mechanic as DKoK Veteran",
+  },
+  sickening_aura: {
+    id: "sickening_aura",
+    label: "Sickening Aura (-1 attacker Hit)",
+    type: "worsen_attacker_hit",
+    params: { amount: 1 },
+    note: "Chaos Cult strategy ploy — only when attacker is within 2\" of a friendly MUTANT or TORMENT operative",
+  },
+  unnatural_regeneration: {
+    id: "unnatural_regeneration",
+    label: "Unnatural Regeneration (D6 5+ if dmg ≥3)",
+    type: "damage_reduction_per_die_d6",
+    params: { dice_type: "all", dmg_threshold: 3, d6_threshold: 5, reduce_by: 1 },
+    note: "Chaos Cult MUTANT/TORMENT — per retained die with dmg ≥3, D6 5+ reduces by 1",
+  },
+  vile_blessing: {
+    id: "vile_blessing",
+    label: "Vile Blessing (ignore 1 Normal Dmg, once/battle)",
+    type: "ignore_damage_dice",
+    params: { dice_type: "normal", count: 1 },
+    note: "Chaos Cult faction equipment — once per battle, ignore Normal Dmg from one retained die (MUTANT/TORMENT only, not Devotee); cannot be combined with Unnatural Regeneration on the same die — pick one",
+  },
+  saintly_relics: {
+    id: "saintly_relics",
+    label: "Saintly Relics (1D6: ignore dmg on a 6)",
+    type: "ignore_damage_dice_d6",
+    params: { d6_threshold: 6, num_d6: 1, max_per_action: 1 },
+    group: "saintly_relics",
+    note: "Celestian Insidiants faction equipment — whenever an attack dice would inflict damage, roll 1D6: if it's a 6, ignore that dice's damage. Limited to 1 dice per action and 2 dice per battle (battle cap not modelled — treat as available each simulated action)",
+  },
+  saintly_relics_inspiring: {
+    id: "saintly_relics_inspiring",
+    label: "Saintly Relics — INSPIRING (2D6: ignore dmg on a 6)",
+    type: "ignore_damage_dice_d6",
+    params: { d6_threshold: 6, num_d6: 2, max_per_action: 1 },
+    group: "saintly_relics",
+    note: "Celestian Insidiants faction equipment — while INSPIRING, roll 2D6 instead of 1; if any result is a 6, ignore that dice's damage. Limited to 1 dice per action and 2 dice per battle (battle cap not modelled)",
   },
 };
 
