@@ -393,7 +393,7 @@ export const FACTIONS = [
     name: "CELESTIAN INSIDIANTS",
     short: "INSIDIANTS",
     attacker_effects: ["inspiration_severe", "suspect_eliminate_punishing", "fervent_hate_ceaseless", "fervent_hate_relentless"],
-    defender_effects: [],
+    defender_effects: ["saintly_relics", "saintly_relics_inspiring"],
     operatives: [
       {
         id: "insidiant-superior",
@@ -2950,7 +2950,7 @@ export const FACTIONS = [
         name: "Mutant",
         full_name: "CHAOS MUTANT",
         save: 5, wounds: 7, apl: 2, move: "6\"",
-        defender_abilities: ["vanguard_aura"],
+        defender_abilities: ["sickening_aura", "unnatural_regeneration", "vile_blessing"],
         attacker_effects: [],
         weapons: [
           { name: "Blasphemous appendages", atk: 4, hit: 4, normal_dmg: 3, crit_dmg: 4, rules: ["Ceaseless", "Rending"], kind: "melee" },
@@ -2961,7 +2961,7 @@ export const FACTIONS = [
         name: "Torment",
         full_name: "CHAOS TORMENT",
         save: 5, wounds: 13, apl: 2, move: "6\"",
-        defender_abilities: ["vanguard_aura"],
+        defender_abilities: ["sickening_aura", "unnatural_regeneration", "vile_blessing"],
         attacker_effects: [],
         weapons: [
           { name: "Hideous mutations", atk: 5, hit: 4, normal_dmg: 4, crit_dmg: 5, rules: ["Ceaseless", "Rending"], kind: "melee" },
