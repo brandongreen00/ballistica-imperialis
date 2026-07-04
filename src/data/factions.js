@@ -4651,7 +4651,7 @@ export const FACTIONS = [
     id: "hand-of-the-archon",
     name: "HAND OF THE ARCHON",
     short: "ARCHON",
-    attacker_effects: ["merciless_sadists"],
+    attacker_effects: ["merciless_sadists", "from_darkness_death", "prey_on_the_wounded", "blade_artists", "toxin_coating", "refined_poison", "wicked_blades"],
     defender_effects: ["denizens_of_night"],
     operatives: [
       {
